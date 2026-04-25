@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #060b14;
-  --accent: #00d4ff;
-  --purple: #7c3aed;
-  --text: #e2e8f0;
+  --bg: #030712;
+  --surface: #0f172a;
+  --accent: #f59e0b;
+  --accent-secondary: #fb923c;
+  --text: #f8fafc;
   --text-muted: #94a3b8;
-  --border: rgba(0, 212, 255, 0.12);
+  --border: rgba(251, 191, 36, 0.15);
 }
 
 @theme inline {
@@ -32,7 +33,7 @@ body {
 }
 
 ::selection {
-  background: rgba(0, 212, 255, 0.25);
+  background: rgba(245, 158, 11, 0.25);
   color: #fff;
 }
 
@@ -45,10 +46,38 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 212, 255, 0.3);
+  background: rgba(245, 158, 11, 0.3);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 212, 255, 0.5);
+  background: rgba(245, 158, 11, 0.5);
+}
+
+/* Animated dot-grid background */
+.grid-bg {
+  background-image: radial-gradient(rgba(251, 191, 36, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 32px 32px;
+  }
+}
+
+/* Terminal cursor blink */
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.terminal-cursor {
+  display: inline-block;
+  color: #f59e0b;
+  animation: cursorBlink 1s step-end infinite;
 }

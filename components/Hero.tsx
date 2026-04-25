@@ -1,11 +1,112 @@
 "use client";
 
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import ParticlesBg from "./ParticlesBg";
 import { useLanguage } from "@/contexts/LanguageContext";
 
+const SERVICES_PT = [
+  "Desenvolvimento de Sistemas ✓",
+  "Manutenção de Computadores ✓",
+  "Redes e Infraestrutura ✓",
+  "Sites e Landing Pages ✓",
+];
+
+const SERVICES_EN = [
+  "Systems Development ✓",
+  "Computer Maintenance ✓",
+  "Networks & Infrastructure ✓",
+  "Websites & Landing Pages ✓",
+];
+
+function TerminalTyping({ lang }: { lang: string }) {
+  const services = lang === "pt" ? SERVICES_PT : SERVICES_EN;
+  const [completed, setCompleted] = useState<string[]>([]);
+  const [currentText, setCurrentText] = useState("");
+  const [serviceIndex, setServiceIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [waiting, setWaiting] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (waiting) {
+      timeoutRef.current = setTimeout(() => {
+        const target = services[serviceIndex];
+        setCompleted((prev) => {
+          const next = [...prev, target];
+          return next.length > 4 ? next.slice(next.length - 4) : next;
+        });
+        setCurrentText("");
+        setCharIndex(0);
+        setServiceIndex((prev) => (prev + 1) % services.length);
+        setWaiting(false);
+      }, 1500);
+      return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
+    }
+
+    const target = services[serviceIndex];
+    if (charIndex < target.length) {
+      timeoutRef.current = setTimeout(() => {
+        setCurrentText(target.slice(0, charIndex + 1));
+        setCharIndex((c) => c + 1);
+      }, 50);
+    } else {
+      setWaiting(true);
+    }
+
+    return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
+  }, [charIndex, serviceIndex, waiting, services]);
+
+  return (
+    <div
+      className="w-full max-w-lg mx-auto text-left"
+      style={{
+        background: "rgba(15,23,42,0.95)",
+        border: "1px solid rgba(251,191,36,0.2)",
+        padding: "1.25rem 1.5rem",
+        fontFamily: "var(--font-geist-mono), monospace",
+        fontSize: "0.8rem",
+        lineHeight: "1.8",
+      }}
+    >
+      {/* Terminal header */}
+      <div className="flex items-center gap-1.5 mb-3 pb-2" style={{ borderBottom: "1px solid rgba(251,191,36,0.1)" }}>
+        <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#ef4444" }} />
+        <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#f59e0b" }} />
+        <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#22c55e" }} />
+        <span className="ml-2 text-xs" style={{ color: "#475569" }}>netto.tech — bash</span>
+      </div>
+
+      {/* Command */}
+      <div style={{ color: "#64748b" }}>
+        <span style={{ color: "#f59e0b" }}>$</span>
+        {" "}
+        <span style={{ color: "#94a3b8" }}>netto.tech</span>
+        {" "}
+        <span style={{ color: "#f8fafc" }}>--service</span>
+      </div>
+
+      {/* Completed lines */}
+      {completed.map((line, i) => (
+        <div key={i} style={{ color: "#f59e0b" }}>
+          <span style={{ color: "#f59e0b", opacity: 0.6 }}>&gt;</span>
+          {" "}
+          {line}
+        </div>
+      ))}
+
+      {/* Currently typing line */}
+      <div style={{ color: "#f8fafc" }}>
+        <span style={{ color: "#f59e0b", opacity: 0.6 }}>&gt;</span>
+        {" "}
+        {currentText}
+        <span className="terminal-cursor">|</span>
+      </div>
+    </div>
+  );
+}
+
 export default function Hero() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   const handleScroll = (href: string) => {
     const el = document.querySelector(href);
@@ -17,12 +118,22 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      <ParticlesBg />
+      {/* Animated dot-grid background */}
+      <div className="grid-bg absolute inset-0 pointer-events-none" />
 
       {/* Gradient overlays */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#060b14] pointer-events-none" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-[#00d4ff]/4 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-20 right-0 w-[400px] h-[400px] rounded-full bg-[#7c3aed]/5 blur-[100px] pointer-events-none" />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,158,11,0.06) 0%, transparent 70%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "linear-gradient(to bottom, transparent 60%, #030712 100%)",
+        }}
+      />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
         {/* Brand badge */}
@@ -33,11 +144,11 @@ export default function Hero() {
           className="mb-6"
         >
           <span
-            className="inline-block font-mono text-xs tracking-[0.35em] uppercase px-4 py-2 rounded-full border"
+            className="inline-block font-mono text-xs tracking-[0.35em] uppercase px-4 py-2 border"
             style={{
-              color: "#00d4ff",
-              borderColor: "rgba(0,212,255,0.25)",
-              background: "rgba(0,212,255,0.06)",
+              color: "#f59e0b",
+              borderColor: "rgba(251,191,36,0.25)",
+              background: "rgba(251,191,36,0.06)",
             }}
           >
             {t.hero.badge}
@@ -50,19 +161,20 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.35 }}
           className="text-6xl md:text-8xl font-bold tracking-tight mb-6 leading-[1.05]"
+          style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
         >
-          <span className="text-white">netto</span>
-          <span style={{ color: "#00d4ff" }}>.</span>
+          <span style={{ color: "#f8fafc" }}>netto</span>
           <span
             style={{
-              background: "linear-gradient(135deg, #00d4ff 0%, #7c3aed 100%)",
+              background: "linear-gradient(135deg, #f59e0b 0%, #fb923c 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
             }}
           >
-            tech
+            .
           </span>
+          <span style={{ color: "#f8fafc" }}>tech</span>
         </motion.h1>
 
         {/* Tagline */}
@@ -70,7 +182,8 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="text-white/90 text-xl md:text-2xl font-semibold max-w-2xl mx-auto mb-3"
+          className="text-xl md:text-2xl font-semibold max-w-2xl mx-auto mb-3"
+          style={{ color: "rgba(248,250,252,0.9)" }}
         >
           {t.hero.tagline}
         </motion.p>
@@ -80,34 +193,51 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.6 }}
-          className="text-slate-400 text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
+          className="text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed"
+          style={{ color: "#94a3b8" }}
         >
           {t.hero.sub}
         </motion.p>
+
+        {/* Terminal */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.7 }}
+          className="mb-10"
+        >
+          <TerminalTyping lang={lang} />
+        </motion.div>
 
         {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.75 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <a
             href="https://wa.me/559XXXXXXXXX"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-300 overflow-hidden hover:opacity-90"
+            className="inline-flex items-center gap-2 px-8 py-3.5 font-semibold text-sm transition-all duration-300 hover:opacity-90"
             style={{
-              background: "linear-gradient(135deg, #00d4ff, #7c3aed)",
-              color: "#fff",
+              background: "linear-gradient(135deg, #f59e0b, #fb923c)",
+              color: "#030712",
             }}
           >
-            <span className="relative z-10">{t.hero.cta}</span>
+            {t.hero.cta}
           </a>
 
           <button
             onClick={() => handleScroll("#servicos")}
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm border border-[rgba(0,212,255,0.3)] text-slate-300 hover:text-[#00d4ff] hover:border-[#00d4ff] transition-all duration-300"
+            className="inline-flex items-center gap-2 px-8 py-3.5 font-semibold text-sm border transition-all duration-300 hover:border-amber-500"
+            style={{
+              borderColor: "rgba(251,191,36,0.3)",
+              color: "#cbd5e1",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#f59e0b")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#cbd5e1")}
           >
             {t.hero.cta2}
           </button>
@@ -117,17 +247,16 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.3 }}
+          transition={{ duration: 1, delay: 1.4 }}
           className="absolute bottom-12 left-1/2 -translate-x-1/2"
         >
-          <div className="flex flex-col items-center gap-2 text-slate-600">
-            <span className="text-xs font-mono tracking-widest uppercase">
-              scroll
-            </span>
+          <div className="flex flex-col items-center gap-2" style={{ color: "#334155" }}>
+            <span className="text-xs font-mono tracking-widest uppercase">scroll</span>
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-px h-8 bg-gradient-to-b from-slate-600 to-transparent"
+              className="w-px h-8"
+              style={{ background: "linear-gradient(to bottom, #475569, transparent)" }}
             />
           </div>
         </motion.div>

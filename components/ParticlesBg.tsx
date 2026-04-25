@@ -28,17 +28,17 @@ export default function ParticlesBg() {
         modes: {
           grab: {
             distance: 140,
-            links: { opacity: 0.5 },
+            links: { opacity: 0.4 },
           },
         },
       },
       particles: {
-        color: { value: "#00d4ff" },
+        color: { value: "#f59e0b" },
         links: {
-          color: "#00d4ff",
+          color: "#f59e0b",
           distance: 150,
           enable: true,
-          opacity: 0.12,
+          opacity: 0.08,
           width: 1,
         },
         move: {
@@ -51,10 +51,10 @@ export default function ParticlesBg() {
         },
         number: {
           density: { enable: true },
-          value: 70,
+          value: 60,
         },
         opacity: {
-          value: { min: 0.2, max: 0.6 },
+          value: { min: 0.1, max: 0.4 },
           animation: {
             enable: true,
             speed: 0.5,
@@ -63,7 +63,7 @@ export default function ParticlesBg() {
         },
         shape: { type: "circle" },
         size: {
-          value: { min: 1, max: 2.5 },
+          value: { min: 1, max: 2 },
         },
       },
       detectRetina: true,

@@ -48,7 +48,7 @@ export default function Contato() {
         className="max-w-6xl mx-auto mb-16 h-px"
         style={{
           background:
-            "linear-gradient(90deg, transparent, rgba(0,212,255,0.15), transparent)",
+            "linear-gradient(90deg, transparent, rgba(251,191,36,0.2), transparent)",
         }}
       />
 
@@ -61,25 +61,35 @@ export default function Contato() {
           transition={{ duration: 0.6 }}
           className="mb-4 text-center"
         >
-          <span className="font-mono text-xs tracking-[0.3em] uppercase text-[#00d4ff] opacity-70">
+          <span
+            className="font-mono text-xs tracking-[0.3em] uppercase"
+            style={{ color: "#f59e0b", opacity: 0.7 }}
+          >
             {t.contato.label}
           </span>
         </motion.div>
+
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl md:text-4xl font-bold text-white text-center mb-4"
+          className="text-3xl md:text-4xl font-bold text-center mb-4"
+          style={{
+            color: "#f8fafc",
+            fontFamily: "var(--font-space-grotesk), sans-serif",
+          }}
         >
           {t.contato.title}
         </motion.h2>
+
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-slate-400 text-lg text-center mb-4 max-w-xl mx-auto"
+          className="text-lg text-center mb-4 max-w-xl mx-auto"
+          style={{ color: "#94a3b8" }}
         >
           {t.contato.sub}
         </motion.p>
@@ -90,11 +100,12 @@ export default function Contato() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex items-center justify-center gap-2 text-slate-500 text-sm mb-14"
+          className="flex items-center justify-center gap-2 text-sm mb-14"
+          style={{ color: "#475569" }}
         >
-          <MapPin size={14} style={{ color: "#00d4ff" }} />
+          <MapPin size={14} style={{ color: "#f59e0b" }} />
           <span>{t.contato.location}</span>
-          <span className="mx-2 text-slate-700">·</span>
+          <span className="mx-2" style={{ color: "#1e293b" }}>·</span>
           <span>{t.contato.locationSub}</span>
         </motion.div>
 
@@ -110,10 +121,10 @@ export default function Contato() {
             href="https://wa.me/559XXXXXXXXX"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-10 py-4 rounded-full font-semibold text-base transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
+            className="inline-flex items-center gap-3 px-10 py-4 font-semibold text-base transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"
             style={{
-              background: "linear-gradient(135deg, #00d4ff, #7c3aed)",
-              color: "#fff",
+              background: "linear-gradient(135deg, #f59e0b, #fb923c)",
+              color: "#030712",
             }}
           >
             {socialIcons[0]}
@@ -122,7 +133,7 @@ export default function Contato() {
         </motion.div>
 
         {/* Social links grid */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-3">
           {t.contato.links.map((link, i) => (
             <motion.a
               key={link.label}
@@ -133,24 +144,33 @@ export default function Contato() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: 0.5, delay: 0.4 + i * 0.08 }}
-              whileHover={{ y: -4 }}
-              className="group flex flex-col items-center gap-3 p-5 rounded-2xl border transition-all duration-300"
+              whileHover={{ y: -3 }}
+              className="group flex flex-col items-center gap-3 p-5 transition-all duration-300"
               style={{
-                background: i === 0 ? "rgba(0,212,255,0.04)" : "rgba(255,255,255,0.02)",
-                borderColor: i === 0 ? "rgba(0,212,255,0.2)" : "rgba(255,255,255,0.06)",
+                background: i === 0 ? "rgba(251,191,36,0.04)" : "rgba(15,23,42,0.6)",
+                border: `1px solid ${i === 0 ? "rgba(251,191,36,0.2)" : "rgba(251,191,36,0.07)"}`,
               }}
             >
-              <span className="text-slate-500 group-hover:text-[#00d4ff] transition-colors duration-200">
+              <span
+                className="transition-colors duration-200"
+                style={{ color: "#475569" }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#f59e0b")}
+              >
                 {socialIcons[i]}
               </span>
               <div className="text-center">
-                <div className="font-semibold text-white text-sm">
+                <div className="font-semibold text-sm" style={{ color: "#f8fafc" }}>
                   {link.label}
                 </div>
-                <div className="font-mono text-xs text-[#00d4ff] mt-0.5 break-all">
+                <div
+                  className="font-mono text-xs mt-0.5 break-all"
+                  style={{ color: "#f59e0b" }}
+                >
                   {link.sub}
                 </div>
-                <div className="text-xs text-slate-500 mt-1">{link.desc}</div>
+                <div className="text-xs mt-1" style={{ color: "#475569" }}>
+                  {link.desc}
+                </div>
               </div>
             </motion.a>
           ))}
@@ -164,7 +184,9 @@ export default function Contato() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-24 text-center"
         >
-          <p className="text-slate-600 text-xs font-mono">{t.contato.footer}</p>
+          <p className="text-xs font-mono" style={{ color: "#1e293b" }}>
+            {t.contato.footer}
+          </p>
         </motion.footer>
       </div>
     </section>

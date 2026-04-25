@@ -1,28 +1,25 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const projetosMeta = [
   {
     stack: ["Laravel", "PHP", "MySQL"],
     href: "https://github.com/at-n3tt0",
-    highlight: true,
   },
   {
     stack: ["Laravel", "PHP", "MySQL"],
     href: "https://github.com/at-n3tt0/sigma-marituba",
-    highlight: false,
   },
   {
     stack: ["FastAPI", "React", "Docker"],
     href: "https://github.com/at-n3tt0/server-monitor",
-    highlight: true,
   },
   {
     stack: ["FastAPI", "Docker", "PostgreSQL"],
     href: "https://github.com/at-n3tt0/nexlicense",
-    highlight: false,
   },
 ];
 
@@ -40,7 +37,7 @@ function StackBadge({ label }: { label: string }) {
   const color = stackColor[label] ?? "#94a3b8";
   return (
     <span
-      className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-mono font-medium"
+      className="inline-flex items-center px-2.5 py-1 text-xs font-mono font-medium"
       style={{
         background: `${color}18`,
         color,
@@ -66,30 +63,41 @@ export default function Projetos() {
           transition={{ duration: 0.6 }}
           className="mb-4"
         >
-          <span className="font-mono text-xs tracking-[0.3em] uppercase text-[#00d4ff] opacity-70">
+          <span
+            className="font-mono text-xs tracking-[0.3em] uppercase"
+            style={{ color: "#f59e0b", opacity: 0.7 }}
+          >
             {t.projetos.label}
           </span>
         </motion.div>
+
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl md:text-4xl font-bold text-white mb-4"
+          className="text-3xl md:text-4xl font-bold mb-4"
+          style={{
+            color: "#f8fafc",
+            fontFamily: "var(--font-space-grotesk), sans-serif",
+          }}
         >
           {t.projetos.title}
         </motion.h2>
+
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-slate-400 text-lg mb-16 max-w-2xl"
+          className="text-lg mb-16 max-w-2xl"
+          style={{ color: "#94a3b8" }}
         >
           {t.projetos.sub}
         </motion.p>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        {/* Horizontal full-width cards */}
+        <div className="flex flex-col gap-3">
           {t.projetos.items.map((item, i) => {
             const meta = projetosMeta[i];
             return (
@@ -98,67 +106,86 @@ export default function Projetos() {
                 href={meta.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-                whileHover={{ y: -4 }}
-                className="group relative flex flex-col p-7 rounded-2xl border transition-all duration-300"
+                transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
+                className="group relative flex items-center gap-6 px-6 py-5 transition-all duration-200"
                 style={{
-                  background: meta.highlight
-                    ? "linear-gradient(135deg, rgba(0,212,255,0.04) 0%, rgba(124,58,237,0.04) 100%)"
-                    : "rgba(255,255,255,0.02)",
-                  borderColor: meta.highlight
-                    ? "rgba(0,212,255,0.2)"
-                    : "rgba(255,255,255,0.06)",
+                  borderTop: "1px solid rgba(251,191,36,0.2)",
+                  background: "transparent",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(251,191,36,0.03)";
+                  e.currentTarget.style.transform = "translateX(4px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.transform = "translateX(0)";
                 }}
               >
-                {/* Hover glow */}
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(0,212,255,0.06) 0%, rgba(124,58,237,0.06) 100%)",
-                  }}
-                />
+                {/* Index */}
+                <span
+                  className="hidden sm:block flex-shrink-0 font-mono text-xs w-6 text-right"
+                  style={{ color: "#334155" }}
+                >
+                  {String(i + 1).padStart(2, "0")}
+                </span>
 
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="font-bold text-white text-lg group-hover:text-[#00d4ff] transition-colors duration-200">
-                      {item.title}
-                    </h3>
-                    <span className="text-slate-600 group-hover:text-slate-400 transition-colors duration-200 text-sm ml-4 mt-0.5">
-                      ↗
-                    </span>
-                  </div>
-
-                  <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1">
+                {/* Left: title + description */}
+                <div className="flex-1 min-w-0">
+                  <h3
+                    className="font-bold text-base mb-1 transition-colors duration-200"
+                    style={{ color: "#f8fafc" }}
+                  >
+                    {item.title}
+                  </h3>
+                  <p
+                    className="text-sm leading-relaxed line-clamp-2"
+                    style={{ color: "#64748b" }}
+                  >
                     {item.desc}
                   </p>
-
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 mt-2">
                     {meta.stack.map((s) => (
                       <StackBadge key={s} label={s} />
                     ))}
                   </div>
                 </div>
+
+                {/* Right: Ver mais */}
+                <div
+                  className="flex-shrink-0 flex items-center gap-1.5 text-xs font-semibold transition-colors duration-200"
+                  style={{ color: "#475569" }}
+                >
+                  <ArrowUpRight size={18} style={{ color: "inherit" }} />
+                </div>
               </motion.a>
             );
           })}
+
+          {/* Bottom border */}
+          <div
+            className="h-px"
+            style={{ background: "rgba(251,191,36,0.1)" }}
+          />
         </div>
 
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-10 text-center"
         >
           <a
             href="https://github.com/at-n3tt0"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-[#00d4ff] transition-colors duration-200 font-mono"
+            className="inline-flex items-center gap-2 text-sm font-mono transition-colors duration-200"
+            style={{ color: "#475569" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#f59e0b")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#475569")}
           >
             Ver todos os repositórios no GitHub →
           </a>

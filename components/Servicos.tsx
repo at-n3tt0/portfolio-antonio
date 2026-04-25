@@ -5,7 +5,7 @@ import { Code2, Globe, Wrench, Network } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const icons = [Code2, Globe, Wrench, Network];
-const colors = ["#00d4ff", "#7c3aed", "#f59e0b", "#10b981"];
+
 const stacks = [
   ["PHP / Laravel", "Python / FastAPI", "React"],
   ["Next.js", "Tailwind CSS", "WordPress"],
@@ -27,89 +27,107 @@ export default function Servicos() {
           transition={{ duration: 0.6 }}
           className="mb-4"
         >
-          <span className="font-mono text-xs tracking-[0.3em] uppercase text-[#00d4ff] opacity-70">
+          <span
+            className="font-mono text-xs tracking-[0.3em] uppercase"
+            style={{ color: "#f59e0b", opacity: 0.7 }}
+          >
             {t.servicos.label}
           </span>
         </motion.div>
+
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl md:text-4xl font-bold text-white mb-4"
+          className="text-3xl md:text-4xl font-bold mb-4"
+          style={{
+            color: "#f8fafc",
+            fontFamily: "var(--font-space-grotesk), sans-serif",
+          }}
         >
           {t.servicos.title}
         </motion.h2>
+
         <motion.p
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-slate-400 text-lg mb-16 max-w-2xl"
+          className="text-lg mb-16 max-w-2xl"
+          style={{ color: "#94a3b8" }}
         >
           {t.servicos.sub}
         </motion.p>
 
-        {/* Cards */}
-        <div className="grid md:grid-cols-2 gap-6">
+        {/* Left-bordered rows */}
+        <div className="flex flex-col gap-3">
           {t.servicos.items.map((item, i) => {
             const Icon = icons[i];
-            const color = colors[i];
             const stack = stacks[i];
             return (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.55, delay: 0.15 + i * 0.1 }}
-                className="group relative p-7 rounded-2xl border transition-all duration-300"
+                transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
+                className="group relative flex items-start gap-5 px-6 py-5 transition-all duration-200"
                 style={{
-                  background: "rgba(255,255,255,0.02)",
-                  borderColor: "rgba(255,255,255,0.07)",
+                  borderLeft: "3px solid #f59e0b",
+                  background: "rgba(251,191,36,0.03)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(251,191,36,0.06)";
+                  const border = e.currentTarget;
+                  border.style.borderLeftColor = "#f59e0b";
+                  border.style.boxShadow = "-2px 0 12px rgba(245,158,11,0.2)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(251,191,36,0.03)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >
-                {/* Hover background glow */}
-                <div
-                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-400 pointer-events-none"
-                  style={{
-                    background: `radial-gradient(400px at 0% 0%, ${color}08 0%, transparent 70%)`,
-                  }}
-                />
-
                 {/* Icon */}
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                  className="mt-0.5 flex-shrink-0 w-9 h-9 flex items-center justify-center"
                   style={{
-                    background: `${color}12`,
-                    border: `1px solid ${color}25`,
+                    background: "rgba(251,191,36,0.08)",
+                    border: "1px solid rgba(251,191,36,0.2)",
                   }}
                 >
-                  <Icon size={22} style={{ color }} />
+                  <Icon size={18} style={{ color: "#f59e0b" }} />
                 </div>
 
-                <h3 className="text-white font-bold text-lg mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-slate-400 text-sm leading-relaxed mb-5">
-                  {item.desc}
-                </p>
-
-                {/* Stack tags */}
-                <div className="flex flex-wrap gap-2">
-                  {stack.map((tag) => (
-                    <span
-                      key={tag}
-                      className="px-2.5 py-1 rounded-md text-xs font-mono"
-                      style={{
-                        color,
-                        background: `${color}10`,
-                        border: `1px solid ${color}22`,
-                      }}
+                {/* Content */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-1.5">
+                    <h3
+                      className="font-bold text-base"
+                      style={{ color: "#f8fafc" }}
                     >
-                      {tag}
-                    </span>
-                  ))}
+                      {item.title}
+                    </h3>
+                    {/* Stack tags inline */}
+                    <div className="flex flex-wrap gap-1.5">
+                      {stack.map((tag) => (
+                        <span
+                          key={tag}
+                          className="px-2 py-0.5 text-xs font-mono"
+                          style={{
+                            color: "#f59e0b",
+                            background: "rgba(251,191,36,0.08)",
+                            border: "1px solid rgba(251,191,36,0.15)",
+                          }}
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-sm leading-relaxed" style={{ color: "#94a3b8" }}>
+                    {item.desc}
+                  </p>
                 </div>
               </motion.div>
             );
@@ -121,17 +139,17 @@ export default function Servicos() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-12 text-center"
         >
           <a
             href="https://wa.me/559XXXXXXXXX"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full font-semibold text-sm transition-all duration-200 hover:opacity-90"
+            className="inline-flex items-center gap-2 px-8 py-3.5 font-semibold text-sm transition-all duration-200 hover:opacity-90"
             style={{
-              background: "linear-gradient(135deg, #00d4ff, #7c3aed)",
-              color: "#fff",
+              background: "linear-gradient(135deg, #f59e0b, #fb923c)",
+              color: "#030712",
             }}
           >
             {t.servicos.cta}

@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main
       className="min-h-screen"
-      style={{ background: "#060b14", color: "#e2e8f0" }}
+      style={{ background: "#030712", color: "#f8fafc" }}
     >
       <Navbar />
       <Hero />
