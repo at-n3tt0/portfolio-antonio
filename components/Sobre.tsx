@@ -3,45 +3,6 @@
 import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-// Skill badges by category
-const skillCategories = [
-  {
-    label: "Backend",
-    color: "#f59e0b",
-    bg: "rgba(245,158,11,0.1)",
-    border: "rgba(245,158,11,0.25)",
-    skills: ["PHP", "Laravel", "Python", "FastAPI"],
-  },
-  {
-    label: "Frontend",
-    color: "#60a5fa",
-    bg: "rgba(96,165,250,0.1)",
-    border: "rgba(96,165,250,0.25)",
-    skills: ["React", "Next.js", "Tailwind"],
-  },
-  {
-    label: "DevOps / Infra",
-    color: "#34d399",
-    bg: "rgba(52,211,153,0.1)",
-    border: "rgba(52,211,153,0.25)",
-    skills: ["Docker", "Linux", "Proxmox"],
-  },
-  {
-    label: "Redes",
-    color: "#fb923c",
-    bg: "rgba(251,146,60,0.1)",
-    border: "rgba(251,146,60,0.25)",
-    skills: ["MikroTik", "Zabbix"],
-  },
-  {
-    label: "Banco de Dados",
-    color: "#a78bfa",
-    bg: "rgba(167,139,250,0.1)",
-    border: "rgba(167,139,250,0.25)",
-    skills: ["MySQL", "PostgreSQL"],
-  },
-];
-
 export default function Sobre() {
   const { t } = useLanguage();
 
@@ -78,10 +39,11 @@ export default function Sobre() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-3xl md:text-4xl font-bold mb-16"
+          className="text-2xl md:text-3xl font-bold mb-16 max-w-3xl"
           style={{
             color: "#f8fafc",
             fontFamily: "var(--font-space-grotesk), sans-serif",
+            lineHeight: 1.3,
           }}
         >
           {t.sobre.title}
@@ -136,7 +98,7 @@ export default function Sobre() {
 
             <div className="pt-2">
               <a
-                href="https://wa.me/559XXXXXXXXX"
+                href="https://wa.me/5591980242234"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200"
@@ -149,63 +111,68 @@ export default function Sobre() {
             </div>
           </motion.div>
 
-          {/* Right — skill badges grid */}
+          {/* Right — 4 pillars */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="space-y-5"
+            className="space-y-3"
           >
-            <div
-              className="p-5"
-              style={{
-                background: "rgba(15,23,42,0.8)",
-                border: "1px solid rgba(251,191,36,0.12)",
-              }}
-            >
-              <div
-                className="font-mono text-xs mb-4 pb-2"
+            {t.sobre.pillars.map((pillar, i) => (
+              <motion.div
+                key={pillar}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: 0.35 + i * 0.08 }}
+                className="flex items-center gap-4 px-5 py-4"
                 style={{
-                  color: "#475569",
-                  borderBottom: "1px solid rgba(251,191,36,0.08)",
+                  background: "rgba(15,23,42,0.8)",
+                  border: "1px solid rgba(251,191,36,0.12)",
                 }}
               >
-                <span style={{ color: "#f59e0b" }}>$</span> tech-stack --list
-              </div>
-
-              {skillCategories.map((cat, ci) => (
-                <motion.div
-                  key={cat.label}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: 0.3 + ci * 0.07 }}
-                  className="mb-4 last:mb-0"
+                <span
+                  className="font-mono text-xs flex-shrink-0"
+                  style={{ color: "#f59e0b", opacity: 0.6 }}
                 >
-                  <div
-                    className="text-xs font-mono mb-2"
-                    style={{ color: "#475569" }}
-                  >
-                    # {cat.label}
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {cat.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-3 py-1 text-xs font-semibold"
-                        style={{
-                          color: cat.color,
-                          background: cat.bg,
-                          border: `1px solid ${cat.border}`,
-                        }}
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="font-semibold text-sm" style={{ color: "#f8fafc" }}>
+                  {pillar}
+                </span>
+                <div
+                  className="ml-auto h-px flex-1"
+                  style={{ background: "rgba(251,191,36,0.1)", maxWidth: "60px" }}
+                />
+              </motion.div>
+            ))}
+
+            {/* Terminal flavor */}
+            <div
+              className="mt-4 p-4"
+              style={{
+                background: "rgba(15,23,42,0.8)",
+                border: "1px solid rgba(251,191,36,0.1)",
+                fontFamily: "var(--font-geist-mono), monospace",
+                fontSize: "0.75rem",
+              }}
+            >
+              <div style={{ color: "#475569" }}>
+                <span style={{ color: "#f59e0b" }}>$</span> at_netto.tech --info
+              </div>
+              <div className="mt-2" style={{ color: "#64748b" }}>
+                <span style={{ color: "#f59e0b", opacity: 0.6 }}>&gt;</span>
+                {" "}Marituba, PA · Brasil
+              </div>
+              <div style={{ color: "#64748b" }}>
+                <span style={{ color: "#f59e0b", opacity: 0.6 }}>&gt;</span>
+                {" "}Suporte remoto nacional
+              </div>
+              <div style={{ color: "#64748b" }}>
+                <span style={{ color: "#f59e0b", opacity: 0.6 }}>&gt;</span>
+                {" "}@at_netto.tech
+              </div>
             </div>
           </motion.div>
         </div>

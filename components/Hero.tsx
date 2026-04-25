@@ -5,17 +5,25 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const SERVICES_PT = [
-  "Desenvolvimento de Sistemas ✓",
-  "Manutenção de Computadores ✓",
-  "Redes e Infraestrutura ✓",
-  "Sites e Landing Pages ✓",
+  "Criação de sites ✓",
+  "Desenvolvimento de sistemas ✓",
+  "Cabeamento estruturado ✓",
+  "Instalação de câmeras ✓",
+  "Servidores e infraestrutura ✓",
+  "Manutenção de computadores ✓",
+  "Suporte técnico ✓",
+  "Consultoria em TI ✓",
 ];
 
 const SERVICES_EN = [
-  "Systems Development ✓",
-  "Computer Maintenance ✓",
-  "Networks & Infrastructure ✓",
-  "Websites & Landing Pages ✓",
+  "Website creation ✓",
+  "Systems development ✓",
+  "Structured cabling ✓",
+  "Security camera installation ✓",
+  "Servers & infrastructure ✓",
+  "Computer maintenance ✓",
+  "Technical support ✓",
+  "IT consulting ✓",
 ];
 
 function TerminalTyping({ lang }: { lang: string }) {
@@ -217,7 +225,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <a
-            href="https://wa.me/559XXXXXXXXX"
+            href="https://wa.me/5591980242234"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-3.5 font-semibold text-sm transition-all duration-300 hover:opacity-90"

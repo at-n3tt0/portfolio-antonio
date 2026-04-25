@@ -32,7 +32,7 @@ const socialIcons = [
 ];
 
 const socialHrefs = [
-  "https://wa.me/559XXXXXXXXX",
+  "https://wa.me/5591980242234",
   "https://instagram.com/at_netto.tech",
   "https://github.com/at-n3tt0",
   "https://linkedin.com/in/at-netto",
@@ -118,7 +118,7 @@ export default function Contato() {
           className="flex justify-center mb-10"
         >
           <a
-            href="https://wa.me/559XXXXXXXXX"
+            href="https://wa.me/5591980242234"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 px-10 py-4 font-semibold text-base transition-all duration-200 hover:opacity-90 hover:scale-[1.02]"

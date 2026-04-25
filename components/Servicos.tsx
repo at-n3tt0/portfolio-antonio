@@ -1,17 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Globe, Wrench, Network } from "lucide-react";
+import { Globe, Code2, Network, Camera, Server, Wrench, Headphones, Lightbulb } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const icons = [Code2, Globe, Wrench, Network];
-
-const stacks = [
-  ["PHP / Laravel", "Python / FastAPI", "React"],
-  ["Next.js", "Tailwind CSS", "WordPress"],
-  ["Diagnóstico", "Hardware", "Software"],
-  ["MikroTik", "Servidores Linux", "Cabeamento"],
-];
+const icons = [Globe, Code2, Network, Camera, Server, Wrench, Headphones, Lightbulb];
 
 export default function Servicos() {
   const { t } = useLanguage();
@@ -60,18 +53,17 @@ export default function Servicos() {
           {t.servicos.sub}
         </motion.p>
 
-        {/* Left-bordered rows */}
-        <div className="flex flex-col gap-3">
+        {/* 2-column grid of 8 services */}
+        <div className="grid md:grid-cols-2 gap-3">
           {t.servicos.items.map((item, i) => {
             const Icon = icons[i];
-            const stack = stacks[i];
             return (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
+                transition={{ duration: 0.5, delay: 0.1 + i * 0.07 }}
                 className="group relative flex items-start gap-5 px-6 py-5 transition-all duration-200"
                 style={{
                   borderLeft: "3px solid #f59e0b",
@@ -79,9 +71,7 @@ export default function Servicos() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.background = "rgba(251,191,36,0.06)";
-                  const border = e.currentTarget;
-                  border.style.borderLeftColor = "#f59e0b";
-                  border.style.boxShadow = "-2px 0 12px rgba(245,158,11,0.2)";
+                  e.currentTarget.style.boxShadow = "-2px 0 12px rgba(245,158,11,0.2)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = "rgba(251,191,36,0.03)";
@@ -101,30 +91,12 @@ export default function Servicos() {
 
                 {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-1.5">
-                    <h3
-                      className="font-bold text-base"
-                      style={{ color: "#f8fafc" }}
-                    >
-                      {item.title}
-                    </h3>
-                    {/* Stack tags inline */}
-                    <div className="flex flex-wrap gap-1.5">
-                      {stack.map((tag) => (
-                        <span
-                          key={tag}
-                          className="px-2 py-0.5 text-xs font-mono"
-                          style={{
-                            color: "#f59e0b",
-                            background: "rgba(251,191,36,0.08)",
-                            border: "1px solid rgba(251,191,36,0.15)",
-                          }}
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+                  <h3
+                    className="font-bold text-base mb-1.5"
+                    style={{ color: "#f8fafc" }}
+                  >
+                    {item.title}
+                  </h3>
                   <p className="text-sm leading-relaxed" style={{ color: "#94a3b8" }}>
                     {item.desc}
                   </p>
@@ -143,7 +115,7 @@ export default function Servicos() {
           className="mt-12 text-center"
         >
           <a
-            href="https://wa.me/559XXXXXXXXX"
+            href="https://wa.me/5591980242234"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-3.5 font-semibold text-sm transition-all duration-200 hover:opacity-90"

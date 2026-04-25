@@ -4,37 +4,40 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const projetosMeta = [
+const clientesMeta = [
   {
-    stack: ["Laravel", "PHP", "MySQL"],
+    tags: ["Suporte técnico"],
+    href: "https://instagram.com/oficinagaragem17_",
+  },
+  {
+    tags: ["Cabeamento estruturado", "Câmeras", "Site"],
+    href: "https://wa.me/5591980242234",
+  },
+  {
+    tags: ["Sistemas web", "Laravel", "MySQL"],
     href: "https://github.com/at-n3tt0",
   },
   {
-    stack: ["Laravel", "PHP", "MySQL"],
-    href: "https://github.com/at-n3tt0/sigma-marituba",
-  },
-  {
-    stack: ["FastAPI", "React", "Docker"],
-    href: "https://github.com/at-n3tt0/server-monitor",
-  },
-  {
-    stack: ["FastAPI", "Docker", "PostgreSQL"],
-    href: "https://github.com/at-n3tt0/nexlicense",
+    tags: ["Server Monitor", "NexLicense", "Open source"],
+    href: "https://github.com/at-n3tt0",
   },
 ];
 
-const stackColor: Record<string, string> = {
+const tagColor: Record<string, string> = {
+  "Suporte técnico": "#f59e0b",
+  "Cabeamento estruturado": "#60a5fa",
+  "Câmeras": "#34d399",
+  "Site": "#fb923c",
+  "Sistemas web": "#FF2D20",
   Laravel: "#FF2D20",
-  PHP: "#777BB4",
-  FastAPI: "#009688",
-  React: "#61DAFB",
-  PostgreSQL: "#336791",
   MySQL: "#F29111",
-  Docker: "#2496ED",
+  "Server Monitor": "#2496ED",
+  NexLicense: "#a78bfa",
+  "Open source": "#64748b",
 };
 
-function StackBadge({ label }: { label: string }) {
-  const color = stackColor[label] ?? "#94a3b8";
+function TagBadge({ label }: { label: string }) {
+  const color = tagColor[label] ?? "#94a3b8";
   return (
     <span
       className="inline-flex items-center px-2.5 py-1 text-xs font-mono font-medium"
@@ -96,10 +99,10 @@ export default function Projetos() {
           {t.projetos.sub}
         </motion.p>
 
-        {/* Horizontal full-width cards */}
+        {/* Client cards */}
         <div className="flex flex-col gap-3">
           {t.projetos.items.map((item, i) => {
-            const meta = projetosMeta[i];
+            const meta = clientesMeta[i];
             return (
               <motion.a
                 key={item.title}
@@ -132,33 +135,45 @@ export default function Projetos() {
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
-                {/* Left: title + description */}
+                {/* Content */}
                 <div className="flex-1 min-w-0">
-                  <h3
-                    className="font-bold text-base mb-1 transition-colors duration-200"
-                    style={{ color: "#f8fafc" }}
-                  >
-                    {item.title}
-                  </h3>
+                  <div className="flex flex-wrap items-baseline gap-3 mb-1">
+                    <h3
+                      className="font-bold text-base"
+                      style={{ color: "#f8fafc" }}
+                    >
+                      {item.title}
+                    </h3>
+                    <span
+                      className="font-mono text-xs px-2 py-0.5"
+                      style={{
+                        color: "#f59e0b",
+                        background: "rgba(251,191,36,0.08)",
+                        border: "1px solid rgba(251,191,36,0.15)",
+                      }}
+                    >
+                      {item.category}
+                    </span>
+                  </div>
                   <p
-                    className="text-sm leading-relaxed line-clamp-2"
+                    className="text-sm leading-relaxed mb-2"
                     style={{ color: "#64748b" }}
                   >
                     {item.desc}
                   </p>
-                  <div className="flex flex-wrap gap-1.5 mt-2">
-                    {meta.stack.map((s) => (
-                      <StackBadge key={s} label={s} />
+                  <div className="flex flex-wrap gap-1.5">
+                    {meta.tags.map((tag) => (
+                      <TagBadge key={tag} label={tag} />
                     ))}
                   </div>
                 </div>
 
-                {/* Right: Ver mais */}
+                {/* Arrow */}
                 <div
-                  className="flex-shrink-0 flex items-center gap-1.5 text-xs font-semibold transition-colors duration-200"
+                  className="flex-shrink-0 transition-colors duration-200"
                   style={{ color: "#475569" }}
                 >
-                  <ArrowUpRight size={18} style={{ color: "inherit" }} />
+                  <ArrowUpRight size={18} />
                 </div>
               </motion.a>
             );
@@ -187,7 +202,7 @@ export default function Projetos() {
             onMouseEnter={(e) => (e.currentTarget.style.color = "#f59e0b")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "#475569")}
           >
-            Ver todos os repositórios no GitHub →
+            Ver repositórios no GitHub →
           </a>
         </motion.div>
       </div>
