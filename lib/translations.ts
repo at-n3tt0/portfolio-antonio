@@ -81,11 +81,6 @@ export const translations = {
           category: 'Oficina automotiva',
         },
         {
-          title: 'JP Distribuidora',
-          desc: 'Cabeamento estruturado, instalação de câmeras de segurança e desenvolvimento de site institucional.',
-          category: 'Distribuidora',
-        },
-        {
           title: 'Prefeitura de Marituba',
           desc: 'Sistemas internos de gestão administrativa — Sistema PMM e SIGMA para controle de processos e operações municipais.',
           category: 'Cliente institucional',
@@ -193,11 +188,6 @@ export const translations = {
           title: 'Garagem 17',
           desc: 'Auto repair shop. Technical support to keep the shop running with more stability and fewer interruptions.',
           category: 'Auto repair shop',
-        },
-        {
-          title: 'JP Distribuidora',
-          desc: 'Structured cabling, security camera installation and institutional website development.',
-          category: 'Distributor',
         },
         {
           title: 'Prefeitura de Marituba',
