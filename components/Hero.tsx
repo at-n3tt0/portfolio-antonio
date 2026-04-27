@@ -143,7 +143,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center">
+      <div className="relative z-10 max-w-5xl mx-auto px-6 text-center pt-16">
         {/* Brand badge */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -251,24 +251,25 @@ export default function Hero() {
           </button>
         </motion.div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.4 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        >
-          <div className="flex flex-col items-center gap-2" style={{ color: "#334155" }}>
-            <span className="text-xs font-mono tracking-widest uppercase">scroll</span>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-              className="w-px h-8"
-              style={{ background: "linear-gradient(to bottom, #475569, transparent)" }}
-            />
-          </div>
-        </motion.div>
       </div>
+
+      {/* Scroll indicator — fora do div de conteúdo, relativo à section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 1.4 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden sm:flex"
+      >
+        <div className="flex flex-col items-center gap-2" style={{ color: "#334155" }}>
+          <span className="text-xs font-mono tracking-widest uppercase">scroll</span>
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+            className="w-px h-8"
+            style={{ background: "linear-gradient(to bottom, #475569, transparent)" }}
+          />
+        </div>
+      </motion.div>
     </section>
   );
 }
