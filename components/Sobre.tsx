@@ -98,7 +98,7 @@ export default function Sobre() {
 
             <div className="pt-2">
               <a
-                href="https://wa.me/5591980242234"
+                href="https://wa.me/5591980242234?text=Ola%2C%20vim%20pelo%20site%20da%20atnetto.tech%20e%20quero%20um%20diagnostico."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-semibold transition-colors duration-200"
@@ -159,7 +159,7 @@ export default function Sobre() {
               }}
             >
               <div style={{ color: "#475569" }}>
-                <span style={{ color: "#f59e0b" }}>$</span> at_netto.tech --info
+                <span style={{ color: "#f59e0b" }}>$</span> atnetto.tech --info
               </div>
               <div className="mt-2" style={{ color: "#64748b" }}>
                 <span style={{ color: "#f59e0b", opacity: 0.6 }}>&gt;</span>
@@ -167,7 +167,7 @@ export default function Sobre() {
               </div>
               <div style={{ color: "#64748b" }}>
                 <span style={{ color: "#f59e0b", opacity: 0.6 }}>&gt;</span>
-                {" "}Suporte remoto nacional
+                {" "}Solucoes digitais para empresas
               </div>
               <div style={{ color: "#64748b" }}>
                 <span style={{ color: "#f59e0b", opacity: 0.6 }}>&gt;</span>

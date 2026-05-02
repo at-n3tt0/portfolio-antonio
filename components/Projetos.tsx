@@ -6,34 +6,29 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const clientesMeta = [
   {
-    tags: ["Suporte técnico"],
-    href: "https://instagram.com/oficinagaragem17_",
-  },
-  {
-    tags: ["Cabeamento estruturado", "Câmeras", "Site"],
-    href: "https://wa.me/5591980242234",
-  },
-  {
-    tags: ["Sistemas web", "Laravel", "MySQL"],
+    tags: ["Sistemas web", "CRM simples", "Processos"],
     href: "https://github.com/at-n3tt0",
   },
   {
-    tags: ["Server Monitor", "NexLicense", "Open source"],
+    tags: ["Site", "Landing page", "Leads"],
+    href: "https://wa.me/5591980242234",
+  },
+  {
+    tags: ["Server Monitor", "NexLicense", "APIs"],
     href: "https://github.com/at-n3tt0",
   },
 ];
 
 const tagColor: Record<string, string> = {
-  "Suporte técnico": "#f59e0b",
-  "Cabeamento estruturado": "#60a5fa",
-  "Câmeras": "#34d399",
+  "CRM simples": "#34d399",
+  Processos: "#60a5fa",
   "Site": "#fb923c",
+  "Landing page": "#f59e0b",
+  Leads: "#34d399",
   "Sistemas web": "#FF2D20",
-  Laravel: "#FF2D20",
-  MySQL: "#F29111",
   "Server Monitor": "#2496ED",
   NexLicense: "#a78bfa",
-  "Open source": "#64748b",
+  APIs: "#06b6d4",
 };
 
 function TagBadge({ label }: { label: string }) {

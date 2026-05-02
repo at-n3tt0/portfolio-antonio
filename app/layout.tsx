@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 
@@ -20,22 +21,35 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "netto.tech — Soluções completas em TI para empresas e residências",
+  metadataBase: new URL("https://atnetto.tech"),
+  title: "atnetto.tech - Sites, sistemas, APIs e automacao para empresas",
   description:
-    "Desenvolvimento de sistemas, manutenção de computadores, redes e suporte técnico em Marituba, Pará. Atendimento presencial e remoto para todo o Brasil.",
+    "Desenvolvimento web, sites, sistemas, APIs, automacao, landing pages, CRM simples, cardapio digital e agendamento online para empresas.",
   keywords: [
-    "netto.tech",
-    "at_netto.tech",
-    "TI Marituba",
-    "Desenvolvimento de Sistemas",
-    "Manutenção de Computadores",
-    "Redes e Infraestrutura",
-    "Suporte Técnico",
-    "Laravel",
+    "atnetto.tech",
+    "criacao de sites",
+    "desenvolvimento web",
+    "sistemas para empresas",
+    "APIs",
+    "automacao empresarial",
+    "landing pages",
+    "CRM simples",
+    "cardapio digital",
+    "agendamento online",
     "Marituba",
-    "Pará",
+    "Belem",
+    "Para",
   ],
   authors: [{ name: "Antonio Neto", url: "https://github.com/at-n3tt0" }],
+  openGraph: {
+    title: "atnetto.tech - Solucoes digitais empresariais",
+    description:
+      "Sites, sistemas, APIs e automacoes para empresas que precisam captar leads e organizar processos.",
+    url: "https://atnetto.tech",
+    siteName: "atnetto.tech",
+    locale: "pt_BR",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -43,12 +57,35 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID;
+
   return (
     <html
       lang="pt-BR"
       className={`${geistSans.variable} ${geistMono.variable} ${spaceGrotesk.variable}`}
     >
+      {gtmId ? (
+        <Script id="gtm-head" strategy="afterInteractive">
+          {`
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','${gtmId}');
+          `}
+        </Script>
+      ) : null}
       <body>
+        {gtmId ? (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        ) : null}
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>

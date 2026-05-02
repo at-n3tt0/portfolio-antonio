@@ -5,25 +5,25 @@ import { motion } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const SERVICES_PT = [
-  "Criação de sites ✓",
-  "Desenvolvimento de sistemas ✓",
-  "Cabeamento estruturado ✓",
-  "Instalação de câmeras ✓",
-  "Servidores e infraestrutura ✓",
-  "Manutenção de computadores ✓",
-  "Suporte técnico ✓",
-  "Consultoria em TI ✓",
+  "Sites profissionais ✓",
+  "Sistemas web ✓",
+  "APIs e integracoes ✓",
+  "Automacao empresarial ✓",
+  "Landing pages ✓",
+  "CRM simples ✓",
+  "Cardapio digital ✓",
+  "Agendamento online ✓",
 ];
 
 const SERVICES_EN = [
-  "Website creation ✓",
-  "Systems development ✓",
-  "Structured cabling ✓",
-  "Security camera installation ✓",
-  "Servers & infrastructure ✓",
-  "Computer maintenance ✓",
-  "Technical support ✓",
-  "IT consulting ✓",
+  "Professional websites ✓",
+  "Web systems ✓",
+  "APIs and integrations ✓",
+  "Business automation ✓",
+  "Landing pages ✓",
+  "Simple CRM ✓",
+  "Digital menu ✓",
+  "Online booking ✓",
 ];
 
 function TerminalTyping({ lang }: { lang: string }) {
@@ -58,7 +58,7 @@ function TerminalTyping({ lang }: { lang: string }) {
         setCharIndex((c) => c + 1);
       }, 50);
     } else {
-      setWaiting(true);
+      timeoutRef.current = setTimeout(() => setWaiting(true), 0);
     }
 
     return () => { if (timeoutRef.current) clearTimeout(timeoutRef.current); };
@@ -81,14 +81,14 @@ function TerminalTyping({ lang }: { lang: string }) {
         <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#ef4444" }} />
         <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#f59e0b" }} />
         <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#22c55e" }} />
-        <span className="ml-2 text-xs" style={{ color: "#475569" }}>netto.tech — bash</span>
+        <span className="ml-2 text-xs" style={{ color: "#475569" }}>atnetto.tech - bash</span>
       </div>
 
       {/* Command */}
       <div style={{ color: "#64748b" }}>
         <span style={{ color: "#f59e0b" }}>$</span>
         {" "}
-        <span style={{ color: "#94a3b8" }}>netto.tech</span>
+        <span style={{ color: "#94a3b8" }}>atnetto.tech</span>
         {" "}
         <span style={{ color: "#f8fafc" }}>--service</span>
       </div>
@@ -171,7 +171,7 @@ export default function Hero() {
           className="text-6xl md:text-8xl font-bold tracking-tight mb-6 leading-[1.05]"
           style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
         >
-          <span style={{ color: "#f8fafc" }}>netto</span>
+          <span style={{ color: "#f8fafc" }}>atnetto</span>
           <span
             style={{
               background: "linear-gradient(135deg, #f59e0b 0%, #fb923c 100%)",
@@ -225,7 +225,7 @@ export default function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
         >
           <a
-            href="https://wa.me/5591980242234"
+            href="https://wa.me/5591980242234?text=Ola%2C%20vim%20pelo%20site%20da%20atnetto.tech%20e%20quero%20um%20diagnostico."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-3.5 font-semibold text-sm transition-all duration-300 hover:opacity-90"

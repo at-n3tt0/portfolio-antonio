@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Globe, Code2, Network, Camera, Server, Wrench, Headphones, Lightbulb } from "lucide-react";
+import { CalendarCheck, Code2, DatabaseZap, FileText, Globe, MenuSquare, PlugZap, Workflow } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
-const icons = [Globe, Code2, Network, Camera, Server, Wrench, Headphones, Lightbulb];
+const icons = [Globe, Code2, PlugZap, Workflow, FileText, DatabaseZap, MenuSquare, CalendarCheck];
 
 export default function Servicos() {
   const { t } = useLanguage();
@@ -115,7 +115,7 @@ export default function Servicos() {
           className="mt-12 text-center"
         >
           <a
-            href="https://wa.me/5591980242234"
+            href="https://wa.me/5591980242234?text=Ola%2C%20vim%20pelo%20site%20da%20atnetto.tech%20e%20quero%20um%20diagnostico."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-3.5 font-semibold text-sm transition-all duration-200 hover:opacity-90"

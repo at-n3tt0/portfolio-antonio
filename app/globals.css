@@ -32,6 +32,23 @@ body {
   overflow-x: hidden;
 }
 
+input,
+textarea {
+  background: rgba(3, 7, 18, 0.7);
+  border: 1px solid rgba(251, 191, 36, 0.16);
+  color: var(--text);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #64748b;
+}
+
+input:focus,
+textarea:focus {
+  border-color: rgba(245, 158, 11, 0.7);
+}
+
 ::selection {
   background: rgba(245, 158, 11, 0.25);
   color: #fff;

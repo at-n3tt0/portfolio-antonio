@@ -71,7 +71,7 @@ export default function Navbar() {
           className="font-bold text-xl tracking-tight text-white"
           style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
         >
-          netto
+          atnetto
           <span style={{ color: "#f59e0b" }}>.</span>
           tech
         </button>
@@ -122,7 +122,7 @@ export default function Navbar() {
 
           <li>
             <a
-              href="https://wa.me/559XXXXXXXXX"
+              href="https://wa.me/5591980242234?text=Ola%2C%20vim%20pelo%20site%20da%20atnetto.tech%20e%20quero%20um%20diagnostico."
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-2 text-sm font-semibold transition-all duration-200 hover:opacity-90"
@@ -195,7 +195,7 @@ export default function Navbar() {
               </li>
               <li>
                 <a
-                  href="https://wa.me/559XXXXXXXXX"
+                  href="https://wa.me/5591980242234?text=Ola%2C%20vim%20pelo%20site%20da%20atnetto.tech%20e%20quero%20um%20diagnostico."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block mt-2 px-5 py-3 text-sm font-semibold text-center transition-all duration-200"

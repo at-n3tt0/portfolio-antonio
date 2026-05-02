@@ -4,7 +4,6 @@ import {
   createContext,
   useContext,
   useState,
-  useEffect,
   ReactNode,
 } from "react";
 import { translations, Language } from "@/lib/translations";
@@ -18,14 +17,14 @@ interface LanguageContextValue {
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Language>("pt");
-
-  useEffect(() => {
+  const [lang, setLangState] = useState<Language>(() => {
+    if (typeof window === "undefined") return "pt";
     const stored = localStorage.getItem("netto-lang") as Language | null;
     if (stored && (stored === "pt" || stored === "en")) {
-      setLangState(stored);
+      return stored;
     }
-  }, []);
+    return "pt";
+  });
 
   const setLang = (newLang: Language) => {
     setLangState(newLang);
