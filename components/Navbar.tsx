@@ -2,209 +2,150 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Globe } from "lucide-react";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { Menu, X } from "lucide-react";
+
+const links = [
+  { label: "modules", href: "#modules", id: "modules" },
+  { label: "operating", href: "#operating", id: "operating" },
+  { label: "mesh", href: "#mesh", id: "mesh" },
+  { label: "reports", href: "#reports", id: "reports" },
+  { label: "ticket", href: "#ticket", id: "ticket" },
+];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("hero");
-  const { lang, setLang, t } = useLanguage();
-
-  const links = [
-    { label: t.nav.inicio, href: "#hero", id: "hero" },
-    { label: t.nav.servicos, href: "#servicos", id: "servicos" },
-    { label: t.nav.sobre, href: "#sobre", id: "sobre" },
-    { label: t.nav.projetos, href: "#projetos", id: "projetos" },
-    { label: t.nav.contato, href: "#contato", id: "contato" },
-  ];
+  const [active, setActive] = useState("hero");
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 40);
-
-      const sections = ["hero", "servicos", "sobre", "projetos", "contato"];
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && window.scrollY >= el.offsetTop - 120) {
-          setActiveSection(sections[i]);
+      setScrolled(window.scrollY > 20);
+      const ids = ["hero", ...links.map((l) => l.id)];
+      for (let i = ids.length - 1; i >= 0; i--) {
+        const el = document.getElementById(ids[i]);
+        if (el && window.scrollY >= el.offsetTop - 140) {
+          setActive(ids[i]);
           break;
         }
       }
     };
     window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const handleClick = (href: string) => {
+  const click = (href: string) => {
     setMenuOpen(false);
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
-  const toggleLang = () => setLang(lang === "pt" ? "en" : "pt");
-
   return (
     <motion.header
-      initial={{ y: -80, opacity: 0 }}
+      initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "border-b"
-          : "bg-transparent"
-      }`}
-      style={
-        scrolled
-          ? {
-              background: "rgba(3,7,18,0.9)",
-              backdropFilter: "blur(12px)",
-              borderColor: "rgba(251,191,36,0.1)",
-            }
-          : {}
-      }
+      transition={{ duration: 0.5 }}
+      className="sticky top-0 z-40 transition-all"
+      style={{
+        background: scrolled ? "rgba(3,7,18,0.85)" : "transparent",
+        backdropFilter: scrolled ? "blur(10px)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(251,191,36,0.1)" : "1px solid transparent",
+      }}
     >
-      <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        {/* Logo */}
+      <nav className="max-w-7xl mx-auto px-4 md:px-6 h-14 flex items-center justify-between">
         <button
-          onClick={() => handleClick("#hero")}
-          className="font-bold text-xl tracking-tight text-white"
-          style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }}
+          onClick={() => click("#hero")}
+          className="font-bold text-base tracking-tight"
+          style={{ fontFamily: "var(--font-space-grotesk), sans-serif", color: "#f8fafc" }}
         >
-          atnetto
-          <span style={{ color: "#f59e0b" }}>.</span>
-          tech
+          atnetto<span style={{ color: "#f59e0b" }}>.</span>tech
         </button>
 
-        {/* Desktop links */}
-        <ul className="hidden md:flex items-center gap-8">
-          {links.map((link) => {
-            const isActive = activeSection === link.id;
+        <ul className="hidden md:flex items-center gap-1 mono text-xs">
+          {links.map((l) => {
+            const isActive = active === l.id;
             return (
-              <li key={link.href}>
+              <li key={l.id}>
                 <button
-                  onClick={() => handleClick(link.href)}
-                  className="relative text-sm font-medium transition-colors duration-200 pb-1"
-                  style={{ color: isActive ? "#f59e0b" : "#94a3b8" }}
+                  onClick={() => click(l.href)}
+                  className="px-3 py-1.5 transition-colors uppercase tracking-wider"
+                  style={{ color: isActive ? "#f59e0b" : "#64748b" }}
+                  onMouseEnter={(e) => {
+                    if (!isActive) e.currentTarget.style.color = "#cbd5e1";
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) e.currentTarget.style.color = "#64748b";
+                  }}
                 >
-                  {link.label}
-                  {isActive && (
-                    <motion.span
-                      layoutId="nav-underline"
-                      className="absolute bottom-0 left-0 right-0 h-px"
-                      style={{ background: "#f59e0b" }}
-                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                    />
-                  )}
+                  {isActive && <span style={{ color: "#f59e0b" }} className="mr-1">/</span>}
+                  {l.label}
                 </button>
               </li>
             );
           })}
-
-          {/* Language toggle */}
-          <li>
-            <motion.button
-              onClick={toggleLang}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold border transition-all duration-200"
-              style={{
-                borderColor: "rgba(251,191,36,0.3)",
-                color: "#f59e0b",
-                background: "rgba(251,191,36,0.06)",
-              }}
-              aria-label="Toggle language"
-            >
-              <Globe size={13} />
-              {lang === "pt" ? "EN" : "PT"}
-            </motion.button>
-          </li>
-
-          <li>
-            <a
-              href="https://wa.me/5591980242234?text=Ola%2C%20vim%20pelo%20site%20da%20atnetto.tech%20e%20quero%20um%20diagnostico."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2 text-sm font-semibold transition-all duration-200 hover:opacity-90"
-              style={{
-                background: "linear-gradient(135deg, #f59e0b, #fb923c)",
-                color: "#030712",
-              }}
-            >
-              {t.nav.orcamento}
-            </a>
-          </li>
         </ul>
 
-        {/* Mobile toggle */}
+        <div className="hidden md:flex items-center gap-3">
+          <a
+            href="#ticket"
+            onClick={(e) => { e.preventDefault(); click("#ticket"); }}
+            className="mono text-xs font-semibold px-4 py-2 uppercase tracking-wider transition-all"
+            style={{
+              background: "linear-gradient(135deg, #f59e0b, #fb923c)",
+              color: "#030712",
+            }}
+          >
+            open_ticket →
+          </a>
+        </div>
+
         <button
-          className="md:hidden transition-colors"
+          className="md:hidden"
           style={{ color: "#94a3b8" }}
           onClick={() => setMenuOpen((v) => !v)}
-          aria-label="Menu"
+          aria-label="menu"
         >
-          {menuOpen ? <X size={22} /> : <Menu size={22} />}
+          {menuOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </nav>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {menuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden border-b"
+            className="md:hidden border-t"
             style={{
-              background: "rgba(3,7,18,0.97)",
-              backdropFilter: "blur(12px)",
               borderColor: "rgba(251,191,36,0.1)",
+              background: "rgba(3,7,18,0.97)",
+              backdropFilter: "blur(10px)",
             }}
           >
-            <ul className="flex flex-col px-6 py-4 gap-4">
-              {links.map((link) => {
-                const isActive = activeSection === link.id;
-                return (
-                  <li key={link.href}>
-                    <button
-                      onClick={() => handleClick(link.href)}
-                      className="text-sm w-full text-left py-1 transition-colors"
-                      style={{ color: isActive ? "#f59e0b" : "#cbd5e1" }}
-                    >
-                      {isActive && (
-                        <span style={{ color: "#f59e0b" }} className="mr-2">›</span>
-                      )}
-                      {link.label}
-                    </button>
-                  </li>
-                );
-              })}
-              <li>
-                <button
-                  onClick={toggleLang}
-                  className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold border transition-all duration-200"
-                  style={{
-                    borderColor: "rgba(251,191,36,0.3)",
-                    color: "#f59e0b",
-                    background: "rgba(251,191,36,0.06)",
-                  }}
-                >
-                  <Globe size={13} />
-                  {lang === "pt" ? "EN" : "PT"}
-                </button>
-              </li>
-              <li>
+            <ul className="flex flex-col px-4 py-3 mono text-sm uppercase tracking-wider">
+              {links.map((l) => (
+                <li key={l.id}>
+                  <button
+                    onClick={() => click(l.href)}
+                    className="w-full text-left py-2"
+                    style={{ color: active === l.id ? "#f59e0b" : "#cbd5e1" }}
+                  >
+                    {active === l.id && <span style={{ color: "#f59e0b" }} className="mr-2">/</span>}
+                    {l.label}
+                  </button>
+                </li>
+              ))}
+              <li className="pt-2">
                 <a
-                  href="https://wa.me/5591980242234?text=Ola%2C%20vim%20pelo%20site%20da%20atnetto.tech%20e%20quero%20um%20diagnostico."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block mt-2 px-5 py-3 text-sm font-semibold text-center transition-all duration-200"
+                  href="#ticket"
+                  onClick={(e) => { e.preventDefault(); click("#ticket"); }}
+                  className="block text-center mono text-xs font-semibold px-4 py-2.5 uppercase tracking-wider"
                   style={{
                     background: "linear-gradient(135deg, #f59e0b, #fb923c)",
                     color: "#030712",
                   }}
                 >
-                  {t.nav.orcamento}
+                  open_ticket →
                 </a>
               </li>
             </ul>

@@ -2,12 +2,19 @@
 
 :root {
   --bg: #030712;
+  --bg-elevated: #0a0f1c;
   --surface: #0f172a;
   --accent: #f59e0b;
+  --accent-bright: #fbbf24;
   --accent-secondary: #fb923c;
   --text: #f8fafc;
   --text-muted: #94a3b8;
+  --text-dim: #475569;
   --border: rgba(251, 191, 36, 0.15);
+  --border-strong: rgba(251, 191, 36, 0.3);
+  --status-up: #22c55e;
+  --status-warn: #f59e0b;
+  --status-down: #ef4444;
 }
 
 @theme inline {
@@ -33,19 +40,24 @@ body {
 }
 
 input,
-textarea {
+textarea,
+select {
   background: rgba(3, 7, 18, 0.7);
   border: 1px solid rgba(251, 191, 36, 0.16);
   color: var(--text);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.875rem;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: #64748b;
+  color: #475569;
 }
 
 input:focus,
-textarea:focus {
+textarea:focus,
+select:focus {
+  outline: none;
   border-color: rgba(245, 158, 11, 0.7);
 }
 
@@ -56,45 +68,130 @@ textarea:focus {
 
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px;
 }
-
 ::-webkit-scrollbar-track {
   background: var(--bg);
 }
-
 ::-webkit-scrollbar-thumb {
   background: rgba(245, 158, 11, 0.3);
   border-radius: 3px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(245, 158, 11, 0.5);
 }
 
-/* Animated dot-grid background */
-.grid-bg {
-  background-image: radial-gradient(rgba(251, 191, 36, 0.08) 1px, transparent 1px);
-  background-size: 32px 32px;
-  animation: gridMove 20s linear infinite;
+/* NOC dot grid — static, very subtle */
+.noc-grid {
+  background-image:
+    radial-gradient(rgba(251, 191, 36, 0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
 }
 
-@keyframes gridMove {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: 32px 32px;
-  }
+/* Diagonal scan lines for CRT vibe (very subtle) */
+.scanlines::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.012) 0px,
+    rgba(255, 255, 255, 0.012) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  z-index: 1;
 }
 
-/* Terminal cursor blink */
+/* Grain noise overlay */
+.grain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Status dot pulse */
+@keyframes statusPulse {
+  0%, 100% { box-shadow: 0 0 0 0 currentColor; opacity: 1; }
+  50% { box-shadow: 0 0 0 4px transparent; opacity: 0.55; }
+}
+
+.status-dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: currentColor;
+  animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* Cursor blink kept for sparingly used terminal hint */
 @keyframes cursorBlink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
-
-.terminal-cursor {
+.cursor-blink {
   display: inline-block;
   color: #f59e0b;
   animation: cursorBlink 1s step-end infinite;
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.marquee-track {
+  display: inline-flex;
+  gap: 3rem;
+  animation: marquee 30s linear infinite;
+  white-space: nowrap;
+}
+
+/* Sweep animation for data flow on mesh lines */
+@keyframes sweep {
+  0% { stroke-dashoffset: 100; }
+  100% { stroke-dashoffset: 0; }
+}
+.mesh-flow {
+  stroke-dasharray: 6 12;
+  animation: sweep 3s linear infinite;
+}
+
+/* Bar tick (for stats bar) */
+@keyframes barTick {
+  0%, 100% { transform: scaleY(0.35); }
+  50% { transform: scaleY(1); }
+}
+.bar-tick {
+  transform-origin: bottom;
+  animation: barTick 1.6s ease-in-out infinite;
+}
+
+/* Reveal */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-up.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(251,191,36,0.18), transparent);
+}
+
+/* Operational mono utility */
+.mono {
+  font-family: var(--font-geist-mono), monospace;
+  font-feature-settings: "ss01", "ss02", "tnum";
 }

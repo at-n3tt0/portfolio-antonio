@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
-import { LanguageProvider } from "@/contexts/LanguageContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -22,29 +21,28 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://atnetto.tech"),
-  title: "atnetto.tech — Sites, sistemas, APIs e automação para empresas",
+  title: "atnetto.tech — Sala de operações para tecnologia empresarial",
   description:
-    "Desenvolvimento web, sites, sistemas, APIs, automação, landing pages, CRM simples, cardápio digital e agendamento online para empresas.",
+    "Construímos, operamos e mantemos os sistemas que sua empresa depende todo dia. Do servidor ao código.",
   keywords: [
     "atnetto.tech",
-    "criação de sites",
-    "desenvolvimento web",
-    "sistemas para empresas",
+    "operação de tecnologia",
+    "sistemas web sob medida",
+    "monitoramento",
+    "Zabbix",
+    "Grafana",
+    "automação",
     "APIs",
-    "automação empresarial",
-    "landing pages",
-    "CRM simples",
-    "cardápio digital",
-    "agendamento online",
+    "Laravel",
+    "FastAPI",
     "Marituba",
-    "Belém",
     "Pará",
   ],
   authors: [{ name: "Antonio Neto", url: "https://github.com/at-n3tt0" }],
   openGraph: {
-    title: "atnetto.tech — Soluções digitais para empresas",
+    title: "atnetto.tech — Sala de operações para tecnologia empresarial",
     description:
-      "Sites, sistemas, APIs e automações para empresas que precisam captar leads e organizar processos.",
+      "Construímos, operamos e mantemos os sistemas que sua empresa depende todo dia.",
     url: "https://atnetto.tech",
     siteName: "atnetto.tech",
     locale: "pt_BR",
@@ -52,17 +50,12 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "atnetto.tech — Soluções digitais para empresas",
+    title: "atnetto.tech",
     description:
-      "Sites, sistemas, APIs e automações para empresas que precisam captar leads e organizar processos.",
+      "Construímos, operamos e mantemos os sistemas que sua empresa depende todo dia.",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
-  alternates: {
-    canonical: "https://atnetto.tech",
-  },
+  robots: { index: true, follow: true },
+  alternates: { canonical: "https://atnetto.tech" },
 };
 
 export default function RootLayout({
@@ -99,7 +92,7 @@ export default function RootLayout({
             />
           </noscript>
         ) : null}
-        <LanguageProvider>{children}</LanguageProvider>
+        {children}
       </body>
     </html>
   );

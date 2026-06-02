@@ -1,0 +1,43 @@
+import { getLatestCommit } from "@/lib/github";
+
+export default async function StatusBar() {
+  const commit = await getLatestCommit();
+  const lastDeploy = commit?.relativeAgo ?? "—";
+
+  return (
+    <div
+      className="w-full mono text-[10px] md:text-[11px] tracking-wider uppercase"
+      style={{
+        background: "rgba(3,7,18,0.92)",
+        backdropFilter: "blur(8px)",
+        borderBottom: "1px solid rgba(251,191,36,0.12)",
+        color: "#64748b",
+      }}
+    >
+      <div className="max-w-7xl mx-auto px-4 md:px-6 h-8 flex items-center justify-between gap-4 overflow-hidden">
+        <div className="flex items-center gap-4 md:gap-6 min-w-0 flex-shrink overflow-hidden">
+          <span className="flex items-center gap-1.5 flex-shrink-0" style={{ color: "#22c55e" }}>
+            <span className="status-dot" />
+            <span className="hidden xs:inline">operational</span>
+            <span className="xs:hidden">ok</span>
+          </span>
+          <span className="hidden md:inline" style={{ color: "#475569" }}>·</span>
+          <span className="hidden md:inline">atnetto.tech</span>
+          <span className="hidden md:inline" style={{ color: "#475569" }}>·</span>
+          <span className="hidden sm:inline">Marituba, PA · UTC-3</span>
+        </div>
+        <div className="flex items-center gap-4 md:gap-6 flex-shrink-0">
+          <span className="hidden md:inline">
+            <span style={{ color: "#475569" }}>last_deploy:</span>{" "}
+            <span style={{ color: "#94a3b8" }}>{lastDeploy}</span>
+          </span>
+          <span className="hidden lg:inline" style={{ color: "#475569" }}>·</span>
+          <span>
+            <span style={{ color: "#475569" }}>uptime:</span>{" "}
+            <span style={{ color: "#f59e0b" }}>99.97%</span>
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
