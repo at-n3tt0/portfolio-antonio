@@ -22,33 +22,46 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://atnetto.tech"),
-  title: "atnetto.tech - Sites, sistemas, APIs e automacao para empresas",
+  title: "atnetto.tech — Sites, sistemas, APIs e automação para empresas",
   description:
-    "Desenvolvimento web, sites, sistemas, APIs, automacao, landing pages, CRM simples, cardapio digital e agendamento online para empresas.",
+    "Desenvolvimento web, sites, sistemas, APIs, automação, landing pages, CRM simples, cardápio digital e agendamento online para empresas.",
   keywords: [
     "atnetto.tech",
-    "criacao de sites",
+    "criação de sites",
     "desenvolvimento web",
     "sistemas para empresas",
     "APIs",
-    "automacao empresarial",
+    "automação empresarial",
     "landing pages",
     "CRM simples",
-    "cardapio digital",
+    "cardápio digital",
     "agendamento online",
     "Marituba",
-    "Belem",
-    "Para",
+    "Belém",
+    "Pará",
   ],
   authors: [{ name: "Antonio Neto", url: "https://github.com/at-n3tt0" }],
   openGraph: {
-    title: "atnetto.tech - Solucoes digitais empresariais",
+    title: "atnetto.tech — Soluções digitais para empresas",
     description:
-      "Sites, sistemas, APIs e automacoes para empresas que precisam captar leads e organizar processos.",
+      "Sites, sistemas, APIs e automações para empresas que precisam captar leads e organizar processos.",
     url: "https://atnetto.tech",
     siteName: "atnetto.tech",
     locale: "pt_BR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "atnetto.tech — Soluções digitais para empresas",
+    description:
+      "Sites, sistemas, APIs e automações para empresas que precisam captar leads e organizar processos.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  alternates: {
+    canonical: "https://atnetto.tech",
   },
 };
 

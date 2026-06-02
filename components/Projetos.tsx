@@ -6,29 +6,42 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const clientesMeta = [
   {
-    tags: ["Sistemas web", "CRM simples", "Processos"],
-    href: "https://github.com/at-n3tt0",
+    tags: ["Laravel", "PHP", "MySQL"],
+    href: "https://github.com/at-n3tt0/sistema-pmm",
   },
   {
-    tags: ["Site", "Landing page", "Leads"],
-    href: "https://wa.me/5591980242234",
+    tags: ["Laravel", "PHP", "MySQL"],
+    href: "https://github.com/at-n3tt0/sigma-marituba",
   },
   {
-    tags: ["Server Monitor", "NexLicense", "APIs"],
-    href: "https://github.com/at-n3tt0",
+    tags: ["FastAPI", "React", "PostgreSQL", "Docker"],
+    href: "https://github.com/at-n3tt0/server-monitor",
+  },
+  {
+    tags: ["FastAPI", "Docker", "Mercado Pago"],
+    href: "https://github.com/at-n3tt0/nexlicense",
+  },
+  {
+    tags: ["Laravel", "PHP"],
+    href: "https://github.com/at-n3tt0/comcontrol",
+  },
+  {
+    tags: ["Laravel", "React", "Node", "IA"],
+    href: "https://github.com/at-n3tt0/escritorio-neto-ai",
   },
 ];
 
 const tagColor: Record<string, string> = {
-  "CRM simples": "#34d399",
-  Processos: "#60a5fa",
-  "Site": "#fb923c",
-  "Landing page": "#f59e0b",
-  Leads: "#34d399",
-  "Sistemas web": "#FF2D20",
-  "Server Monitor": "#2496ED",
-  NexLicense: "#a78bfa",
-  APIs: "#06b6d4",
+  Laravel: "#FF2D20",
+  PHP: "#777BB4",
+  MySQL: "#4479A1",
+  FastAPI: "#009688",
+  React: "#61DAFB",
+  PostgreSQL: "#336791",
+  Docker: "#2496ED",
+  Node: "#339933",
+  "Mercado Pago": "#00B1EA",
+  IA: "#a78bfa",
 };
 
 function TagBadge({ label }: { label: string }) {
