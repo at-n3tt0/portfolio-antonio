@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
+import ProjectMock from "@/components/ProjectMocks";
 
 type Report = {
   num: string;
@@ -167,109 +168,126 @@ export default function Reports() {
         </div>
 
         <div className="space-y-px" style={{ background: "rgba(251,191,36,0.12)" }}>
-          {reports.map((r, i) => (
-            <motion.article
-              key={r.num}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: 0.05 }}
-              className="p-6 md:p-8"
-              style={{ background: "#030712" }}
-            >
-              {/* header bar */}
-              <div className="flex items-center justify-between flex-wrap gap-3 mb-5 mono text-xs">
-                <div className="flex items-center gap-3 flex-wrap">
-                  <span style={{ color: "#f59e0b" }}>#{r.num}</span>
-                  <span style={{ color: "#475569" }}>·</span>
-                  <span style={{ color: "#f8fafc" }} className="font-bold">{r.hostname}</span>
-                  <span style={{ color: "#475569" }}>·</span>
-                  <span style={{ color: "#94a3b8" }}>{r.client}</span>
+          {reports.map((r, i) => {
+            const mockOnRight = i % 2 === 0;
+            return (
+              <motion.article
+                key={r.num}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, delay: 0.05 }}
+                className="p-6 md:p-8"
+                style={{ background: "#030712" }}
+              >
+                {/* header bar */}
+                <div className="flex items-center justify-between flex-wrap gap-3 mb-6 mono text-xs">
+                  <div className="flex items-center gap-3 flex-wrap">
+                    <span style={{ color: "#f59e0b" }}>#{r.num}</span>
+                    <span style={{ color: "#475569" }}>·</span>
+                    <span style={{ color: "#f8fafc" }} className="font-bold">{r.hostname}</span>
+                    <span style={{ color: "#475569" }}>·</span>
+                    <span style={{ color: "#94a3b8" }}>{r.client}</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span style={{ color: "#475569" }} className="mono text-[10px] uppercase tracking-wider">
+                      since {r.since}
+                    </span>
+                    <StatusBadge s={r.status} />
+                  </div>
                 </div>
-                <div className="flex items-center gap-3">
-                  <span style={{ color: "#475569" }} className="mono text-[10px] uppercase tracking-wider">
-                    since {r.since}
-                  </span>
-                  <StatusBadge s={r.status} />
-                </div>
-              </div>
 
-              {/* body grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-6 lg:gap-10">
-                <div className="space-y-4">
-                  <div>
-                    <div className="mono text-[10px] uppercase tracking-widest mb-1" style={{ color: "#475569" }}>
-                      problema
+                {/* body grid: text + mock UI */}
+                <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-8 lg:gap-10 items-start">
+                  {/* Text + metrics column */}
+                  <div className={`space-y-5 ${mockOnRight ? "lg:order-1" : "lg:order-2"}`}>
+                    <div>
+                      <div className="mono text-[10px] uppercase tracking-widest mb-1" style={{ color: "#475569" }}>
+                        problema
+                      </div>
+                      <p className="text-sm md:text-base leading-relaxed" style={{ color: "#cbd5e1" }}>
+                        {r.problem}
+                      </p>
                     </div>
-                    <p className="text-sm md:text-base leading-relaxed" style={{ color: "#cbd5e1" }}>
-                      {r.problem}
-                    </p>
-                  </div>
-                  <div>
-                    <div className="mono text-[10px] uppercase tracking-widest mb-1" style={{ color: "#475569" }}>
-                      solução
+                    <div>
+                      <div className="mono text-[10px] uppercase tracking-widest mb-1" style={{ color: "#475569" }}>
+                        solução
+                      </div>
+                      <p className="text-sm md:text-base leading-relaxed" style={{ color: "#cbd5e1" }}>
+                        {r.solution}
+                      </p>
                     </div>
-                    <p className="text-sm md:text-base leading-relaxed" style={{ color: "#cbd5e1" }}>
-                      {r.solution}
-                    </p>
-                  </div>
-                  {/* stack chips */}
-                  <div className="flex flex-wrap gap-1.5 pt-2">
-                    {r.stack.map((s) => (
-                      <span
-                        key={s}
-                        className="mono text-[10px] px-2 py-1"
+
+                    {/* metrics inline */}
+                    <div className="grid grid-cols-3 gap-2 pt-2">
+                      {r.metrics.map((m) => (
+                        <div
+                          key={m.k}
+                          className="px-3 py-2 mono"
+                          style={{
+                            background: "rgba(10,15,28,0.5)",
+                            border: "1px solid rgba(251,191,36,0.12)",
+                          }}
+                        >
+                          <div className="uppercase tracking-wider text-[9px] mb-0.5" style={{ color: "#475569" }}>
+                            {m.k}
+                          </div>
+                          <div style={{ color: "#f59e0b" }} className="text-xs font-bold truncate">{m.v}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* stack chips + link */}
+                    <div className="flex flex-wrap gap-1.5 items-center pt-1">
+                      {r.stack.map((s) => (
+                        <span
+                          key={s}
+                          className="mono text-[10px] px-2 py-1"
+                          style={{
+                            color: "#94a3b8",
+                            background: "rgba(245,158,11,0.06)",
+                            border: "1px solid rgba(245,158,11,0.15)",
+                          }}
+                        >
+                          {s}
+                        </span>
+                      ))}
+                      <a
+                        href={r.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mono text-[10px] inline-flex items-center gap-1.5 px-2 py-1 transition-colors ml-auto"
                         style={{
-                          color: "#94a3b8",
-                          background: "rgba(245,158,11,0.06)",
-                          border: "1px solid rgba(245,158,11,0.15)",
+                          color: "#f59e0b",
+                          border: "1px solid rgba(245,158,11,0.3)",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = "rgba(245,158,11,0.08)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = "transparent";
                         }}
                       >
-                        {s}
-                      </span>
-                    ))}
+                        inspect_repo
+                        <ArrowUpRight size={11} />
+                      </a>
+                    </div>
                   </div>
-                </div>
 
-                {/* metrics + link */}
-                <div className="flex flex-col justify-between gap-4">
-                  <div className="space-y-2">
-                    {r.metrics.map((m) => (
-                      <div
-                        key={m.k}
-                        className="flex items-center justify-between mono text-xs py-2"
-                        style={{ borderBottom: "1px dashed rgba(251,191,36,0.1)" }}
-                      >
-                        <span className="uppercase tracking-wider text-[10px]" style={{ color: "#475569" }}>
-                          {m.k}
-                        </span>
-                        <span style={{ color: "#f59e0b" }} className="font-bold">{m.v}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <a
-                    href={r.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mono text-xs inline-flex items-center gap-2 self-start mt-2 px-3 py-2 transition-colors"
-                    style={{
-                      color: "#f59e0b",
-                      border: "1px solid rgba(245,158,11,0.3)",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "rgba(245,158,11,0.08)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "transparent";
-                    }}
+                  {/* Mock UI column */}
+                  <motion.div
+                    initial={{ opacity: 0, x: mockOnRight ? 24 : -24 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: "-80px" }}
+                    transition={{ duration: 0.6, delay: 0.15 }}
+                    className={mockOnRight ? "lg:order-2" : "lg:order-1"}
                   >
-                    inspect_repo
-                    <ArrowUpRight size={12} />
-                  </a>
+                    <ProjectMock id={r.num} />
+                  </motion.div>
                 </div>
-              </div>
-            </motion.article>
-          ))}
+              </motion.article>
+            );
+          })}
         </div>
       </div>
     </section>
