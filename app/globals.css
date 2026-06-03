@@ -45,8 +45,9 @@ select {
   background: rgba(3, 7, 18, 0.7);
   border: 1px solid rgba(251, 191, 36, 0.16);
   color: var(--text);
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 0.875rem;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  font-size: 0.9rem;
+  border-radius: 3px;
 }
 
 input::placeholder,

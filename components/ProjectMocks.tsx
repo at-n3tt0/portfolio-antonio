@@ -5,11 +5,12 @@ import { ReactNode } from "react";
 function BrowserChrome({ url, children }: { url: string; children: ReactNode }) {
   return (
     <div
-      className="w-full mono text-[10px] relative"
+      className="w-full mono text-[10px] relative overflow-hidden"
       style={{
         background: "rgba(10,15,28,0.95)",
         border: "1px solid rgba(251,191,36,0.18)",
         boxShadow: "0 12px 40px -12px rgba(0,0,0,0.6)",
+        borderRadius: 6,
       }}
     >
       <div
@@ -28,6 +29,7 @@ function BrowserChrome({ url, children }: { url: string; children: ReactNode }) 
             color: "#64748b",
             background: "rgba(3,7,18,0.6)",
             border: "1px solid rgba(251,191,36,0.08)",
+            borderRadius: 3,
           }}
         >
           {url}

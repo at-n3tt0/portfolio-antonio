@@ -16,30 +16,31 @@ export default async function StatusFooter() {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
           <div>
-            <div className="mono text-[11px] uppercase tracking-[0.3em] mb-2" style={{ color: "#f59e0b" }}>
-              system_status
+            <div className="text-xs mb-2 flex items-center gap-2" style={{ color: "#f59e0b" }}>
+              <span>/</span><span>Status</span>
             </div>
-            <div className="mono text-xs" style={{ color: "#64748b" }}>
-              snapshot: {date}
+            <div className="text-xs" style={{ color: "#64748b" }}>
+              <span className="mono">{date}</span>
             </div>
           </div>
-          <div className="mono text-xs" style={{ color: "#64748b" }}>
+          <div className="text-xs" style={{ color: "#64748b" }}>
             {commit ? (
               <>
-                build: <span style={{ color: "#94a3b8" }}>{commit.shortSha}</span>{" "}
+                build <span className="mono" style={{ color: "#94a3b8" }}>{commit.shortSha}</span>{" "}
                 · <span style={{ color: "#475569" }}>{commit.relativeAgo}</span>
               </>
             ) : (
-              <>build: <span style={{ color: "#94a3b8" }}>—</span></>
+              <>build <span className="mono" style={{ color: "#94a3b8" }}>—</span></>
             )}
           </div>
         </div>
 
         <div
-          className="mono text-sm"
+          className="text-sm"
           style={{
             border: "1px solid rgba(251,191,36,0.12)",
             background: "rgba(10,15,28,0.5)",
+            borderRadius: 6,
           }}
         >
           {services.map((s, i) => {
@@ -64,17 +65,17 @@ export default async function StatusFooter() {
                   </span>
                   <span>{s.label}</span>
                 </span>
-                <span style={{ color }} className="text-xs uppercase tracking-wider">
-                  {s.status}
+                <span style={{ color }} className="text-xs">
+                  {s.status === "operational" ? "no ar" : "disponível"}
                 </span>
               </Wrapper>
             );
           })}
         </div>
 
-        <div className="mt-10 flex items-center justify-between flex-wrap gap-3 mono text-[11px] uppercase tracking-widest" style={{ color: "#475569" }}>
-          <span>© 2026 atnetto.tech · Marituba, PA · Brasil</span>
-          <a href="/privacidade" style={{ color: "#64748b" }}>privacy</a>
+        <div className="mt-10 flex items-center justify-between flex-wrap gap-3 text-xs" style={{ color: "#64748b" }}>
+          <span>© 2026 atnetto.tech · feito em Marituba, PA</span>
+          <a href="/privacidade" style={{ color: "#64748b" }} className="hover:text-amber-500 transition-colors">Privacidade</a>
         </div>
       </div>
     </footer>

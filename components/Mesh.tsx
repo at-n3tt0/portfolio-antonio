@@ -65,8 +65,8 @@ export default function Mesh() {
     <section id="mesh" className="relative py-28 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-10">
-          <div className="mono text-[11px] uppercase tracking-[0.3em] mb-3" style={{ color: "#f59e0b" }}>
-            service_mesh
+          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#f59e0b" }}>
+            <span>/</span><span>Arquitetura</span>
           </div>
           <h2
             className="text-3xl md:text-5xl font-bold leading-tight max-w-3xl"
@@ -77,7 +77,7 @@ export default function Mesh() {
           >
             Como as peças conversam.
           </h2>
-          <p className="mt-4 max-w-2xl text-base" style={{ color: "#94a3b8" }}>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed" style={{ color: "#94a3b8" }}>
             A arquitetura que entregamos vai do cliente ao bare-metal, com observabilidade no topo. Sem cliente preso a um stack único.
           </p>
         </div>
@@ -88,6 +88,7 @@ export default function Mesh() {
             border: "1px solid rgba(251,191,36,0.15)",
             background:
               "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(245,158,11,0.05), transparent 70%), rgba(10,15,28,0.4)",
+            borderRadius: 6,
           }}
         >
           <svg viewBox={`0 0 ${W} ${H}`} className="w-full h-auto" preserveAspectRatio="xMidYMid meet">

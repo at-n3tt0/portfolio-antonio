@@ -5,11 +5,11 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { label: "modules", href: "#modules", id: "modules" },
-  { label: "operating", href: "#operating", id: "operating" },
-  { label: "mesh", href: "#mesh", id: "mesh" },
-  { label: "reports", href: "#reports", id: "reports" },
-  { label: "ticket", href: "#ticket", id: "ticket" },
+  { label: "Módulos", href: "#modules", id: "modules" },
+  { label: "Em operação", href: "#operating", id: "operating" },
+  { label: "Arquitetura", href: "#mesh", id: "mesh" },
+  { label: "Relatórios", href: "#reports", id: "reports" },
+  { label: "Chamado", href: "#ticket", id: "ticket" },
 ];
 
 export default function Navbar() {
@@ -61,14 +61,14 @@ export default function Navbar() {
           atnetto<span style={{ color: "#f59e0b" }}>.</span>tech
         </button>
 
-        <ul className="hidden md:flex items-center gap-1 mono text-xs">
+        <ul className="hidden md:flex items-center gap-1 text-sm">
           {links.map((l) => {
             const isActive = active === l.id;
             return (
               <li key={l.id}>
                 <button
                   onClick={() => click(l.href)}
-                  className="px-3 py-1.5 transition-colors uppercase tracking-wider"
+                  className="px-3 py-1.5 transition-colors"
                   style={{ color: isActive ? "#f59e0b" : "#64748b" }}
                   onMouseEnter={(e) => {
                     if (!isActive) e.currentTarget.style.color = "#cbd5e1";
@@ -89,13 +89,14 @@ export default function Navbar() {
           <a
             href="#ticket"
             onClick={(e) => { e.preventDefault(); click("#ticket"); }}
-            className="mono text-xs font-semibold px-4 py-2 uppercase tracking-wider transition-all"
+            className="text-xs font-semibold px-4 py-2 transition-all"
             style={{
               background: "linear-gradient(135deg, #f59e0b, #fb923c)",
               color: "#030712",
+              borderRadius: 4,
             }}
           >
-            open_ticket →
+            Falar com a gente →
           </a>
         </div>
 
@@ -122,7 +123,7 @@ export default function Navbar() {
               backdropFilter: "blur(10px)",
             }}
           >
-            <ul className="flex flex-col px-4 py-3 mono text-sm uppercase tracking-wider">
+            <ul className="flex flex-col px-4 py-3 text-sm">
               {links.map((l) => (
                 <li key={l.id}>
                   <button
@@ -139,13 +140,14 @@ export default function Navbar() {
                 <a
                   href="#ticket"
                   onClick={(e) => { e.preventDefault(); click("#ticket"); }}
-                  className="block text-center mono text-xs font-semibold px-4 py-2.5 uppercase tracking-wider"
+                  className="block text-center text-xs font-semibold px-4 py-2.5"
                   style={{
                     background: "linear-gradient(135deg, #f59e0b, #fb923c)",
                     color: "#030712",
+                    borderRadius: 4,
                   }}
                 >
-                  open_ticket →
+                  Falar com a gente →
                 </a>
               </li>
             </ul>

@@ -35,8 +35,8 @@ export default function Ticket() {
     <section id="ticket" className="relative py-28 px-4 md:px-6">
       <div className="max-w-5xl mx-auto">
         <div className="mb-10">
-          <div className="mono text-[11px] uppercase tracking-[0.3em] mb-3" style={{ color: "#f59e0b" }}>
-            open_ticket
+          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#f59e0b" }}>
+            <span>/</span><span>Falar com a gente</span>
           </div>
           <h2
             className="text-3xl md:text-5xl font-bold leading-tight"
@@ -45,10 +45,10 @@ export default function Ticket() {
               color: "#f8fafc",
             }}
           >
-            Abra um chamado.
+            Manda sua necessidade.
           </h2>
-          <p className="mt-4 max-w-2xl text-base" style={{ color: "#94a3b8" }}>
-            Sem formulário corporativo. Conta o problema, a gente responde direto pelo WhatsApp.
+          <p className="mt-4 max-w-2xl text-base leading-relaxed" style={{ color: "#94a3b8" }}>
+            Sem formulário corporativo. Conta o que está acontecendo — a gente responde direto pelo WhatsApp.
           </p>
         </div>
 
@@ -61,122 +61,133 @@ export default function Ticket() {
           style={{
             border: "1px solid rgba(251,191,36,0.2)",
             background: "rgba(10,15,28,0.5)",
+            borderRadius: 6,
           }}
         >
           {/* ticket header */}
           <div
-            className="flex items-center justify-between px-4 py-2 mono text-[11px] uppercase tracking-widest"
+            className="flex items-center justify-between px-4 py-2.5 text-xs"
             style={{
               borderBottom: "1px solid rgba(251,191,36,0.12)",
-              color: "#475569",
+              color: "#94a3b8",
               background: "rgba(3,7,18,0.6)",
             }}
           >
-            <span>new_ticket · <span style={{ color: "#f59e0b" }}>#{ticketId}</span></span>
-            <span className="flex items-center gap-1.5" style={{ color: "#22c55e" }}>
-              <span className="status-dot" />
-              draft
+            <span>
+              Novo chamado <span className="mono ml-1" style={{ color: "#f59e0b" }}>#{ticketId}</span>
             </span>
+            <span style={{ color: "#64748b" }} className="text-[10px]">rascunho</span>
           </div>
 
           {/* body */}
-          <div className="p-6 md:p-8 space-y-5 mono text-sm">
+          <div className="p-6 md:p-8 space-y-5 text-sm">
             {/* priority + type row */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
-                <label className="block text-[10px] uppercase tracking-widest mb-2" style={{ color: "#475569" }}>
-                  priority
+                <label className="block text-xs mb-2" style={{ color: "#94a3b8" }}>
+                  Prioridade
                 </label>
                 <div className="flex gap-2">
-                  {PRIORITIES.map((p) => (
-                    <button
-                      key={p}
-                      onClick={() => setPriority(p)}
-                      className="px-3 py-1.5 transition-colors text-xs"
-                      style={{
-                        background: priority === p ? "rgba(245,158,11,0.12)" : "transparent",
-                        border: `1px solid ${priority === p ? "rgba(245,158,11,0.5)" : "rgba(245,158,11,0.18)"}`,
-                        color: priority === p ? "#f59e0b" : "#94a3b8",
-                      }}
-                    >
-                      {priority === p && <span className="mr-1">▣</span>}
-                      {p}
-                    </button>
-                  ))}
+                  {PRIORITIES.map((p) => {
+                    const labelMap: Record<string, string> = { low: "baixa", normal: "normal", high: "alta" };
+                    return (
+                      <button
+                        key={p}
+                        onClick={() => setPriority(p)}
+                        className="px-3 py-1.5 transition-colors text-xs"
+                        style={{
+                          background: priority === p ? "rgba(245,158,11,0.12)" : "transparent",
+                          border: `1px solid ${priority === p ? "rgba(245,158,11,0.5)" : "rgba(245,158,11,0.18)"}`,
+                          color: priority === p ? "#f59e0b" : "#94a3b8",
+                          borderRadius: 3,
+                        }}
+                      >
+                        {labelMap[p]}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
               <div>
-                <label className="block text-[10px] uppercase tracking-widest mb-2" style={{ color: "#475569" }}>
-                  type
+                <label className="block text-xs mb-2" style={{ color: "#94a3b8" }}>
+                  Tipo
                 </label>
                 <div className="flex gap-2 flex-wrap">
-                  {TYPES.map((tp) => (
-                    <button
-                      key={tp}
-                      onClick={() => setType(tp)}
-                      className="px-3 py-1.5 transition-colors text-xs"
-                      style={{
-                        background: type === tp ? "rgba(245,158,11,0.12)" : "transparent",
-                        border: `1px solid ${type === tp ? "rgba(245,158,11,0.5)" : "rgba(245,158,11,0.18)"}`,
-                        color: type === tp ? "#f59e0b" : "#94a3b8",
-                      }}
-                    >
-                      {type === tp && <span className="mr-1">▣</span>}
-                      {tp}
-                    </button>
-                  ))}
+                  {TYPES.map((tp) => {
+                    const labelMap: Record<string, string> = {
+                      new_system: "novo sistema",
+                      support: "suporte",
+                      automation: "automação",
+                      infra: "infra",
+                    };
+                    return (
+                      <button
+                        key={tp}
+                        onClick={() => setType(tp)}
+                        className="px-3 py-1.5 transition-colors text-xs"
+                        style={{
+                          background: type === tp ? "rgba(245,158,11,0.12)" : "transparent",
+                          border: `1px solid ${type === tp ? "rgba(245,158,11,0.5)" : "rgba(245,158,11,0.18)"}`,
+                          color: type === tp ? "#f59e0b" : "#94a3b8",
+                          borderRadius: 3,
+                        }}
+                      >
+                        {labelMap[tp]}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <div>
-                <label className="block text-[10px] uppercase tracking-widest mb-2" style={{ color: "#475569" }}>
-                  name
+                <label className="block text-xs mb-2" style={{ color: "#94a3b8" }}>
+                  Nome
                 </label>
                 <input
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="seu nome"
+                  placeholder="Como te chamamos?"
                   className="w-full px-3 py-2"
                 />
               </div>
               <div>
-                <label className="block text-[10px] uppercase tracking-widest mb-2" style={{ color: "#475569" }}>
-                  company
+                <label className="block text-xs mb-2" style={{ color: "#94a3b8" }}>
+                  Empresa
                 </label>
                 <input
                   type="text"
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
-                  placeholder="empresa (opcional)"
+                  placeholder="opcional"
                   className="w-full px-3 py-2"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-[10px] uppercase tracking-widest mb-2" style={{ color: "#475569" }}>
-                subject
+              <label className="block text-xs mb-2" style={{ color: "#94a3b8" }}>
+                Assunto
               </label>
               <input
                 type="text"
                 value={subject}
                 onChange={(e) => setSubject(e.target.value)}
-                placeholder="resumo curto"
+                placeholder="em uma linha, o que precisa?"
                 className="w-full px-3 py-2"
               />
             </div>
 
             <div>
-              <label className="block text-[10px] uppercase tracking-widest mb-2" style={{ color: "#475569" }}>
-                description
+              <label className="block text-xs mb-2" style={{ color: "#94a3b8" }}>
+                Conta um pouco mais
               </label>
               <textarea
                 value={desc}
                 onChange={(e) => setDesc(e.target.value)}
-                placeholder="descreva o problema, sistema necessário, infra, automação..."
+                placeholder="problema, sistema necessário, automação que quer, infra a montar..."
                 rows={5}
                 className="w-full px-3 py-2 resize-none"
               />
@@ -184,21 +195,21 @@ export default function Ticket() {
 
             {/* submit */}
             <div className="flex items-center justify-between gap-4 pt-2 flex-wrap">
-              <span className="text-[10px] mono uppercase tracking-widest" style={{ color: "#475569" }}>
-                channel: <span style={{ color: "#22c55e" }}>● whatsapp</span>
+              <span className="text-xs" style={{ color: "#64748b" }}>
+                Resposta direto no <span style={{ color: "#22c55e" }}>WhatsApp</span>.
               </span>
               <a
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 mono text-sm font-semibold px-5 py-3 transition-all"
+                className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 transition-all"
                 style={{
                   background: "linear-gradient(135deg, #f59e0b, #fb923c)",
                   color: "#030712",
-                  letterSpacing: "0.04em",
+                  borderRadius: 4,
                 }}
               >
-                submit_ticket →
+                Enviar <span>→</span>
               </a>
             </div>
           </div>

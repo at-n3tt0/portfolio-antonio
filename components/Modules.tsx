@@ -189,8 +189,8 @@ export default function Modules() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-12 flex items-end justify-between flex-wrap gap-4">
           <div>
-            <div className="mono text-[11px] uppercase tracking-[0.3em] mb-3" style={{ color: "#f59e0b" }}>
-              modules
+            <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#f59e0b" }}>
+              <span>/</span><span>Módulos</span>
             </div>
             <h2
               className="text-3xl md:text-5xl font-bold leading-tight max-w-2xl"
@@ -199,11 +199,11 @@ export default function Modules() {
                 color: "#f8fafc",
               }}
             >
-              O que opera dentro da atnetto.tech
+              O que entregamos
             </h2>
           </div>
-          <p className="mono text-xs max-w-sm" style={{ color: "#64748b" }}>
-            Cada módulo é um serviço operacional em execução — não um pacote estático de tarefas.
+          <p className="text-sm max-w-sm leading-relaxed" style={{ color: "#94a3b8" }}>
+            Cada módulo é um serviço que entra em operação — não um pacote estático.
           </p>
         </div>
 
@@ -224,17 +224,17 @@ export default function Modules() {
                   className="mono text-[10px] uppercase tracking-wider"
                   style={{ color: "#475569" }}
                 >
-                  module: <span style={{ color: "#94a3b8" }}>{m.id}</span>
+                  <span style={{ color: "#94a3b8" }}>{m.id}</span>
                 </div>
                 <div
-                  className="mono text-[10px] flex items-center gap-1.5 px-2 py-0.5"
+                  className="mono text-[10px] px-2 py-0.5"
                   style={{
                     color: m.badgeColor,
                     background: `${m.badgeColor}15`,
                     border: `1px solid ${m.badgeColor}30`,
+                    borderRadius: 3,
                   }}
                 >
-                  <span className="status-dot" />
                   {m.badge}
                 </div>
               </div>

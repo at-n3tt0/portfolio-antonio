@@ -68,8 +68,8 @@ export default function Operating() {
     <section id="operating" className="relative py-28 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-10">
-          <div className="mono text-[11px] uppercase tracking-[0.3em] mb-3" style={{ color: "#f59e0b" }}>
-            currently_operating
+          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#f59e0b" }}>
+            <span>/</span><span>Em operação</span>
           </div>
           <h2
             className="text-3xl md:text-5xl font-bold leading-tight max-w-3xl"
@@ -80,7 +80,7 @@ export default function Operating() {
           >
             Sistemas em produção agora.
           </h2>
-          <p className="mt-4 max-w-2xl text-base" style={{ color: "#94a3b8" }}>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed" style={{ color: "#94a3b8" }}>
             Não é portfólio de tela bonita — é o que está respondendo requisição real, neste minuto, para clientes reais.
           </p>
         </div>
@@ -91,6 +91,7 @@ export default function Operating() {
           style={{
             border: "1px solid rgba(251,191,36,0.15)",
             background: "rgba(10,15,28,0.5)",
+            borderRadius: 6,
           }}
         >
           {/* header */}
@@ -152,8 +153,8 @@ export default function Operating() {
 
         {/* Stack marquee */}
         <div className="mt-12 py-4 overflow-hidden" style={{ borderTop: "1px solid rgba(251,191,36,0.08)", borderBottom: "1px solid rgba(251,191,36,0.08)" }}>
-          <div className="mono text-[10px] uppercase tracking-widest mb-3" style={{ color: "#475569" }}>
-            running_on:
+          <div className="text-xs mb-3" style={{ color: "#64748b" }}>
+            Rodando em:
           </div>
           <div className="overflow-hidden">
             <div className="marquee-track mono text-base md:text-lg" style={{ color: "#94a3b8" }}>

@@ -67,26 +67,20 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto">
-        {/* Command line */}
+        {/* Soft command line */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mono text-xs md:text-sm mb-12"
-          style={{ color: "#64748b" }}
+          className="mono text-[11px] md:text-xs mb-10 flex items-center gap-2 flex-wrap"
+          style={{ color: "#475569" }}
         >
-          <div>
-            <span style={{ color: "#f59e0b" }}>$</span>{" "}
-            <span style={{ color: "#94a3b8" }}>atnetto.tech</span>{" "}
-            <span style={{ color: "#f8fafc" }}>--status</span>
-          </div>
-          <div className="mt-1">
-            <span style={{ color: "#22c55e" }}>&gt; all systems operational</span>
-          </div>
-          <div>
-            <span style={{ color: "#22c55e" }}>&gt; operating tech for brazilian businesses since 2021</span>
-            <span className="cursor-blink ml-0.5">|</span>
-          </div>
+          <span style={{ color: "#f59e0b" }}>$</span>
+          <span>atnetto.tech</span>
+          <span style={{ color: "#334155" }}>·</span>
+          <span>Marituba, PA</span>
+          <span style={{ color: "#334155" }}>·</span>
+          <span>operando desde 2021</span>
         </motion.div>
 
         {/* Main grid: headline left + dashboard right */}
@@ -121,30 +115,40 @@ export default function Hero() {
               Construímos, operamos e mantemos os sistemas que sustentam sua operação — do servidor ao código. Sem largar depois do deploy.
             </motion.p>
 
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.7, delay: 0.5 }}
+              className="mt-4 text-sm italic"
+              style={{ color: "#64748b", fontFamily: "var(--font-geist-sans), sans-serif" }}
+            >
+              — feito por Antonio, em Marituba, PA.
+            </motion.p>
+
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.55 }}
+              transition={{ duration: 0.7, delay: 0.6 }}
               className="mt-10 flex flex-wrap items-center gap-4"
             >
               <a
                 href="#ticket"
-                className="group inline-flex items-center gap-3 mono text-sm font-semibold px-5 py-3 transition-all"
+                className="group inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 transition-all"
                 style={{
                   background: "linear-gradient(135deg, #f59e0b, #fb923c)",
                   color: "#030712",
-                  letterSpacing: "0.04em",
+                  borderRadius: 4,
                 }}
               >
-                <span>open_ticket</span>
-                <span style={{ color: "#030712" }}>→</span>
+                <span>Falar com a gente</span>
+                <span>→</span>
               </a>
               <a
                 href="#operating"
-                className="mono text-sm transition-colors"
-                style={{ color: "#94a3b8" }}
+                className="text-sm transition-colors"
+                style={{ color: "#cbd5e1" }}
               >
-                <span style={{ color: "#f59e0b" }}>&gt;</span> view_running_systems
+                <span style={{ color: "#f59e0b" }}>›</span> Ver sistemas no ar
               </a>
             </motion.div>
           </div>
@@ -162,18 +166,21 @@ export default function Hero() {
                 background: "rgba(10,15,28,0.7)",
                 border: "1px solid rgba(251,191,36,0.18)",
                 backdropFilter: "blur(6px)",
+                borderRadius: 6,
               }}
             >
               {/* Panel header */}
               <div
-                className="flex items-center justify-between px-4 py-2 mono text-[10px] uppercase tracking-widest"
+                className="flex items-center justify-between px-4 py-2.5 text-xs"
                 style={{
                   borderBottom: "1px solid rgba(251,191,36,0.12)",
-                  color: "#475569",
+                  color: "#94a3b8",
                 }}
               >
-                <span>panel: live_overview</span>
-                <span className="flex items-center gap-1.5" style={{ color: "#22c55e" }}>
+                <span style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }} className="font-medium">
+                  Painel ao vivo
+                </span>
+                <span className="flex items-center gap-1.5 mono text-[10px] uppercase tracking-widest" style={{ color: "#22c55e" }}>
                   <span className="status-dot" />
                   <span>live</span>
                 </span>
@@ -182,13 +189,13 @@ export default function Hero() {
               {/* 3 metrics */}
               <div className="grid grid-cols-3 divide-x" style={{ borderColor: "rgba(251,191,36,0.08)" }}>
                 {[
-                  { label: "in_production", value: 6, suffix: "" },
-                  { label: "services", value: 47, suffix: "" },
-                  { label: "avg_uptime", value: 99.94, suffix: "%" },
+                  { label: "Em produção", value: 6, suffix: "" },
+                  { label: "Serviços", value: 47, suffix: "" },
+                  { label: "Uptime médio", value: 99.94, suffix: "%" },
                 ].map((m, i) => (
                   <div
                     key={m.label}
-                    className="px-4 py-5 mono"
+                    className="px-4 py-5"
                     style={{ borderColor: "rgba(251,191,36,0.08)" }}
                   >
                     <div
@@ -212,12 +219,11 @@ export default function Hero() {
 
               {/* Live activity bars */}
               <div
-                className="px-4 py-4 mono"
+                className="px-4 py-4"
                 style={{ borderTop: "1px solid rgba(251,191,36,0.08)" }}
               >
-                <div className="flex items-center justify-between text-[10px] uppercase tracking-wider mb-1" style={{ color: "#475569" }}>
-                  <span>req/s · last_60s</span>
-                  <span style={{ color: "#f59e0b" }}>● live</span>
+                <div className="flex items-center justify-between mb-1" style={{ color: "#475569" }}>
+                  <span className="mono text-[10px] uppercase tracking-wider">req/s · 60s</span>
                 </div>
                 <MetricBars />
               </div>

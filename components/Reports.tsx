@@ -130,17 +130,19 @@ const reports: Report[] = [
 
 function StatusBadge({ s }: { s: Report["status"] }) {
   const color = s === "operational" ? "#22c55e" : "#f59e0b";
+  const label = s === "operational" ? "no ar" : "em beta";
   return (
     <span
-      className="mono text-[10px] uppercase tracking-wider px-2 py-0.5 inline-flex items-center gap-1.5"
+      className="text-[10px] uppercase tracking-wider px-2 py-0.5 inline-flex items-center gap-1.5"
       style={{
         color,
         background: `${color}15`,
         border: `1px solid ${color}30`,
+        borderRadius: 3,
       }}
     >
       <span className="status-dot" />
-      {s}
+      {label}
     </span>
   );
 }
@@ -150,8 +152,8 @@ export default function Reports() {
     <section id="reports" className="relative py-28 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <div className="mono text-[11px] uppercase tracking-[0.3em] mb-3" style={{ color: "#f59e0b" }}>
-            incident_reports
+          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#f59e0b" }}>
+            <span>/</span><span>Relatórios</span>
           </div>
           <h2
             className="text-3xl md:text-5xl font-bold leading-tight max-w-3xl"
@@ -160,10 +162,10 @@ export default function Reports() {
               color: "#f8fafc",
             }}
           >
-            Relatórios de cada sistema entregue.
+            Cada sistema é um relato.
           </h2>
-          <p className="mt-4 max-w-2xl text-base" style={{ color: "#94a3b8" }}>
-            Cada projeto é um caso real: contexto, problema, solução e métricas. Não tela bonita — sistema rodando.
+          <p className="mt-4 max-w-2xl text-base leading-relaxed" style={{ color: "#94a3b8" }}>
+            Problema real, solução implementada, métrica que importa. Não é tela bonita — é sistema no ar.
           </p>
         </div>
 
@@ -181,17 +183,17 @@ export default function Reports() {
                 style={{ background: "#030712" }}
               >
                 {/* header bar */}
-                <div className="flex items-center justify-between flex-wrap gap-3 mb-6 mono text-xs">
+                <div className="flex items-center justify-between flex-wrap gap-3 mb-6 text-xs">
                   <div className="flex items-center gap-3 flex-wrap">
-                    <span style={{ color: "#f59e0b" }}>#{r.num}</span>
+                    <span className="mono" style={{ color: "#f59e0b" }}>#{r.num}</span>
                     <span style={{ color: "#475569" }}>·</span>
-                    <span style={{ color: "#f8fafc" }} className="font-bold">{r.hostname}</span>
+                    <span className="mono font-bold" style={{ color: "#f8fafc" }}>{r.hostname}</span>
                     <span style={{ color: "#475569" }}>·</span>
                     <span style={{ color: "#94a3b8" }}>{r.client}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span style={{ color: "#475569" }} className="mono text-[10px] uppercase tracking-wider">
-                      since {r.since}
+                    <span style={{ color: "#64748b" }} className="text-[11px]">
+                      desde {r.since}
                     </span>
                     <StatusBadge s={r.status} />
                   </div>
@@ -202,16 +204,16 @@ export default function Reports() {
                   {/* Text + metrics column */}
                   <div className={`space-y-5 ${mockOnRight ? "lg:order-1" : "lg:order-2"}`}>
                     <div>
-                      <div className="mono text-[10px] uppercase tracking-widest mb-1" style={{ color: "#475569" }}>
-                        problema
+                      <div className="text-[11px] mb-1.5" style={{ color: "#f59e0b" }}>
+                        Problema
                       </div>
                       <p className="text-sm md:text-base leading-relaxed" style={{ color: "#cbd5e1" }}>
                         {r.problem}
                       </p>
                     </div>
                     <div>
-                      <div className="mono text-[10px] uppercase tracking-widest mb-1" style={{ color: "#475569" }}>
-                        solução
+                      <div className="text-[11px] mb-1.5" style={{ color: "#f59e0b" }}>
+                        Solução
                       </div>
                       <p className="text-sm md:text-base leading-relaxed" style={{ color: "#cbd5e1" }}>
                         {r.solution}
@@ -223,10 +225,11 @@ export default function Reports() {
                       {r.metrics.map((m) => (
                         <div
                           key={m.k}
-                          className="px-3 py-2 mono"
+                          className="px-3 py-2"
                           style={{
                             background: "rgba(10,15,28,0.5)",
                             border: "1px solid rgba(251,191,36,0.12)",
+                            borderRadius: 4,
                           }}
                         >
                           <div className="uppercase tracking-wider text-[9px] mb-0.5" style={{ color: "#475569" }}>
@@ -247,6 +250,7 @@ export default function Reports() {
                             color: "#94a3b8",
                             background: "rgba(245,158,11,0.06)",
                             border: "1px solid rgba(245,158,11,0.15)",
+                            borderRadius: 3,
                           }}
                         >
                           {s}
@@ -256,10 +260,11 @@ export default function Reports() {
                         href={r.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="mono text-[10px] inline-flex items-center gap-1.5 px-2 py-1 transition-colors ml-auto"
+                        className="text-xs inline-flex items-center gap-1.5 px-2.5 py-1 transition-colors ml-auto"
                         style={{
                           color: "#f59e0b",
                           border: "1px solid rgba(245,158,11,0.3)",
+                          borderRadius: 3,
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.background = "rgba(245,158,11,0.08)";
@@ -268,7 +273,7 @@ export default function Reports() {
                           e.currentTarget.style.background = "transparent";
                         }}
                       >
-                        inspect_repo
+                        Ver código
                         <ArrowUpRight size={11} />
                       </a>
                     </div>
