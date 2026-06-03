@@ -64,7 +64,7 @@ export default function Hero() {
       />
       <div
         className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, transparent, #030712)" }}
+        style={{ background: "linear-gradient(to bottom, transparent, #0c0a09)" }}
       />
 
       <div className="relative z-10 max-w-7xl mx-auto py-12 px-4 md:px-8">
@@ -138,7 +138,7 @@ export default function Hero() {
                 className="group inline-flex items-center gap-2.5 text-base font-semibold px-7 py-3.5 transition-all"
                 style={{
                   background: "linear-gradient(135deg, #f59e0b, #fb923c)",
-                  color: "#030712",
+                  color: "#0c0a09",
                   borderRadius: 9999,
                   boxShadow: "0 8px 24px -8px rgba(245,158,11,0.5)",
                 }}
@@ -178,7 +178,7 @@ export default function Hero() {
             <div
               className="relative"
               style={{
-                background: "rgba(10,15,28,0.7)",
+                background: "rgba(28,25,23,0.7)",
                 border: "1px solid rgba(251,191,36,0.18)",
                 backdropFilter: "blur(6px)",
                 borderRadius: 6,

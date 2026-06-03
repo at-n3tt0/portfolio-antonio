@@ -87,7 +87,7 @@ export default function Mesh() {
           style={{
             border: "1px solid rgba(251,191,36,0.15)",
             background:
-              "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(245,158,11,0.05), transparent 70%), rgba(10,15,28,0.4)",
+              "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(245,158,11,0.05), transparent 70%), rgba(28,25,23,0.4)",
             borderRadius: 6,
           }}
         >
@@ -138,7 +138,7 @@ export default function Mesh() {
               const color = groupColors[n.group];
               return (
                 <g key={n.id}>
-                  <circle cx={n.x} cy={n.y} r="22" fill="rgba(3,7,18,0.85)" stroke={color} strokeWidth="1.2" />
+                  <circle cx={n.x} cy={n.y} r="22" fill="rgba(12,10,9,0.85)" stroke={color} strokeWidth="1.2" />
                   <circle cx={n.x} cy={n.y} r="4" fill={color} />
                   <text
                     x={n.x}
@@ -161,7 +161,7 @@ export default function Mesh() {
             style={{
               borderTop: "1px solid rgba(251,191,36,0.1)",
               color: "#475569",
-              background: "rgba(3,7,18,0.5)",
+              background: "rgba(12,10,9,0.5)",
             }}
           >
             {(["client", "edge", "api", "data", "infra", "observe"] as const).map((g) => (

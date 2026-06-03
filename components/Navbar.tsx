@@ -48,7 +48,7 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
       className="sticky top-0 z-40 transition-all"
       style={{
-        background: scrolled ? "rgba(3,7,18,0.85)" : "transparent",
+        background: scrolled ? "rgba(12,10,9,0.88)" : "transparent",
         backdropFilter: scrolled ? "blur(10px)" : "none",
         borderBottom: scrolled ? "1px solid rgba(251,191,36,0.1)" : "1px solid transparent",
       }}
@@ -94,7 +94,7 @@ export default function Navbar() {
             className="text-xs font-semibold px-4 py-2 transition-all"
             style={{
               background: "linear-gradient(135deg, #f59e0b, #fb923c)",
-              color: "#030712",
+              color: "#0c0a09",
               borderRadius: 9999,
             }}
           >
@@ -121,7 +121,7 @@ export default function Navbar() {
             className="md:hidden border-t"
             style={{
               borderColor: "rgba(251,191,36,0.1)",
-              background: "rgba(3,7,18,0.97)",
+              background: "rgba(12,10,9,0.97)",
               backdropFilter: "blur(10px)",
             }}
           >
@@ -145,7 +145,7 @@ export default function Navbar() {
                   className="block text-center text-xs font-semibold px-4 py-2.5"
                   style={{
                     background: "linear-gradient(135deg, #f59e0b, #fb923c)",
-                    color: "#030712",
+                    color: "#0c0a09",
                     borderRadius: 9999,
                   }}
                 >

@@ -65,7 +65,7 @@ const systems: System[] = [
 
 export default function Operating() {
   return (
-    <section id="operating" className="relative py-28 px-4 md:px-6" style={{ background: "#020610" }}>
+    <section id="operating" className="relative py-28 px-4 md:px-6" style={{ background: "#0a0807" }}>
       <div className="max-w-7xl mx-auto">
         <div className="mb-10">
           <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#f59e0b" }}>
@@ -90,7 +90,7 @@ export default function Operating() {
           className="mono text-xs md:text-sm overflow-x-auto"
           style={{
             border: "1px solid rgba(251,191,36,0.15)",
-            background: "rgba(10,15,28,0.5)",
+            background: "rgba(28,25,23,0.5)",
             borderRadius: 6,
           }}
         >
@@ -100,7 +100,7 @@ export default function Operating() {
             style={{
               color: "#475569",
               borderBottom: "1px solid rgba(251,191,36,0.12)",
-              background: "rgba(3,7,18,0.6)",
+              background: "rgba(12,10,9,0.6)",
             }}
           >
             <span>id</span>

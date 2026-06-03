@@ -4,7 +4,7 @@ export default function Obrigado() {
   return (
     <main
       className="flex min-h-screen items-center justify-center px-6"
-      style={{ background: "#030712", color: "#f8fafc" }}
+      style={{ background: "#0c0a09", color: "#f8fafc" }}
     >
       <section className="max-w-xl text-center">
         <p className="font-mono text-xs uppercase tracking-[0.3em]" style={{ color: "#f59e0b" }}>
@@ -18,7 +18,7 @@ export default function Obrigado() {
         <Link
           href="/"
           className="mt-8 inline-flex px-6 py-3 font-semibold"
-          style={{ background: "#f59e0b", color: "#030712" }}
+          style={{ background: "#f59e0b", color: "#0c0a09" }}
         >
           Voltar ao site
         </Link>

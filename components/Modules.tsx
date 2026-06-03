@@ -190,7 +190,7 @@ export default function Modules() {
       className="relative py-28 px-4 md:px-6 scanlines"
       style={{
         background:
-          "radial-gradient(ellipse 70% 50% at 30% 10%, rgba(245,158,11,0.05), transparent 60%), #030712",
+          "radial-gradient(ellipse 70% 50% at 30% 10%, rgba(245,158,11,0.05), transparent 60%), #0c0a09",
       }}
     >
       <div className="max-w-7xl mx-auto">
@@ -223,7 +223,7 @@ export default function Modules() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
               className="group relative p-6 transition-all"
-              style={{ background: "#030712" }}
+              style={{ background: "#0c0a09" }}
             >
               {/* header */}
               <div className="flex items-center justify-between mb-4">

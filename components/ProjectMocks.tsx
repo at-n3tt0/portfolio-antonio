@@ -7,7 +7,7 @@ function BrowserChrome({ url, children }: { url: string; children: ReactNode }) 
     <div
       className="w-full mono text-[10px] relative overflow-hidden"
       style={{
-        background: "rgba(10,15,28,0.95)",
+        background: "rgba(28,25,23,0.95)",
         border: "1px solid rgba(251,191,36,0.18)",
         boxShadow: "0 12px 40px -12px rgba(0,0,0,0.6)",
         borderRadius: 6,
@@ -17,7 +17,7 @@ function BrowserChrome({ url, children }: { url: string; children: ReactNode }) 
         className="flex items-center gap-2 px-3 py-2"
         style={{
           borderBottom: "1px solid rgba(251,191,36,0.12)",
-          background: "rgba(3,7,18,0.7)",
+          background: "rgba(12,10,9,0.7)",
         }}
       >
         <span className="w-2 h-2 rounded-full" style={{ background: "#ef4444" }} />
@@ -27,7 +27,7 @@ function BrowserChrome({ url, children }: { url: string; children: ReactNode }) 
           className="flex-1 truncate px-2 py-0.5 ml-2 text-[10px]"
           style={{
             color: "#64748b",
-            background: "rgba(3,7,18,0.6)",
+            background: "rgba(12,10,9,0.6)",
             border: "1px solid rgba(251,191,36,0.08)",
             borderRadius: 3,
           }}
@@ -59,7 +59,7 @@ function PMM() {
           className="grid grid-cols-[1.1fr_1.4fr_1fr_0.9fr] gap-2 px-2 py-1.5 text-[9px] uppercase tracking-wider"
           style={{
             color: "#475569",
-            background: "rgba(3,7,18,0.5)",
+            background: "rgba(12,10,9,0.5)",
             borderBottom: "1px solid rgba(251,191,36,0.08)",
           }}
         >
@@ -109,7 +109,7 @@ function ServerMonitor() {
               key={s.id}
               className="p-2"
               style={{
-                background: "rgba(3,7,18,0.6)",
+                background: "rgba(12,10,9,0.6)",
                 border: "1px solid rgba(251,191,36,0.1)",
               }}
             >
@@ -157,7 +157,7 @@ function NexLicense() {
               key={l.key}
               className="px-2 py-1.5"
               style={{
-                background: "rgba(3,7,18,0.6)",
+                background: "rgba(12,10,9,0.6)",
                 border: "1px solid rgba(251,191,36,0.1)",
               }}
             >
@@ -195,7 +195,7 @@ function Sigma() {
             key={m}
             className="px-2 py-3 text-center"
             style={{
-              background: i % 3 === 0 ? "rgba(245,158,11,0.08)" : "rgba(3,7,18,0.6)",
+              background: i % 3 === 0 ? "rgba(245,158,11,0.08)" : "rgba(12,10,9,0.6)",
               border: `1px solid rgba(251,191,36,${i % 3 === 0 ? 0.25 : 0.1})`,
               color: i % 3 === 0 ? "#f59e0b" : "#cbd5e1",
             }}
@@ -227,7 +227,7 @@ function ComControl() {
           className="grid grid-cols-[1fr_1.4fr_1.1fr_1fr] gap-2 px-2 py-1.5 text-[9px] uppercase tracking-wider"
           style={{
             color: "#475569",
-            background: "rgba(3,7,18,0.5)",
+            background: "rgba(12,10,9,0.5)",
             borderBottom: "1px solid rgba(251,191,36,0.08)",
           }}
         >
@@ -261,7 +261,7 @@ function NetoAI() {
         <span style={{ color: "#22c55e" }}>● modelo: ativo</span>
       </div>
       <div className="space-y-1.5">
-        <div className="px-2 py-1.5" style={{ background: "rgba(3,7,18,0.6)", border: "1px solid rgba(251,191,36,0.1)" }}>
+        <div className="px-2 py-1.5" style={{ background: "rgba(12,10,9,0.6)", border: "1px solid rgba(251,191,36,0.1)" }}>
           <div style={{ color: "#94a3b8" }}>
             <span style={{ color: "#475569" }}>cliente:</span> &quot;O sistema não está abrindo desde manhã&quot;
           </div>
@@ -270,7 +270,7 @@ function NetoAI() {
             <span style={{ color: "#cbd5e1" }}>verificar serviço apache + cache</span>
           </div>
         </div>
-        <div className="px-2 py-1.5" style={{ background: "rgba(3,7,18,0.6)", border: "1px solid rgba(251,191,36,0.1)" }}>
+        <div className="px-2 py-1.5" style={{ background: "rgba(12,10,9,0.6)", border: "1px solid rgba(251,191,36,0.1)" }}>
           <div style={{ color: "#94a3b8" }}>
             <span style={{ color: "#475569" }}>cliente:</span> &quot;Preciso emitir relatório do mês&quot;
           </div>

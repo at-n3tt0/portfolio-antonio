@@ -39,7 +39,7 @@ export default async function StatusFooter() {
           className="text-sm"
           style={{
             border: "1px solid rgba(251,191,36,0.12)",
-            background: "rgba(10,15,28,0.5)",
+            background: "rgba(28,25,23,0.5)",
             borderRadius: 6,
           }}
         >

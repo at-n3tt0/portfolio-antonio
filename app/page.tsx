@@ -10,8 +10,7 @@ import StatusFooter from "@/components/StatusFooter";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen" style={{ background: "#030712", color: "#f8fafc" }}>
-      <div className="grain" />
+    <main className="relative min-h-screen" style={{ background: "#0c0a09", color: "#f5f5f4" }}>
       <StatusBar />
       <Navbar />
       <Hero />

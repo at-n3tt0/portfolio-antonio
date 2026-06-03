@@ -2,7 +2,7 @@ export default function Privacidade() {
   return (
     <main
       className="min-h-screen px-6 py-20"
-      style={{ background: "#030712", color: "#f8fafc" }}
+      style={{ background: "#0c0a09", color: "#f8fafc" }}
     >
       <section className="mx-auto max-w-3xl space-y-6">
         <p className="font-mono text-xs uppercase tracking-[0.3em]" style={{ color: "#f59e0b" }}>

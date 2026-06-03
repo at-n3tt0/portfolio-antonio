@@ -174,7 +174,7 @@ export default function Reports() {
       className="relative py-28 px-4 md:px-6"
       style={{
         background:
-          "linear-gradient(180deg, #030712 0%, #060b18 50%, #030712 100%)",
+          "linear-gradient(180deg, #0c0a09 0%, #060b18 50%, #0c0a09 100%)",
       }}
     >
       <div className="max-w-7xl mx-auto">
@@ -207,7 +207,7 @@ export default function Reports() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, delay: 0.05 }}
                 className="p-6 md:p-8"
-                style={{ background: "#030712" }}
+                style={{ background: "#0c0a09" }}
               >
                 {/* header bar */}
                 <div className="flex items-center justify-between flex-wrap gap-3 mb-6 text-xs">
@@ -254,7 +254,7 @@ export default function Reports() {
                           key={m.k}
                           className="px-3 py-2"
                           style={{
-                            background: "rgba(10,15,28,0.5)",
+                            background: "rgba(28,25,23,0.5)",
                             border: "1px solid rgba(251,191,36,0.12)",
                             borderRadius: 4,
                           }}

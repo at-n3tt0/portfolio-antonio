@@ -8,7 +8,7 @@ export default async function StatusBar() {
     <div
       className="w-full text-[11px]"
       style={{
-        background: "rgba(3,7,18,0.92)",
+        background: "rgba(12,10,9,0.92)",
         backdropFilter: "blur(8px)",
         borderBottom: "1px solid rgba(251,191,36,0.12)",
         color: "#64748b",

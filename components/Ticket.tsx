@@ -60,7 +60,7 @@ export default function Ticket() {
           className="relative"
           style={{
             border: "1px solid rgba(251,191,36,0.2)",
-            background: "rgba(10,15,28,0.5)",
+            background: "rgba(28,25,23,0.5)",
             borderRadius: 6,
           }}
         >
@@ -70,7 +70,7 @@ export default function Ticket() {
             style={{
               borderBottom: "1px solid rgba(251,191,36,0.12)",
               color: "#94a3b8",
-              background: "rgba(3,7,18,0.6)",
+              background: "rgba(12,10,9,0.6)",
             }}
           >
             <span>
@@ -205,7 +205,7 @@ export default function Ticket() {
                 className="inline-flex items-center gap-2.5 text-base font-semibold px-7 py-3.5 transition-all"
                 style={{
                   background: "linear-gradient(135deg, #f59e0b, #fb923c)",
-                  color: "#030712",
+                  color: "#0c0a09",
                   borderRadius: 9999,
                   boxShadow: "0 8px 24px -8px rgba(245,158,11,0.5)",
                 }}

@@ -16,7 +16,7 @@ export default async function Image() {
           justifyContent: "space-between",
           padding: "80px",
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,158,11,0.18) 0%, transparent 70%), #030712",
+            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(245,158,11,0.18) 0%, transparent 70%), #0c0a09",
           color: "#f8fafc",
           fontFamily: "sans-serif",
         }}
