@@ -68,14 +68,14 @@ export default function Operating() {
     <section id="operating" className="relative py-28 px-4 md:px-6" style={{ background: "#0a0807" }}>
       <div className="max-w-7xl mx-auto">
         <div className="mb-10">
-          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#f59e0b" }}>
+          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#FF9A00" }}>
             <span>/</span><span>Em operação</span>
           </div>
           <h2
             className="text-3xl md:text-5xl font-bold leading-tight max-w-3xl"
             style={{
               fontFamily: "var(--font-space-grotesk), sans-serif",
-              color: "#f8fafc",
+              color: "#F5F5F5",
             }}
           >
             Sistemas em produção agora.
@@ -89,7 +89,7 @@ export default function Operating() {
         <div
           className="mono text-xs md:text-sm overflow-x-auto"
           style={{
-            border: "1px solid rgba(251,191,36,0.15)",
+            border: "1px solid rgba(255,154,0,0.15)",
             background: "rgba(28,25,23,0.5)",
             borderRadius: 6,
           }}
@@ -99,8 +99,8 @@ export default function Operating() {
             className="grid grid-cols-[90px_1.4fr_1.4fr_1.2fr_70px_28px] gap-3 px-4 py-3 uppercase tracking-wider text-[10px]"
             style={{
               color: "#475569",
-              borderBottom: "1px solid rgba(251,191,36,0.12)",
-              background: "rgba(12,10,9,0.6)",
+              borderBottom: "1px solid rgba(255,154,0,0.12)",
+              background: "rgba(14,12,9,0.6)",
             }}
           >
             <span>id</span>
@@ -123,27 +123,27 @@ export default function Operating() {
               transition={{ duration: 0.35, delay: i * 0.05 }}
               className="grid grid-cols-[90px_1.4fr_1.4fr_1.2fr_70px_28px] gap-3 px-4 py-3 items-center group transition-colors"
               style={{
-                borderBottom: i === systems.length - 1 ? "none" : "1px solid rgba(251,191,36,0.06)",
+                borderBottom: i === systems.length - 1 ? "none" : "1px solid rgba(255,154,0,0.06)",
                 color: "#cbd5e1",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = "rgba(245,158,11,0.04)";
+                e.currentTarget.style.background = "rgba(255,154,0,0.04)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = "transparent";
               }}
             >
-              <span style={{ color: "#f59e0b" }}>{s.id}</span>
-              <span style={{ color: "#f8fafc" }} className="font-semibold truncate">{s.hostname}</span>
+              <span style={{ color: "#FF9A00" }}>{s.id}</span>
+              <span style={{ color: "#F5F5F5" }} className="font-semibold truncate">{s.hostname}</span>
               <span style={{ color: "#94a3b8" }} className="truncate">{s.client}</span>
               <span className="hidden md:block truncate" style={{ color: "#64748b" }}>{s.stack}</span>
-              <span className="hidden md:flex items-center gap-1.5" style={{ color: s.status === "up" ? "#22c55e" : "#f59e0b" }}>
+              <span className="hidden md:flex items-center gap-1.5" style={{ color: s.status === "up" ? "#22c55e" : "#FF9A00" }}>
                 <span className="status-dot" />
                 {s.status}
               </span>
               <span
                 className="opacity-40 group-hover:opacity-100 transition-opacity"
-                style={{ color: "#f59e0b" }}
+                style={{ color: "#FF9A00" }}
               >
                 <ArrowUpRight size={14} />
               </span>
@@ -152,7 +152,7 @@ export default function Operating() {
         </div>
 
         {/* Stack marquee */}
-        <div className="mt-12 py-4 overflow-hidden" style={{ borderTop: "1px solid rgba(251,191,36,0.08)", borderBottom: "1px solid rgba(251,191,36,0.08)" }}>
+        <div className="mt-12 py-4 overflow-hidden" style={{ borderTop: "1px solid rgba(255,154,0,0.08)", borderBottom: "1px solid rgba(255,154,0,0.08)" }}>
           <div className="text-xs mb-3" style={{ color: "#64748b" }}>
             Rodando em:
           </div>

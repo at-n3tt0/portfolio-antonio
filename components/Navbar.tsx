@@ -48,19 +48,19 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
       className="sticky top-0 z-40 transition-all"
       style={{
-        background: scrolled ? "rgba(12,10,9,0.88)" : "transparent",
+        background: scrolled ? "rgba(14,12,9,0.88)" : "transparent",
         backdropFilter: scrolled ? "blur(10px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(251,191,36,0.1)" : "1px solid transparent",
+        borderBottom: scrolled ? "1px solid rgba(255,154,0,0.1)" : "1px solid transparent",
       }}
     >
       <nav className="max-w-7xl mx-auto px-4 md:px-6 h-14 flex items-center justify-between">
         <button
           onClick={() => click("#hero")}
           className="font-bold text-base tracking-tight inline-flex items-center gap-2"
-          style={{ fontFamily: "var(--font-space-grotesk), sans-serif", color: "#f8fafc" }}
+          style={{ fontFamily: "var(--font-inter), Inter, sans-serif", color: "#F5F5F5", letterSpacing: "-0.03em" }}
         >
           <BrandMark size="sm" />
-          <span>atnetto<span style={{ color: "#f59e0b" }}>.</span>tech</span>
+          <span>atnetto<span style={{ color: "#FF9A00" }}>.</span>tech</span>
         </button>
 
         <ul className="hidden md:flex items-center gap-1 text-sm">
@@ -71,7 +71,7 @@ export default function Navbar() {
                 <button
                   onClick={() => click(l.href)}
                   className="px-3 py-1.5 transition-colors"
-                  style={{ color: isActive ? "#f59e0b" : "#64748b" }}
+                  style={{ color: isActive ? "#FF9A00" : "#64748b" }}
                   onMouseEnter={(e) => {
                     if (!isActive) e.currentTarget.style.color = "#cbd5e1";
                   }}
@@ -79,7 +79,7 @@ export default function Navbar() {
                     if (!isActive) e.currentTarget.style.color = "#64748b";
                   }}
                 >
-                  {isActive && <span style={{ color: "#f59e0b" }} className="mr-1">/</span>}
+                  {isActive && <span style={{ color: "#FF9A00" }} className="mr-1">/</span>}
                   {l.label}
                 </button>
               </li>
@@ -93,8 +93,8 @@ export default function Navbar() {
             onClick={(e) => { e.preventDefault(); click("#ticket"); }}
             className="text-xs font-semibold px-4 py-2 transition-all"
             style={{
-              background: "linear-gradient(135deg, #f59e0b, #fb923c)",
-              color: "#0c0a09",
+              background: "linear-gradient(135deg, #FF9A00, #F3930D)",
+              color: "#090908",
               borderRadius: 9999,
             }}
           >
@@ -120,8 +120,8 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden border-t"
             style={{
-              borderColor: "rgba(251,191,36,0.1)",
-              background: "rgba(12,10,9,0.97)",
+              borderColor: "rgba(255,154,0,0.1)",
+              background: "rgba(14,12,9,0.97)",
               backdropFilter: "blur(10px)",
             }}
           >
@@ -131,9 +131,9 @@ export default function Navbar() {
                   <button
                     onClick={() => click(l.href)}
                     className="w-full text-left py-2"
-                    style={{ color: active === l.id ? "#f59e0b" : "#cbd5e1" }}
+                    style={{ color: active === l.id ? "#FF9A00" : "#cbd5e1" }}
                   >
-                    {active === l.id && <span style={{ color: "#f59e0b" }} className="mr-2">/</span>}
+                    {active === l.id && <span style={{ color: "#FF9A00" }} className="mr-2">/</span>}
                     {l.label}
                   </button>
                 </li>
@@ -144,8 +144,8 @@ export default function Navbar() {
                   onClick={(e) => { e.preventDefault(); click("#ticket"); }}
                   className="block text-center text-xs font-semibold px-4 py-2.5"
                   style={{
-                    background: "linear-gradient(135deg, #f59e0b, #fb923c)",
-                    color: "#0c0a09",
+                    background: "linear-gradient(135deg, #FF9A00, #F3930D)",
+                    color: "#090908",
                     borderRadius: 9999,
                   }}
                 >

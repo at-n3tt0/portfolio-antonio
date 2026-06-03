@@ -25,7 +25,7 @@ const modules: Module[] = [
     title: "Observabilidade",
     desc: "Zabbix, Grafana e alertas que avisam antes do cliente reclamar. Você vê o que está acontecendo na sua infra.",
     badge: "live metrics",
-    badgeColor: "#f59e0b",
+    badgeColor: "#FF9A00",
     visual: "chart",
   },
   {
@@ -41,7 +41,7 @@ const modules: Module[] = [
     title: "Infra completa",
     desc: "Servidores, virtualização (Proxmox), redes, backup. Do bare-metal ao Docker, em pé e auditado.",
     badge: "47 services",
-    badgeColor: "#f59e0b",
+    badgeColor: "#FF9A00",
     visual: "topology",
   },
   {
@@ -93,10 +93,10 @@ function Visual({ kind }: { kind: Module["visual"] }) {
       .join(" ");
     return (
       <svg viewBox={`0 0 ${w} ${h}`} className="w-full h-14">
-        <path d={path} stroke="#f59e0b" strokeWidth="1.5" fill="none" />
+        <path d={path} stroke="#FF9A00" strokeWidth="1.5" fill="none" />
         <path
           d={`${path} L ${w} ${h} L 0 ${h} Z`}
-          fill="rgba(245,158,11,0.12)"
+          fill="rgba(255,154,0,0.12)"
         />
         {pts.map((v, i) => (
           <circle
@@ -104,7 +104,7 @@ function Visual({ kind }: { kind: Module["visual"] }) {
             cx={i * step}
             cy={h - (v / max) * h}
             r="1.5"
-            fill="#f59e0b"
+            fill="#FF9A00"
           />
         ))}
       </svg>
@@ -116,7 +116,7 @@ function Visual({ kind }: { kind: Module["visual"] }) {
         <div><span style={{ color: "#22c55e" }}>[09:14]</span> webhook → CRM sync ok</div>
         <div><span style={{ color: "#22c55e" }}>[09:14]</span> invoice.pdf → email ok</div>
         <div><span style={{ color: "#22c55e" }}>[09:15]</span> backup nightly ok</div>
-        <div><span style={{ color: "#f59e0b" }}>[09:15]</span> retry queue: 0</div>
+        <div><span style={{ color: "#FF9A00" }}>[09:15]</span> retry queue: 0</div>
       </div>
     );
   }
@@ -129,8 +129,8 @@ function Visual({ kind }: { kind: Module["visual"] }) {
           [50, 42], [110, 42], [170, 42],
         ].map(([x, y], i) => (
           <g key={i}>
-            <circle cx={x} cy={y} r="3" fill="#f59e0b" />
-            <circle cx={x} cy={y} r="6" fill="none" stroke="rgba(245,158,11,0.25)" />
+            <circle cx={x} cy={y} r="3" fill="#FF9A00" />
+            <circle cx={x} cy={y} r="6" fill="none" stroke="rgba(255,154,0,0.25)" />
           </g>
         ))}
         {/* lines */}
@@ -141,7 +141,7 @@ function Visual({ kind }: { kind: Module["visual"] }) {
           <line
             key={i}
             x1={x1} y1={y1} x2={x2} y2={y2}
-            stroke="rgba(245,158,11,0.3)" strokeWidth="0.6"
+            stroke="rgba(255,154,0,0.3)" strokeWidth="0.6"
           />
         ))}
       </svg>
@@ -152,24 +152,24 @@ function Visual({ kind }: { kind: Module["visual"] }) {
       <div className="mono text-[10px]" style={{ color: "#64748b" }}>
         <div className="flex items-center justify-between">
           <span>p50</span>
-          <div className="flex-1 mx-3 h-1.5" style={{ background: "rgba(245,158,11,0.10)" }}>
+          <div className="flex-1 mx-3 h-1.5" style={{ background: "rgba(255,154,0,0.10)" }}>
             <div className="h-full" style={{ width: "55%", background: "#22c55e" }} />
           </div>
           <span style={{ color: "#22c55e" }}>62ms</span>
         </div>
         <div className="flex items-center justify-between mt-1">
           <span>p95</span>
-          <div className="flex-1 mx-3 h-1.5" style={{ background: "rgba(245,158,11,0.10)" }}>
-            <div className="h-full" style={{ width: "74%", background: "#f59e0b" }} />
+          <div className="flex-1 mx-3 h-1.5" style={{ background: "rgba(255,154,0,0.10)" }}>
+            <div className="h-full" style={{ width: "74%", background: "#FF9A00" }} />
           </div>
-          <span style={{ color: "#f59e0b" }}>148ms</span>
+          <span style={{ color: "#FF9A00" }}>148ms</span>
         </div>
         <div className="flex items-center justify-between mt-1">
           <span>p99</span>
-          <div className="flex-1 mx-3 h-1.5" style={{ background: "rgba(245,158,11,0.10)" }}>
-            <div className="h-full" style={{ width: "88%", background: "#fb923c" }} />
+          <div className="flex-1 mx-3 h-1.5" style={{ background: "rgba(255,154,0,0.10)" }}>
+            <div className="h-full" style={{ width: "88%", background: "#F3930D" }} />
           </div>
-          <span style={{ color: "#fb923c" }}>312ms</span>
+          <span style={{ color: "#F3930D" }}>312ms</span>
         </div>
       </div>
     );
@@ -190,20 +190,20 @@ export default function Modules() {
       className="relative py-28 px-4 md:px-6 scanlines"
       style={{
         background:
-          "radial-gradient(ellipse 70% 50% at 30% 10%, rgba(245,158,11,0.05), transparent 60%), #0c0a09",
+          "radial-gradient(ellipse 70% 50% at 30% 10%, rgba(255,154,0,0.05), transparent 60%), #090908",
       }}
     >
       <div className="max-w-7xl mx-auto">
         <div className="mb-12 flex items-end justify-between flex-wrap gap-4">
           <div>
-            <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#f59e0b" }}>
+            <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#FF9A00" }}>
               <span>/</span><span>Módulos</span>
             </div>
             <h2
               className="text-3xl md:text-5xl font-bold leading-tight max-w-2xl"
               style={{
                 fontFamily: "var(--font-space-grotesk), sans-serif",
-                color: "#f8fafc",
+                color: "#F5F5F5",
               }}
             >
               O que entregamos
@@ -214,7 +214,7 @@ export default function Modules() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: "rgba(251,191,36,0.12)" }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px" style={{ background: "rgba(255,154,0,0.12)" }}>
           {modules.map((m, i) => (
             <motion.div
               key={m.id}
@@ -223,7 +223,7 @@ export default function Modules() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
               className="group relative p-6 transition-all"
-              style={{ background: "#0c0a09" }}
+              style={{ background: "#090908" }}
             >
               {/* header */}
               <div className="flex items-center justify-between mb-4">
@@ -250,7 +250,7 @@ export default function Modules() {
               <h3
                 className="text-xl font-bold mb-2 transition-colors"
                 style={{
-                  color: "#f8fafc",
+                  color: "#F5F5F5",
                   fontFamily: "var(--font-space-grotesk), sans-serif",
                 }}
               >

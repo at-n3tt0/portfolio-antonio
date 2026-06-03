@@ -8,9 +8,9 @@ function LogoA({ size = 96 }: LogoProps) {
     <svg width={size} height={size} viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="ga" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#fbbf24" />
-          <stop offset="55%" stopColor="#f59e0b" />
-          <stop offset="100%" stopColor="#fb923c" />
+          <stop offset="0%" stopColor="#FFB21A" />
+          <stop offset="55%" stopColor="#FF9A00" />
+          <stop offset="100%" stopColor="#F3930D" />
         </linearGradient>
       </defs>
       <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#ga)" />
@@ -30,9 +30,9 @@ function LogoB({ size = 96 }: LogoProps) {
     <svg width={size} height={size} viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="gb" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#fbbf24" />
-          <stop offset="55%" stopColor="#f59e0b" />
-          <stop offset="100%" stopColor="#fb923c" />
+          <stop offset="0%" stopColor="#FFB21A" />
+          <stop offset="55%" stopColor="#FF9A00" />
+          <stop offset="100%" stopColor="#F3930D" />
         </linearGradient>
       </defs>
       <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#gb)" />
@@ -61,9 +61,9 @@ function LogoC({ size = 96 }: LogoProps) {
     <svg width={size} height={size} viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="gc" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#fbbf24" />
-          <stop offset="55%" stopColor="#f59e0b" />
-          <stop offset="100%" stopColor="#fb923c" />
+          <stop offset="0%" stopColor="#FFB21A" />
+          <stop offset="55%" stopColor="#FF9A00" />
+          <stop offset="100%" stopColor="#F3930D" />
         </linearGradient>
       </defs>
       <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#gc)" />
@@ -89,9 +89,9 @@ function LogoD({ size = 96 }: LogoProps) {
     <svg width={size} height={size} viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="gd" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#fbbf24" />
-          <stop offset="55%" stopColor="#f59e0b" />
-          <stop offset="100%" stopColor="#fb923c" />
+          <stop offset="0%" stopColor="#FFB21A" />
+          <stop offset="55%" stopColor="#FF9A00" />
+          <stop offset="100%" stopColor="#F3930D" />
         </linearGradient>
       </defs>
       <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#gd)" />
@@ -138,10 +138,10 @@ export default function LogoPreview() {
   ];
 
   return (
-    <main className="min-h-screen px-4 md:px-8 py-16" style={{ background: "#0c0a09", color: "#f5f5f4" }}>
+    <main className="min-h-screen px-4 md:px-8 py-16" style={{ background: "#090908", color: "#f5f5f4" }}>
       <div className="max-w-5xl mx-auto">
         <div className="mb-12 text-center">
-          <div className="text-xs mb-3" style={{ color: "#f59e0b" }}>
+          <div className="text-xs mb-3" style={{ color: "#FF9A00" }}>
             <span>/</span> Escolha do logo
           </div>
           <h1
@@ -163,7 +163,7 @@ export default function LogoPreview() {
               className="p-8 transition-transform hover:scale-[1.02]"
               style={{
                 background: "rgba(28,25,23,0.5)",
-                border: "1px solid rgba(251,191,36,0.12)",
+                border: "1px solid rgba(255,154,0,0.12)",
                 borderRadius: 16,
               }}
             >
@@ -175,7 +175,7 @@ export default function LogoPreview() {
                   <div
                     className="text-3xl font-bold mb-1"
                     style={{
-                      color: "#f59e0b",
+                      color: "#FF9A00",
                       fontFamily: "var(--font-space-grotesk), sans-serif",
                     }}
                   >
@@ -199,7 +199,7 @@ export default function LogoPreview() {
               {/* contexto: aparece no navbar */}
               <div
                 className="mt-6 pt-5 flex items-center gap-2.5"
-                style={{ borderTop: "1px solid rgba(251,191,36,0.1)" }}
+                style={{ borderTop: "1px solid rgba(255,154,0,0.1)" }}
               >
                 <div style={{ transform: "scale(0.4)", transformOrigin: "left center", height: 26 }}>
                   <Component size={64} />
@@ -211,7 +211,7 @@ export default function LogoPreview() {
                     color: "#f5f5f4",
                   }}
                 >
-                  atnetto<span style={{ color: "#f59e0b" }}>.</span>tech
+                  atnetto<span style={{ color: "#FF9A00" }}>.</span>tech
                 </span>
                 <span className="text-xs ml-auto" style={{ color: "#78716c" }}>
                   ↑ como ficaria no navbar
@@ -226,11 +226,11 @@ export default function LogoPreview() {
           className="p-8 mb-12"
           style={{
             background: "rgba(28,25,23,0.3)",
-            border: "1px solid rgba(251,191,36,0.08)",
+            border: "1px solid rgba(255,154,0,0.08)",
             borderRadius: 16,
           }}
         >
-          <div className="text-xs mb-4" style={{ color: "#f59e0b" }}>/ Em tamanhos diferentes</div>
+          <div className="text-xs mb-4" style={{ color: "#FF9A00" }}>/ Em tamanhos diferentes</div>
           <div className="space-y-6">
             {options.map(({ letter, Component }) => (
               <div key={letter} className="flex items-center gap-8">
@@ -250,8 +250,8 @@ export default function LogoPreview() {
           href="/"
           className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3"
           style={{
-            background: "linear-gradient(135deg, #f59e0b, #fb923c)",
-            color: "#0c0a09",
+            background: "linear-gradient(135deg, #FF9A00, #F3930D)",
+            color: "#090908",
             borderRadius: 9999,
           }}
         >

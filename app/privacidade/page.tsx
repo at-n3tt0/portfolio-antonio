@@ -2,10 +2,10 @@ export default function Privacidade() {
   return (
     <main
       className="min-h-screen px-6 py-20"
-      style={{ background: "#0c0a09", color: "#f8fafc" }}
+      style={{ background: "#090908", color: "#F5F5F5" }}
     >
       <section className="mx-auto max-w-3xl space-y-6">
-        <p className="font-mono text-xs uppercase tracking-[0.3em]" style={{ color: "#f59e0b" }}>
+        <p className="font-mono text-xs uppercase tracking-[0.3em]" style={{ color: "#FF9A00" }}>
           atnetto.tech
         </p>
         <h1 className="text-4xl font-bold">Politica de privacidade</h1>

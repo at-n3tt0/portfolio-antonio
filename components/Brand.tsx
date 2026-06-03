@@ -3,96 +3,90 @@ type Size = "sm" | "md" | "lg" | "xl";
 const sizeMap: Record<Size, number> = { sm: 32, md: 44, lg: 72, xl: 128 };
 
 /**
- * BrandMark — clean monogram "a" in a rounded square with amber gradient.
- * The accent dot above suggests "active/operational" without being terminal-y.
+ * BrandMark — official "at" mark (orange gradient wordmark).
+ * Uses Inter Display ExtraBold rendered as SVG text.
  */
-export function BrandMark({ size = "sm" }: { size?: Size }) {
+export function BrandMark({ size = "sm", withCard = false }: { size?: Size; withCard?: boolean }) {
   const s = sizeMap[size];
-  const id = `bg-${size}`;
+  const id = `bm-${size}`;
   return (
     <svg
       width={s}
       height={s}
-      viewBox="0 0 64 64"
+      viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
       aria-label="atnetto.tech"
     >
       <defs>
-        <linearGradient id={id} x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#fbbf24" />
-          <stop offset="55%" stopColor="#f59e0b" />
-          <stop offset="100%" stopColor="#fb923c" />
+        <filter id={`${id}-glow`} x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="8" result="blur" />
+          <feColorMatrix
+            in="blur"
+            type="matrix"
+            values="1 0 0 0 1  0 0.55 0 0 0.55  0 0 0 0 0  0 0 0 0.75 0"
+            result="glow"
+          />
+          <feMerge>
+            <feMergeNode in="glow" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <linearGradient id={`${id}-grad`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#FFB21A" />
+          <stop offset="55%" stopColor="#FF9A00" />
+          <stop offset="100%" stopColor="#E98E0E" />
         </linearGradient>
       </defs>
-
-      {/* Rounded square card */}
-      <rect x="2" y="2" width="60" height="60" rx="14" fill={`url(#${id})`} />
-
-      {/* Highlight gloss (top-left, subtle) */}
-      <rect
-        x="2"
-        y="2"
-        width="60"
-        height="30"
-        rx="14"
-        fill="white"
-        fillOpacity="0.08"
-      />
-
-      {/* Custom "a" — stylized lowercase, geometric */}
-      <g fill="#1c1917">
-        {/* Bowl of the a (circle with notch) */}
-        <path
-          d="M 32 18
-             C 22 18, 16 25, 16 33
-             C 16 41, 22 48, 32 48
-             C 36 48, 39 47, 41 45
-             L 41 47
-             L 48 47
-             L 48 30
-             C 48 22, 42 18, 32 18 Z
-             M 32 25
-             C 38 25, 41 28, 41 33
-             L 41 36
-             C 41 39, 37 41, 33 41
-             C 27 41, 24 38, 24 33
-             C 24 28, 27 25, 32 25 Z"
-        />
+      {withCard && (
+        <rect x="64" y="64" width="896" height="896" rx="180" fill="#0B0A08" stroke="#2B2114" strokeWidth="10" />
+      )}
+      <g filter={`url(#${id}-glow)`}>
+        <text
+          x="512"
+          y="630"
+          textAnchor="middle"
+          fontFamily="'Inter Display', Inter, Arial, sans-serif"
+          fontSize="545"
+          fontWeight="900"
+          letterSpacing="-55"
+          fill={`url(#${id}-grad)`}
+        >
+          at
+        </text>
       </g>
-
-      {/* Accent dot (cream, subtle "active" indicator) */}
-      <circle cx="50" cy="14" r="3" fill="#fefce8" />
     </svg>
   );
 }
 
 /**
- * BrandWordmark — mark + text logo.
+ * BrandWordmark — full logo: "at" mark + "atnetto.tech" text + tagline.
+ * Use in hero, footer, large surfaces.
  */
-export function BrandWordmark({ size = "md" }: { size?: "sm" | "md" }) {
-  const fontSize = size === "sm" ? 16 : 22;
+export function BrandWordmark({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
+  const fontSize = size === "sm" ? 16 : size === "md" ? 22 : 32;
   return (
     <span className="inline-flex items-center gap-2.5">
       <BrandMark size="sm" />
       <span
-        className="font-bold tracking-tight"
+        className="font-black tracking-tight"
         style={{
-          fontFamily: "var(--font-space-grotesk), sans-serif",
-          color: "#f5f5f4",
+          fontFamily: "'Inter Display', Inter, var(--font-geist-sans), sans-serif",
+          color: "#F5F5F5",
           fontSize,
+          letterSpacing: "-0.04em",
         }}
       >
-        atnetto<span style={{ color: "#f59e0b" }}>.</span>tech
+        atnetto<span style={{ color: "#FF9A00" }}>.tech</span>
       </span>
     </span>
   );
 }
 
 /**
- * CornerBrackets — optional decorative motif. Kept for selective use only.
+ * CornerBrackets — decorative motif (kept for sparing use only).
  */
 export function CornerBrackets({
-  color = "rgba(245,158,11,0.35)",
+  color = "rgba(255,154,0,0.35)",
   size = 28,
   thickness = 2,
   inset = 0,

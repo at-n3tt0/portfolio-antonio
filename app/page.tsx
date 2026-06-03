@@ -10,7 +10,7 @@ import StatusFooter from "@/components/StatusFooter";
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen" style={{ background: "#0c0a09", color: "#f5f5f4" }}>
+    <main className="relative min-h-screen" style={{ background: "#090908", color: "#f5f5f4" }}>
       <StatusBar />
       <Navbar />
       <Hero />

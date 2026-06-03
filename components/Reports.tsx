@@ -134,12 +134,12 @@ const stackColors: Record<string, string> = {
   MySQL: "#60a5fa",
   PostgreSQL: "#60a5fa",
   FastAPI: "#34d399",
-  Python: "#fbbf24",
+  Python: "#FFB21A",
   React: "#22d3ee",
   Next: "#94a3b8",
   Node: "#84cc16",
   Docker: "#38bdf8",
-  Linux: "#fbbf24",
+  Linux: "#FFB21A",
   IA: "#a78bfa",
   "Mercado Pago": "#22d3ee",
 };
@@ -149,7 +149,7 @@ function stackColor(s: string) {
 }
 
 function StatusBadge({ s }: { s: Report["status"] }) {
-  const color = s === "operational" ? "#22c55e" : "#f59e0b";
+  const color = s === "operational" ? "#22c55e" : "#FF9A00";
   const label = s === "operational" ? "no ar" : "em beta";
   return (
     <span
@@ -174,19 +174,19 @@ export default function Reports() {
       className="relative py-28 px-4 md:px-6"
       style={{
         background:
-          "linear-gradient(180deg, #0c0a09 0%, #060b18 50%, #0c0a09 100%)",
+          "linear-gradient(180deg, #090908 0%, #060b18 50%, #090908 100%)",
       }}
     >
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#f59e0b" }}>
+          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#FF9A00" }}>
             <span>/</span><span>Relatórios</span>
           </div>
           <h2
             className="text-3xl md:text-5xl font-bold leading-tight max-w-3xl"
             style={{
               fontFamily: "var(--font-space-grotesk), sans-serif",
-              color: "#f8fafc",
+              color: "#F5F5F5",
             }}
           >
             Cada sistema é um relato.
@@ -196,7 +196,7 @@ export default function Reports() {
           </p>
         </div>
 
-        <div className="space-y-px" style={{ background: "rgba(251,191,36,0.12)" }}>
+        <div className="space-y-px" style={{ background: "rgba(255,154,0,0.12)" }}>
           {reports.map((r, i) => {
             const mockOnRight = i % 2 === 0;
             return (
@@ -207,14 +207,14 @@ export default function Reports() {
                 viewport={{ once: true, margin: "-80px" }}
                 transition={{ duration: 0.5, delay: 0.05 }}
                 className="p-6 md:p-8"
-                style={{ background: "#0c0a09" }}
+                style={{ background: "#090908" }}
               >
                 {/* header bar */}
                 <div className="flex items-center justify-between flex-wrap gap-3 mb-6 text-xs">
                   <div className="flex items-center gap-3 flex-wrap">
-                    <span className="mono" style={{ color: "#f59e0b" }}>#{r.num}</span>
+                    <span className="mono" style={{ color: "#FF9A00" }}>#{r.num}</span>
                     <span style={{ color: "#475569" }}>·</span>
-                    <span className="mono font-bold" style={{ color: "#f8fafc" }}>{r.hostname}</span>
+                    <span className="mono font-bold" style={{ color: "#F5F5F5" }}>{r.hostname}</span>
                     <span style={{ color: "#475569" }}>·</span>
                     <span style={{ color: "#94a3b8" }}>{r.client}</span>
                   </div>
@@ -231,7 +231,7 @@ export default function Reports() {
                   {/* Text + metrics column */}
                   <div className={`space-y-5 ${mockOnRight ? "lg:order-1" : "lg:order-2"}`}>
                     <div>
-                      <div className="text-[11px] mb-1.5" style={{ color: "#f59e0b" }}>
+                      <div className="text-[11px] mb-1.5" style={{ color: "#FF9A00" }}>
                         Problema
                       </div>
                       <p className="text-sm md:text-base leading-relaxed" style={{ color: "#cbd5e1" }}>
@@ -239,7 +239,7 @@ export default function Reports() {
                       </p>
                     </div>
                     <div>
-                      <div className="text-[11px] mb-1.5" style={{ color: "#f59e0b" }}>
+                      <div className="text-[11px] mb-1.5" style={{ color: "#FF9A00" }}>
                         Solução
                       </div>
                       <p className="text-sm md:text-base leading-relaxed" style={{ color: "#cbd5e1" }}>
@@ -255,14 +255,14 @@ export default function Reports() {
                           className="px-3 py-2"
                           style={{
                             background: "rgba(28,25,23,0.5)",
-                            border: "1px solid rgba(251,191,36,0.12)",
+                            border: "1px solid rgba(255,154,0,0.12)",
                             borderRadius: 4,
                           }}
                         >
                           <div className="uppercase tracking-wider text-[9px] mb-0.5" style={{ color: "#475569" }}>
                             {m.k}
                           </div>
-                          <div style={{ color: "#f59e0b" }} className="text-xs font-bold truncate">{m.v}</div>
+                          <div style={{ color: "#FF9A00" }} className="text-xs font-bold truncate">{m.v}</div>
                         </div>
                       ))}
                     </div>
@@ -292,12 +292,12 @@ export default function Reports() {
                         rel="noopener noreferrer"
                         className="text-xs inline-flex items-center gap-1.5 px-3.5 py-1.5 transition-colors ml-auto"
                         style={{
-                          color: "#f59e0b",
-                          border: "1px solid rgba(245,158,11,0.35)",
+                          color: "#FF9A00",
+                          border: "1px solid rgba(255,154,0,0.35)",
                           borderRadius: 9999,
                         }}
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.background = "rgba(245,158,11,0.08)";
+                          e.currentTarget.style.background = "rgba(255,154,0,0.08)";
                         }}
                         onMouseLeave={(e) => {
                           e.currentTarget.style.background = "transparent";
