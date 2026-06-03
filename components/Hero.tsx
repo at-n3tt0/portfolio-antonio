@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { CornerBrackets } from "@/components/Brand";
 
 function Counter({ to, suffix = "", duration = 1400 }: { to: number; suffix?: string; duration?: number }) {
   const [n, setN] = useState(0);
@@ -66,7 +67,8 @@ export default function Hero() {
         style={{ background: "linear-gradient(to bottom, transparent, #030712)" }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto">
+      <div className="relative z-10 max-w-7xl mx-auto py-12 px-4 md:px-8">
+        <CornerBrackets color="rgba(245,158,11,0.35)" size={28} thickness={2} inset={0} />
         {/* Soft command line */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -133,11 +135,12 @@ export default function Hero() {
             >
               <a
                 href="#ticket"
-                className="group inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 transition-all"
+                className="group inline-flex items-center gap-2.5 text-base font-semibold px-7 py-3.5 transition-all"
                 style={{
                   background: "linear-gradient(135deg, #f59e0b, #fb923c)",
                   color: "#030712",
-                  borderRadius: 4,
+                  borderRadius: 9999,
+                  boxShadow: "0 8px 24px -8px rgba(245,158,11,0.5)",
                 }}
               >
                 <span>Falar com a gente</span>
@@ -145,10 +148,22 @@ export default function Hero() {
               </a>
               <a
                 href="#operating"
-                className="text-sm transition-colors"
-                style={{ color: "#cbd5e1" }}
+                className="inline-flex items-center gap-2 text-base px-6 py-3.5 transition-all"
+                style={{
+                  color: "#cbd5e1",
+                  border: "1px solid rgba(245,158,11,0.3)",
+                  borderRadius: 9999,
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(245,158,11,0.06)";
+                  e.currentTarget.style.borderColor = "rgba(245,158,11,0.6)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "transparent";
+                  e.currentTarget.style.borderColor = "rgba(245,158,11,0.3)";
+                }}
               >
-                <span style={{ color: "#f59e0b" }}>›</span> Ver sistemas no ar
+                Ver sistemas no ar
               </a>
             </motion.div>
           </div>
@@ -228,17 +243,26 @@ export default function Hero() {
                 <MetricBars />
               </div>
 
-              {/* Footer log */}
+              {/* Activity feed (humano) */}
               <div
-                className="px-4 py-3 mono text-[10px]"
+                className="px-4 py-3 text-[11px] space-y-1"
                 style={{
                   borderTop: "1px solid rgba(251,191,36,0.08)",
-                  color: "#475569",
+                  color: "#94a3b8",
                 }}
               >
-                <div><span style={{ color: "#22c55e" }}>[ok]</span> ping pmm-001 → 14ms</div>
-                <div><span style={{ color: "#22c55e" }}>[ok]</span> ping nex-001 → 22ms</div>
-                <div><span style={{ color: "#22c55e" }}>[ok]</span> ping mon-001 → 9ms</div>
+                <div className="flex items-center justify-between">
+                  <span>Sistema PMM operando normalmente</span>
+                  <span className="mono text-[10px]" style={{ color: "#22c55e" }}>14ms</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span>NexLicense respondendo</span>
+                  <span className="mono text-[10px]" style={{ color: "#22c55e" }}>22ms</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span>Monitor coletando métricas</span>
+                  <span className="mono text-[10px]" style={{ color: "#22c55e" }}>9ms</span>
+                </div>
               </div>
             </div>
           </motion.div>

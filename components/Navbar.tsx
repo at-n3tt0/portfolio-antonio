@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { BrandMark } from "@/components/Brand";
 
 const links = [
   { label: "Módulos", href: "#modules", id: "modules" },
@@ -55,10 +56,11 @@ export default function Navbar() {
       <nav className="max-w-7xl mx-auto px-4 md:px-6 h-14 flex items-center justify-between">
         <button
           onClick={() => click("#hero")}
-          className="font-bold text-base tracking-tight"
+          className="font-bold text-base tracking-tight inline-flex items-center gap-2"
           style={{ fontFamily: "var(--font-space-grotesk), sans-serif", color: "#f8fafc" }}
         >
-          atnetto<span style={{ color: "#f59e0b" }}>.</span>tech
+          <BrandMark size="sm" />
+          <span>atnetto<span style={{ color: "#f59e0b" }}>.</span>tech</span>
         </button>
 
         <ul className="hidden md:flex items-center gap-1 text-sm">
@@ -93,7 +95,7 @@ export default function Navbar() {
             style={{
               background: "linear-gradient(135deg, #f59e0b, #fb923c)",
               color: "#030712",
-              borderRadius: 4,
+              borderRadius: 9999,
             }}
           >
             Falar com a gente →
@@ -144,7 +146,7 @@ export default function Navbar() {
                   style={{
                     background: "linear-gradient(135deg, #f59e0b, #fb923c)",
                     color: "#030712",
-                    borderRadius: 4,
+                    borderRadius: 9999,
                   }}
                 >
                   Falar com a gente →

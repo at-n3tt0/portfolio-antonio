@@ -185,7 +185,14 @@ function Visual({ kind }: { kind: Module["visual"] }) {
 
 export default function Modules() {
   return (
-    <section id="modules" className="relative py-28 px-4 md:px-6 scanlines">
+    <section
+      id="modules"
+      className="relative py-28 px-4 md:px-6 scanlines"
+      style={{
+        background:
+          "radial-gradient(ellipse 70% 50% at 30% 10%, rgba(245,158,11,0.05), transparent 60%), #030712",
+      }}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="mb-12 flex items-end justify-between flex-wrap gap-4">
           <div>

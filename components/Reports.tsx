@@ -128,6 +128,26 @@ const reports: Report[] = [
   },
 ];
 
+const stackColors: Record<string, string> = {
+  Laravel: "#fb7185",
+  PHP: "#a78bfa",
+  MySQL: "#60a5fa",
+  PostgreSQL: "#60a5fa",
+  FastAPI: "#34d399",
+  Python: "#fbbf24",
+  React: "#22d3ee",
+  Next: "#94a3b8",
+  Node: "#84cc16",
+  Docker: "#38bdf8",
+  Linux: "#fbbf24",
+  IA: "#a78bfa",
+  "Mercado Pago": "#22d3ee",
+};
+
+function stackColor(s: string) {
+  return stackColors[s] ?? "#94a3b8";
+}
+
 function StatusBadge({ s }: { s: Report["status"] }) {
   const color = s === "operational" ? "#22c55e" : "#f59e0b";
   const label = s === "operational" ? "no ar" : "em beta";
@@ -149,7 +169,14 @@ function StatusBadge({ s }: { s: Report["status"] }) {
 
 export default function Reports() {
   return (
-    <section id="reports" className="relative py-28 px-4 md:px-6">
+    <section
+      id="reports"
+      className="relative py-28 px-4 md:px-6"
+      style={{
+        background:
+          "linear-gradient(180deg, #030712 0%, #060b18 50%, #030712 100%)",
+      }}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#f59e0b" }}>
@@ -241,30 +268,33 @@ export default function Reports() {
                     </div>
 
                     {/* stack chips + link */}
-                    <div className="flex flex-wrap gap-1.5 items-center pt-1">
-                      {r.stack.map((s) => (
-                        <span
-                          key={s}
-                          className="mono text-[10px] px-2 py-1"
-                          style={{
-                            color: "#94a3b8",
-                            background: "rgba(245,158,11,0.06)",
-                            border: "1px solid rgba(245,158,11,0.15)",
-                            borderRadius: 3,
-                          }}
-                        >
-                          {s}
-                        </span>
-                      ))}
+                    <div className="flex flex-wrap gap-2 items-center pt-1">
+                      {r.stack.map((s) => {
+                        const c = stackColor(s);
+                        return (
+                          <span
+                            key={s}
+                            className="text-xs px-3 py-1.5 font-medium"
+                            style={{
+                              color: c,
+                              background: `${c}14`,
+                              border: `1px solid ${c}33`,
+                              borderRadius: 9999,
+                            }}
+                          >
+                            {s}
+                          </span>
+                        );
+                      })}
                       <a
                         href={r.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs inline-flex items-center gap-1.5 px-2.5 py-1 transition-colors ml-auto"
+                        className="text-xs inline-flex items-center gap-1.5 px-3.5 py-1.5 transition-colors ml-auto"
                         style={{
                           color: "#f59e0b",
-                          border: "1px solid rgba(245,158,11,0.3)",
-                          borderRadius: 3,
+                          border: "1px solid rgba(245,158,11,0.35)",
+                          borderRadius: 9999,
                         }}
                         onMouseEnter={(e) => {
                           e.currentTarget.style.background = "rgba(245,158,11,0.08)";

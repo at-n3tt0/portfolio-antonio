@@ -99,7 +99,7 @@ export default function Ticket() {
                           background: priority === p ? "rgba(245,158,11,0.12)" : "transparent",
                           border: `1px solid ${priority === p ? "rgba(245,158,11,0.5)" : "rgba(245,158,11,0.18)"}`,
                           color: priority === p ? "#f59e0b" : "#94a3b8",
-                          borderRadius: 3,
+                          borderRadius: 9999,
                         }}
                       >
                         {labelMap[p]}
@@ -129,7 +129,7 @@ export default function Ticket() {
                           background: type === tp ? "rgba(245,158,11,0.12)" : "transparent",
                           border: `1px solid ${type === tp ? "rgba(245,158,11,0.5)" : "rgba(245,158,11,0.18)"}`,
                           color: type === tp ? "#f59e0b" : "#94a3b8",
-                          borderRadius: 3,
+                          borderRadius: 9999,
                         }}
                       >
                         {labelMap[tp]}
@@ -202,11 +202,12 @@ export default function Ticket() {
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold px-6 py-3 transition-all"
+                className="inline-flex items-center gap-2.5 text-base font-semibold px-7 py-3.5 transition-all"
                 style={{
                   background: "linear-gradient(135deg, #f59e0b, #fb923c)",
                   color: "#030712",
-                  borderRadius: 4,
+                  borderRadius: 9999,
+                  boxShadow: "0 8px 24px -8px rgba(245,158,11,0.5)",
                 }}
               >
                 Enviar <span>→</span>
