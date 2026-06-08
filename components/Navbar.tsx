@@ -6,10 +6,10 @@ import { Menu, X } from "lucide-react";
 import { BrandMark } from "@/components/Brand";
 
 const links = [
-  { label: "Módulos", href: "#modules", id: "modules" },
-  { label: "Em operação", href: "#operating", id: "operating" },
+  { label: "Soluções", href: "#modules", id: "modules" },
+  { label: "Processo", href: "#process", id: "process" },
   { label: "Arquitetura", href: "#mesh", id: "mesh" },
-  { label: "Relatórios", href: "#reports", id: "reports" },
+  { label: "Por que?", href: "#why", id: "why" },
   { label: "Chamado", href: "#ticket", id: "ticket" },
 ];
 

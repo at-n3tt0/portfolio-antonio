@@ -147,7 +147,7 @@ export default function Hero() {
                 <span>→</span>
               </a>
               <a
-                href="#operating"
+                href="#process"
                 className="inline-flex items-center gap-2 text-base px-6 py-3.5 transition-all"
                 style={{
                   color: "#cbd5e1",
@@ -163,7 +163,7 @@ export default function Hero() {
                   e.currentTarget.style.borderColor = "rgba(255,154,0,0.3)";
                 }}
               >
-                Ver sistemas no ar
+                Como funciona
               </a>
             </motion.div>
           </div>

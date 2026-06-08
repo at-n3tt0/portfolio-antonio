@@ -6,9 +6,9 @@ export default async function StatusFooter() {
 
   const services: { label: string; status: "operational" | "available"; href?: string }[] = [
     { label: "atnetto.tech", status: "operational" },
-    { label: "github.com/at-n3tt0", status: "operational", href: "https://github.com/at-n3tt0" },
-    { label: "linkedin.com/in/at-netto", status: "operational", href: "https://www.linkedin.com/in/at-netto" },
     { label: "WhatsApp +55 91 98024-2234", status: "available", href: "https://wa.me/5591980242234" },
+    { label: "@at_netto.tech", status: "operational", href: "https://instagram.com/at_netto.tech" },
+    { label: "linkedin.com/in/at-netto", status: "operational", href: "https://www.linkedin.com/in/at-netto" },
   ];
 
   return (
