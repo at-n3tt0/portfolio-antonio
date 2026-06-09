@@ -54,10 +54,10 @@ export default function Navbar() {
         borderBottom: scrolled ? "1px solid rgba(255,154,0,0.1)" : "1px solid transparent",
       }}
     >
-      <nav className="max-w-7xl mx-auto px-4 md:px-6 h-14 flex items-center justify-between">
+      <nav className="max-w-7xl mx-auto px-5 md:px-8 h-14 md:h-16 flex items-center justify-between">
         <button
           onClick={() => click("#hero")}
-          className="font-bold text-base tracking-tight inline-flex items-center gap-2"
+          className="font-bold text-base tracking-tight inline-flex items-center gap-2.5"
           style={{ fontFamily: "var(--font-inter), Inter, sans-serif", color: "#F5F5F5", letterSpacing: "-0.03em" }}
         >
           <BrandMark size="sm" />
@@ -67,7 +67,11 @@ export default function Navbar() {
             width={140}
             height={32}
             priority
-            style={{ height: 22, width: "auto" }}
+            style={{
+              height: "clamp(22px, 2.4vw, 28px)",
+              width: "auto",
+              mixBlendMode: "screen",
+            }}
           />
         </button>
 

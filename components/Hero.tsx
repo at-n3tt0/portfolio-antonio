@@ -51,7 +51,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[100vh] pt-20 pb-24 px-4 md:px-6 overflow-hidden scanlines"
+      className="relative min-h-[calc(100vh-4rem)] pt-8 md:pt-12 pb-20 px-4 md:px-6 overflow-hidden scanlines"
     >
       {/* Background layers */}
       <div className="noc-grid absolute inset-0 pointer-events-none" />
@@ -67,7 +67,7 @@ export default function Hero() {
         style={{ background: "linear-gradient(to bottom, transparent, #090908)" }}
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto py-12 px-4 md:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto py-6 md:py-8 px-4 md:px-8">
         <CornerBrackets color="rgba(255,154,0,0.35)" size={28} thickness={2} inset={0} />
         {/* Soft command line */}
         <motion.div
@@ -93,7 +93,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.02] tracking-tight"
+              className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight"
               style={{
                 fontFamily: "var(--font-space-grotesk), sans-serif",
                 color: "#F5F5F5",
@@ -111,7 +111,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.4 }}
-              className="mt-8 text-lg md:text-xl max-w-xl leading-relaxed"
+              className="mt-5 md:mt-6 text-lg md:text-xl max-w-xl leading-relaxed"
               style={{ color: "#94a3b8" }}
             >
               Construímos, operamos e mantemos os sistemas que sustentam sua operação — do servidor ao código. Sem largar depois do deploy.
