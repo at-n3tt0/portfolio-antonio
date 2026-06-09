@@ -1,18 +1,12 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 const TYPES = ["new_system", "support", "automation", "infra"] as const;
 const PRIORITIES = ["low", "normal", "high"] as const;
 
-function randomTicketId() {
-  const n = Math.floor(1000 + Math.random() * 9000);
-  return `ATN-${n}`;
-}
-
 export default function Ticket() {
-  const ticketId = useMemo(() => randomTicketId(), []);
   const [type, setType] = useState<(typeof TYPES)[number]>("new_system");
   const [priority, setPriority] = useState<(typeof PRIORITIES)[number]>("normal");
   const [subject, setSubject] = useState("");
@@ -20,14 +14,13 @@ export default function Ticket() {
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
 
-  const message = `*[ ${ticketId} ] novo chamado*\n\n` +
+  const message = `*Pré-atendimento — atnetto.tech*\n\n` +
     `tipo: ${type}\n` +
     `prioridade: ${priority}\n` +
     `nome: ${name || "—"}\n` +
     `empresa: ${company || "—"}\n` +
     `assunto: ${subject || "—"}\n\n` +
-    `descrição:\n${desc || "—"}\n\n` +
-    `enviado via atnetto.tech`;
+    `descrição:\n${desc || "—"}`;
 
   const whatsappHref = `https://wa.me/5591980242234?text=${encodeURIComponent(message)}`;
 
@@ -73,10 +66,8 @@ export default function Ticket() {
               background: "rgba(14,12,9,0.6)",
             }}
           >
-            <span>
-              Novo chamado <span className="mono ml-1" style={{ color: "#F2A600" }}>#{ticketId}</span>
-            </span>
-            <span style={{ color: "#64748b" }} className="text-[10px]">rascunho</span>
+            <span>Pré-atendimento</span>
+            <span style={{ color: "#64748b" }} className="text-[10px]">envio pelo WhatsApp</span>
           </div>
 
           {/* body */}

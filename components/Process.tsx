@@ -34,13 +34,13 @@ const steps: Step[] = [
   },
   {
     num: "03",
-    title: "Operação contínua",
+    title: "Acompanhamento",
     desc:
-      "O sistema entra no ar e a gente fica. Monitoramento ativo, manutenção, ajustes e plantão para incidentes críticos.",
+      "Depois da entrega, o suporte pode continuar conforme combinado: ajustes, melhorias, monitoramento e apoio técnico quando o projeto exigir.",
     bullets: [
-      "Monitoramento 24/7 com alertas",
-      "Manutenção evolutiva mensal",
-      "Plantão técnico para urgências",
+      "Monitoramento quando contratado",
+      "Manutenção evolutiva sob demanda",
+      "Apoio técnico conforme combinado",
     ],
   },
 ];
@@ -64,7 +64,7 @@ export default function Process() {
             Do problema ao sistema rodando — em 3 fases.
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed" style={{ color: "#8B8F98" }}>
-            Sem proposta inflada. Sem reunião de 1 hora antes de começar. Diagnóstico curto, construção em etapas, operação contínua depois do go-live.
+            Sem proposta inflada. Sem reunião de 1 hora antes de começar. Diagnóstico curto, construção em etapas e acompanhamento depois da entrega — quando o projeto exigir.
           </p>
         </div>
 

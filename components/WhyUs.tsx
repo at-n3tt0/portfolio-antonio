@@ -11,27 +11,27 @@ type Reason = {
 const reasons: Reason[] = [
   {
     num: "01",
-    title: "Operação real, não tela bonita",
+    title: "Critério técnico",
     desc:
-      "Construímos sistemas que rodam em produção, com usuários reais, sob pressão. Não entregamos mockup polido que quebra no primeiro deploy.",
+      "Construímos com padrão de produção desde o protótipo: código auditável, deploy reproduzível, decisões de stack justificadas pelo caso.",
   },
   {
     num: "02",
-    title: "Stack moderna, escolha cirúrgica",
+    title: "Clareza no escopo",
     desc:
-      "Laravel, FastAPI, React, PostgreSQL, Docker, Linux. Cada projeto recebe a stack certa pelo caso — não a stack da moda do mês.",
+      "Antes de codar, alinhamos problema, prazo e orçamento. Sem proposta inflada nem entrega surpresa.",
   },
   {
     num: "03",
-    title: "Suporte que não larga",
+    title: "Suporte sob demanda",
     desc:
-      "Depois do go-live a gente continua. Monitoramento ativo, manutenção evolutiva e plantão para incidente crítico. Sem mensagem ignorada.",
+      "Após a entrega, o acompanhamento — manutenção evolutiva, ajustes e monitoramento — é contratado conforme a necessidade do cliente.",
   },
   {
     num: "04",
-    title: "Do diagnóstico ao deploy",
+    title: "Soluções ajustadas ao cenário",
     desc:
-      "Servidor, rede, banco, backend, frontend, integração, observabilidade, automação. Um time, uma conversa, uma responsabilidade.",
+      "Servidor, banco, backend, frontend, integração, automação. Uma conversa, uma responsabilidade — dimensionado ao tamanho da operação.",
   },
 ];
 
@@ -46,11 +46,11 @@ const sectors = [
   "Software interno",
 ];
 
-const guarantees = [
-  { k: "Resposta em horário comercial", v: "até 4h" },
-  { k: "Tempo médio de diagnóstico", v: "48h" },
-  { k: "Disponibilidade de plantão", v: "24/7" },
-  { k: "Backups verificados", v: "diários" },
+const commitments = [
+  "Diagnóstico antes da proposta",
+  "Escopo, prazo e orçamento alinhados",
+  "Documentação e entrega organizada",
+  "Acompanhamento conforme combinado",
 ];
 
 export default function WhyUs() {
@@ -79,7 +79,7 @@ export default function WhyUs() {
             Quatro razões pra fechar com a gente.
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed" style={{ color: "#8B8F98" }}>
-            Não é a única opção. Mas é a única que te entrega tecnologia que funciona, suporte que responde e operação que não para.
+            Não é a única opção. Mas entrega tecnologia bem planejada, suporte direto e soluções ajustadas à sua operação.
           </p>
         </div>
 
@@ -126,9 +126,12 @@ export default function WhyUs() {
           ))}
         </div>
 
-        {/* Guarantees row */}
+        {/* Compromissos de trabalho */}
+        <div className="text-sm mb-4" style={{ color: "#8B8F98" }}>
+          Compromissos de trabalho
+        </div>
         <div
-          className="grid grid-cols-2 md:grid-cols-4 gap-px mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-px mb-12"
           style={{
             background: "rgba(242,166,0,0.12)",
             border: "1px solid rgba(242,166,0,0.12)",
@@ -136,24 +139,24 @@ export default function WhyUs() {
             overflow: "hidden",
           }}
         >
-          {guarantees.map((g) => (
+          {commitments.map((c) => (
             <div
-              key={g.k}
-              className="p-5 md:p-6"
+              key={c}
+              className="p-5 md:p-6 flex items-start gap-3"
               style={{ background: "#0E0C09" }}
             >
+              <span style={{ color: "#F2A600" }} className="mono text-sm mt-0.5">
+                ›
+              </span>
               <div
-                className="text-2xl md:text-3xl font-extrabold mb-1"
+                className="text-sm md:text-base"
                 style={{
-                  color: "#F2A600",
+                  color: "#F5F5F5",
                   fontFamily: "var(--font-inter), Inter, sans-serif",
-                  letterSpacing: "-0.03em",
+                  letterSpacing: "-0.01em",
                 }}
               >
-                {g.v}
-              </div>
-              <div className="text-xs md:text-sm" style={{ color: "#8B8F98" }}>
-                {g.k}
+                {c}
               </div>
             </div>
           ))}
@@ -162,7 +165,7 @@ export default function WhyUs() {
         {/* Sectors */}
         <div>
           <div className="text-sm mb-4" style={{ color: "#8B8F98" }}>
-            Setores que atendemos
+            Setores com afinidade
           </div>
           <div className="flex flex-wrap gap-2">
             {sectors.map((s) => (

@@ -10,7 +10,7 @@ const links = [
   { label: "Processo", href: "#process", id: "process" },
   { label: "Arquitetura", href: "#mesh", id: "mesh" },
   { label: "Por que?", href: "#why", id: "why" },
-  { label: "Chamado", href: "#ticket", id: "ticket" },
+  { label: "Contato", href: "#ticket", id: "ticket" },
 ];
 
 export default function Navbar() {

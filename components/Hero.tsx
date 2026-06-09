@@ -1,51 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { CornerBrackets } from "@/components/Brand";
 
-function Counter({ to, suffix = "", duration = 1400 }: { to: number; suffix?: string; duration?: number }) {
-  const [n, setN] = useState(0);
-  useEffect(() => {
-    let raf = 0;
-    const start = performance.now();
-    const tick = (now: number) => {
-      const p = Math.min(1, (now - start) / duration);
-      const eased = 1 - Math.pow(1 - p, 3);
-      setN(to * eased);
-      if (p < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [to, duration]);
-  const isFloat = !Number.isInteger(to);
-  return (
-    <span>
-      {isFloat ? n.toFixed(2) : Math.round(n)}
-      {suffix}
-    </span>
-  );
-}
-
-function MetricBars() {
-  const bars = Array.from({ length: 24 });
-  return (
-    <div className="flex items-end gap-[3px] h-8 mt-2">
-      {bars.map((_, i) => (
-        <span
-          key={i}
-          className="bar-tick"
-          style={{
-            width: 3,
-            height: "100%",
-            background: i % 3 === 0 ? "#F2A600" : "rgba(242,166,0,0.35)",
-            animationDelay: `${(i * 70) % 1600}ms`,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
+const services = [
+  { title: "Sites profissionais", desc: "Institucional, landing pages e portfólios." },
+  { title: "Sistemas sob demanda", desc: "Internos, dashboards e controle operacional." },
+  { title: "Automações e IA", desc: "Fluxos, integrações com APIs e ferramentas de IA." },
+  { title: "Consultoria técnica", desc: "Diagnóstico, planejamento e estruturação." },
+];
 
 export default function Hero() {
   return (
@@ -82,7 +45,7 @@ export default function Hero() {
           <span style={{ color: "#334155" }}>·</span>
           <span>Marituba, PA</span>
           <span style={{ color: "#334155" }}>·</span>
-          <span>operando desde 2021</span>
+          <span>soluções sob demanda</span>
         </motion.div>
 
         {/* Main grid: headline left + dashboard right */}
@@ -114,7 +77,7 @@ export default function Hero() {
               className="mt-5 md:mt-6 text-lg md:text-xl max-w-xl leading-relaxed"
               style={{ color: "#94a3b8" }}
             >
-              Construímos, operamos e mantemos os sistemas que sustentam sua operação — do servidor ao código. Sem largar depois do deploy.
+              Criamos sites, sistemas e automações sob demanda — do diagnóstico ao deploy. Quando faz sentido, ficamos depois pra manter e evoluir.
             </motion.p>
 
             <motion.p
@@ -168,7 +131,7 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* RIGHT — mini dashboard */}
+          {/* RIGHT — serviços principais */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
@@ -184,86 +147,54 @@ export default function Hero() {
                 borderRadius: 6,
               }}
             >
-              {/* Panel header */}
               <div
-                className="flex items-center justify-between px-4 py-2.5 text-xs"
+                className="flex items-center justify-between px-5 py-3 text-xs"
                 style={{
                   borderBottom: "1px solid rgba(242,166,0,0.12)",
                   color: "#94a3b8",
                 }}
               >
                 <span style={{ fontFamily: "var(--font-space-grotesk), sans-serif" }} className="font-medium">
-                  Painel ao vivo
+                  Serviços principais
                 </span>
-                <span className="flex items-center gap-1.5 mono text-[10px] uppercase tracking-widest" style={{ color: "#22c55e" }}>
-                  <span className="status-dot" />
-                  <span>live</span>
+                <span className="mono text-[10px] uppercase tracking-widest" style={{ color: "#64748b" }}>
+                  sob demanda
                 </span>
               </div>
 
-              {/* 3 metrics */}
-              <div className="grid grid-cols-3 divide-x" style={{ borderColor: "rgba(242,166,0,0.08)" }}>
-                {[
-                  { label: "Em produção", value: 6, suffix: "" },
-                  { label: "Serviços", value: 47, suffix: "" },
-                  { label: "Uptime médio", value: 99.94, suffix: "%" },
-                ].map((m, i) => (
-                  <div
-                    key={m.label}
-                    className="px-4 py-5"
+              <ul className="divide-y" style={{ borderColor: "rgba(242,166,0,0.08)" }}>
+                {services.map((s) => (
+                  <li
+                    key={s.title}
+                    className="px-5 py-4"
                     style={{ borderColor: "rgba(242,166,0,0.08)" }}
                   >
-                    <div
-                      className="text-[10px] uppercase tracking-wider mb-2"
-                      style={{ color: "#64748b" }}
-                    >
-                      {m.label}
+                    <div className="flex items-start gap-3">
+                      <span
+                        className="mono text-xs mt-0.5"
+                        style={{ color: "#F2A600" }}
+                      >
+                        ›
+                      </span>
+                      <div>
+                        <div
+                          className="text-sm md:text-base font-semibold"
+                          style={{
+                            color: "#F5F5F5",
+                            fontFamily: "var(--font-inter), Inter, sans-serif",
+                            letterSpacing: "-0.01em",
+                          }}
+                        >
+                          {s.title}
+                        </div>
+                        <div className="text-xs md:text-sm mt-1 leading-relaxed" style={{ color: "#94a3b8" }}>
+                          {s.desc}
+                        </div>
+                      </div>
                     </div>
-                    <div
-                      className="text-2xl md:text-3xl font-bold"
-                      style={{
-                        color: i === 2 ? "#22c55e" : "#F2A600",
-                        fontFamily: "var(--font-space-grotesk), sans-serif",
-                      }}
-                    >
-                      <Counter to={m.value} suffix={m.suffix} duration={1400 + i * 200} />
-                    </div>
-                  </div>
+                  </li>
                 ))}
-              </div>
-
-              {/* Live activity bars */}
-              <div
-                className="px-4 py-4"
-                style={{ borderTop: "1px solid rgba(242,166,0,0.08)" }}
-              >
-                <div className="flex items-center justify-between mb-1" style={{ color: "#475569" }}>
-                  <span className="mono text-[10px] uppercase tracking-wider">req/s · 60s</span>
-                </div>
-                <MetricBars />
-              </div>
-
-              {/* Activity feed (humano) */}
-              <div
-                className="px-4 py-3 text-[11px] space-y-1"
-                style={{
-                  borderTop: "1px solid rgba(242,166,0,0.08)",
-                  color: "#94a3b8",
-                }}
-              >
-                <div className="flex items-center justify-between">
-                  <span>Sistema PMM operando normalmente</span>
-                  <span className="mono text-[10px]" style={{ color: "#22c55e" }}>14ms</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span>NexLicense respondendo</span>
-                  <span className="mono text-[10px]" style={{ color: "#22c55e" }}>22ms</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span>Monitor coletando métricas</span>
-                  <span className="mono text-[10px]" style={{ color: "#22c55e" }}>9ms</span>
-                </div>
-              </div>
+              </ul>
             </div>
           </motion.div>
         </div>
