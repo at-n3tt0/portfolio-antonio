@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { BrandMark } from "@/components/Brand";
 
 const links = [
@@ -60,7 +61,14 @@ export default function Navbar() {
           style={{ fontFamily: "var(--font-inter), Inter, sans-serif", color: "#F5F5F5", letterSpacing: "-0.03em" }}
         >
           <BrandMark size="sm" />
-          <span>atnetto<span style={{ color: "#FF9A00" }}>.</span>tech</span>
+          <Image
+            src="/brand/atnetto-wordmark.png"
+            alt="atnetto.tech"
+            width={140}
+            height={32}
+            priority
+            style={{ height: 22, width: "auto" }}
+          />
         </button>
 
         <ul className="hidden md:flex items-center gap-1 text-sm">
