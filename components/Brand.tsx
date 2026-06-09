@@ -21,48 +21,57 @@ export function BrandMark({
     <svg
       width={s}
       height={s}
-      viewBox="0 0 64 64"
+      viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
       aria-label="atnetto.tech"
       role="img"
     >
       <defs>
+        <filter id={`${id}-softGlow`} x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="8" result="blur" />
+          <feColorMatrix
+            in="blur"
+            type="matrix"
+            values="1 0 0 0 1  0 0.55 0 0 0.55  0 0 0 0 0  0 0 0 0.75 0"
+            result="g"
+          />
+          <feMerge>
+            <feMergeNode in="g" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
         <linearGradient id={`${id}-grad`} x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#FFB21A" />
           <stop offset="55%" stopColor="#FF9A00" />
           <stop offset="100%" stopColor="#E98E0E" />
         </linearGradient>
-        {glow && (
-          <filter id={`${id}-glow`} x="-40%" y="-40%" width="180%" height="180%">
-            <feGaussianBlur stdDeviation="0.7" result="b" />
-            <feColorMatrix
-              in="b"
-              type="matrix"
-              values="1 0 0 0 1  0 0.55 0 0 0.55  0 0 0 0 0  0 0 0 0.75 0"
-              result="g"
-            />
-            <feMerge>
-              <feMergeNode in="g" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        )}
       </defs>
-      <text
-        x="32"
-        y="36"
-        textAnchor="middle"
-        dominantBaseline="central"
-        fontFamily="var(--font-inter), Inter, system-ui, sans-serif"
-        fontWeight={900}
-        fontSize={58}
-        fontStyle="italic"
-        letterSpacing="-4"
-        fill={`url(#${id}-grad)`}
-        filter={glow ? `url(#${id}-glow)` : undefined}
-      >
-        at
-      </text>
+      {glow && (
+        <rect
+          x="64"
+          y="64"
+          width="896"
+          height="896"
+          rx="180"
+          fill="#0B0A08"
+          stroke="#2B2114"
+          strokeWidth="10"
+        />
+      )}
+      <g filter={`url(#${id}-softGlow)`}>
+        <text
+          x="512"
+          y="630"
+          textAnchor="middle"
+          fontFamily='"Inter Display", Inter, var(--font-inter), Arial, sans-serif'
+          fontSize="545"
+          fontWeight="900"
+          letterSpacing="-55"
+          fill={`url(#${id}-grad)`}
+        >
+          at
+        </text>
+      </g>
     </svg>
   );
 }
