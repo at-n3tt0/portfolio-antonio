@@ -20,7 +20,7 @@ export function BrandMark({
   const s = sizeMap[size];
   return (
     <Image
-      src="/brand/atnetto-logo.png"
+      src="/brand/atnetto-mark.png"
       width={s}
       height={s}
       alt="atnetto.tech"
