@@ -1,12 +1,11 @@
-import Image from "next/image";
-
 type Size = "sm" | "md" | "lg" | "xl";
 
 const sizeMap: Record<Size, number> = { sm: 32, md: 44, lg: 72, xl: 128 };
 
 /**
- * BrandMark — official atnetto "at" mark from the brand kit.
- * `glow` picks the dark-background variant (square tile with glow).
+ * BrandMark — inline "at" mark with brand-kit gradient + glow.
+ * Rendered inline so the page Inter font is used; letter-spacing is
+ * tuned for small sizes where the kit SVG would collapse.
  */
 export function BrandMark({
   size = "sm",
@@ -17,18 +16,53 @@ export function BrandMark({
   glow?: boolean;
 }) {
   const s = sizeMap[size];
-  const src = glow
-    ? "/brand/atnetto-logo-icon-dark-bg.svg"
-    : "/brand/atnetto-logo-icon.svg";
+  const id = `bm-${size}-${glow ? "g" : "f"}`;
   return (
-    <Image
-      src={src}
+    <svg
       width={s}
       height={s}
-      alt="atnetto.tech"
-      priority
-      style={{ width: s, height: s }}
-    />
+      viewBox="0 0 64 64"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-label="atnetto.tech"
+      role="img"
+    >
+      <defs>
+        <linearGradient id={`${id}-grad`} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="#FFB21A" />
+          <stop offset="55%" stopColor="#FF9A00" />
+          <stop offset="100%" stopColor="#E98E0E" />
+        </linearGradient>
+        {glow && (
+          <filter id={`${id}-glow`} x="-40%" y="-40%" width="180%" height="180%">
+            <feGaussianBlur stdDeviation="0.7" result="b" />
+            <feColorMatrix
+              in="b"
+              type="matrix"
+              values="1 0 0 0 1  0 0.55 0 0 0.55  0 0 0 0 0  0 0 0 0.75 0"
+              result="g"
+            />
+            <feMerge>
+              <feMergeNode in="g" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        )}
+      </defs>
+      <text
+        x="32"
+        y="34"
+        textAnchor="middle"
+        dominantBaseline="central"
+        fontFamily="var(--font-inter), Inter, system-ui, sans-serif"
+        fontWeight={900}
+        fontSize={38}
+        letterSpacing="-2"
+        fill={`url(#${id}-grad)`}
+        filter={glow ? `url(#${id}-glow)` : undefined}
+      >
+        at
+      </text>
+    </svg>
   );
 }
 
