@@ -18,16 +18,14 @@ export function BrandMark({
   glow?: boolean;
 }) {
   const s = sizeMap[size];
-  const src = glow ? "/brand/at-mark-tile.svg" : "/brand/at-mark.svg";
   return (
     <Image
-      src={src}
+      src="/brand/atnetto-logo.png"
       width={s}
       height={s}
       alt="atnetto.tech"
       priority
-      style={{ width: s, height: s }}
-      unoptimized
+      style={{ width: s, height: s, borderRadius: glow ? 8 : 0 }}
     />
   );
 }
