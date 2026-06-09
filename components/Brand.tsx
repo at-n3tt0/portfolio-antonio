@@ -50,13 +50,14 @@ export function BrandMark({
       </defs>
       <text
         x="32"
-        y="34"
+        y="36"
         textAnchor="middle"
         dominantBaseline="central"
         fontFamily="var(--font-inter), Inter, system-ui, sans-serif"
         fontWeight={900}
-        fontSize={38}
-        letterSpacing="-2"
+        fontSize={58}
+        fontStyle="italic"
+        letterSpacing="-4"
         fill={`url(#${id}-grad)`}
         filter={glow ? `url(#${id}-glow)` : undefined}
       >

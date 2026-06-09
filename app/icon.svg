@@ -7,7 +7,7 @@
     </linearGradient>
   </defs>
   <rect width="64" height="64" rx="12" fill="#0B0A08"/>
-  <text x="32" y="34" text-anchor="middle" dominant-baseline="central"
+  <text x="32" y="36" text-anchor="middle" dominant-baseline="central"
         font-family="Inter, Arial, sans-serif" font-weight="900"
-        font-size="38" letter-spacing="-2" fill="url(#g)">at</text>
+        font-size="58" font-style="italic" letter-spacing="-4" fill="url(#g)">at</text>
 </svg>
