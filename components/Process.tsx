@@ -50,7 +50,7 @@ export default function Process() {
     <section id="process" className="relative py-28 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#FF9A00" }}>
+          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#F2A600" }}>
             <span>/</span><span>Como funciona</span>
           </div>
           <h2
@@ -74,7 +74,7 @@ export default function Process() {
             className="hidden lg:block absolute top-12 left-[16%] right-[16%] h-px pointer-events-none"
             style={{
               background:
-                "linear-gradient(to right, transparent, rgba(255,154,0,0.25), rgba(255,154,0,0.25), transparent)",
+                "linear-gradient(to right, transparent, rgba(242,166,0,0.25), rgba(242,166,0,0.25), transparent)",
             }}
           />
 
@@ -88,7 +88,7 @@ export default function Process() {
               className="relative p-6 md:p-8"
               style={{
                 background: "rgba(14,12,9,0.5)",
-                border: "1px solid rgba(255,154,0,0.12)",
+                border: "1px solid rgba(242,166,0,0.12)",
                 borderRadius: 16,
               }}
             >
@@ -98,19 +98,19 @@ export default function Process() {
                   className="absolute inset-0 rounded-full"
                   style={{
                     background:
-                      "radial-gradient(circle, rgba(255,154,0,0.20), transparent 70%)",
+                      "radial-gradient(circle, rgba(242,166,0,0.20), transparent 70%)",
                   }}
                 />
                 <span
                   className="relative inline-flex items-center justify-center w-12 h-12 rounded-full"
                   style={{
-                    background: "linear-gradient(135deg, #FFB21A, #FF9A00)",
+                    background: "linear-gradient(135deg, #FFB300, #F2A600)",
                     color: "#090908",
                     fontFamily: "var(--font-inter), Inter, sans-serif",
                     fontWeight: 900,
                     fontSize: 18,
                     letterSpacing: "-0.04em",
-                    boxShadow: "0 10px 30px -8px rgba(255,154,0,0.45)",
+                    boxShadow: "0 10px 30px -8px rgba(242,166,0,0.45)",
                   }}
                 >
                   {s.num}
@@ -134,7 +134,7 @@ export default function Process() {
               <ul className="space-y-2">
                 {s.bullets.map((b) => (
                   <li key={b} className="flex items-start gap-2.5 text-sm" style={{ color: "#cbd5e1" }}>
-                    <span style={{ color: "#FF9A00", marginTop: 2 }}>›</span>
+                    <span style={{ color: "#F2A600", marginTop: 2 }}>›</span>
                     <span>{b}</span>
                   </li>
                 ))}

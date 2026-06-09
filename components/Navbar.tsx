@@ -3,7 +3,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import Image from "next/image";
 import { BrandMark } from "@/components/Brand";
 
 const links = [
@@ -51,7 +50,7 @@ export default function Navbar() {
       style={{
         background: scrolled ? "rgba(14,12,9,0.88)" : "transparent",
         backdropFilter: scrolled ? "blur(10px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(255,154,0,0.1)" : "1px solid transparent",
+        borderBottom: scrolled ? "1px solid rgba(242,166,0,0.1)" : "1px solid transparent",
       }}
     >
       <nav className="max-w-7xl mx-auto px-5 md:px-8 h-14 md:h-16 flex items-center justify-between">
@@ -61,18 +60,17 @@ export default function Navbar() {
           style={{ fontFamily: "var(--font-inter), Inter, sans-serif", color: "#F5F5F5", letterSpacing: "-0.03em" }}
         >
           <BrandMark size="sm" />
-          <Image
-            src="/brand/atnetto-wordmark.png"
-            alt="atnetto.tech"
-            width={140}
-            height={32}
-            priority
+          <span
+            className="font-extrabold tracking-tight"
             style={{
-              height: "clamp(22px, 2.4vw, 28px)",
-              width: "auto",
-              mixBlendMode: "screen",
+              color: "#F5F5F5",
+              fontSize: "clamp(17px, 1.7vw, 21px)",
+              letterSpacing: "-0.03em",
+              lineHeight: 1,
             }}
-          />
+          >
+            atnetto<span style={{ color: "#F2A600" }}>.tech</span>
+          </span>
         </button>
 
         <ul className="hidden md:flex items-center gap-1 text-sm">
@@ -83,7 +81,7 @@ export default function Navbar() {
                 <button
                   onClick={() => click(l.href)}
                   className="px-3 py-1.5 transition-colors"
-                  style={{ color: isActive ? "#FF9A00" : "#64748b" }}
+                  style={{ color: isActive ? "#F2A600" : "#64748b" }}
                   onMouseEnter={(e) => {
                     if (!isActive) e.currentTarget.style.color = "#cbd5e1";
                   }}
@@ -91,7 +89,7 @@ export default function Navbar() {
                     if (!isActive) e.currentTarget.style.color = "#64748b";
                   }}
                 >
-                  {isActive && <span style={{ color: "#FF9A00" }} className="mr-1">/</span>}
+                  {isActive && <span style={{ color: "#F2A600" }} className="mr-1">/</span>}
                   {l.label}
                 </button>
               </li>
@@ -105,7 +103,7 @@ export default function Navbar() {
             onClick={(e) => { e.preventDefault(); click("#ticket"); }}
             className="text-xs font-semibold px-4 py-2 transition-all"
             style={{
-              background: "linear-gradient(135deg, #FF9A00, #F3930D)",
+              background: "linear-gradient(135deg, #F2A600, #F2A600)",
               color: "#090908",
               borderRadius: 9999,
             }}
@@ -132,7 +130,7 @@ export default function Navbar() {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden border-t"
             style={{
-              borderColor: "rgba(255,154,0,0.1)",
+              borderColor: "rgba(242,166,0,0.1)",
               background: "rgba(14,12,9,0.97)",
               backdropFilter: "blur(10px)",
             }}
@@ -143,9 +141,9 @@ export default function Navbar() {
                   <button
                     onClick={() => click(l.href)}
                     className="w-full text-left py-2"
-                    style={{ color: active === l.id ? "#FF9A00" : "#cbd5e1" }}
+                    style={{ color: active === l.id ? "#F2A600" : "#cbd5e1" }}
                   >
-                    {active === l.id && <span style={{ color: "#FF9A00" }} className="mr-2">/</span>}
+                    {active === l.id && <span style={{ color: "#F2A600" }} className="mr-2">/</span>}
                     {l.label}
                   </button>
                 </li>
@@ -156,7 +154,7 @@ export default function Navbar() {
                   onClick={(e) => { e.preventDefault(); click("#ticket"); }}
                   className="block text-center text-xs font-semibold px-4 py-2.5"
                   style={{
-                    background: "linear-gradient(135deg, #FF9A00, #F3930D)",
+                    background: "linear-gradient(135deg, #F2A600, #F2A600)",
                     color: "#090908",
                     borderRadius: 9999,
                   }}

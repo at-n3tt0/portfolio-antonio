@@ -16,7 +16,7 @@ export default async function Image() {
           justifyContent: "space-between",
           padding: "80px",
           background:
-            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,154,0,0.18) 0%, transparent 70%), #090908",
+            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(242,166,0,0.18) 0%, transparent 70%), #090908",
           color: "#F5F5F5",
           fontFamily: "sans-serif",
         }}
@@ -26,7 +26,7 @@ export default async function Image() {
             display: "flex",
             fontSize: 22,
             letterSpacing: 8,
-            color: "#FF9A00",
+            color: "#F2A600",
             textTransform: "uppercase",
           }}
         >
@@ -44,7 +44,7 @@ export default async function Image() {
             }}
           >
             <span style={{ color: "#F5F5F5" }}>atnetto</span>
-            <span style={{ color: "#FF9A00" }}>.</span>
+            <span style={{ color: "#F2A600" }}>.</span>
             <span style={{ color: "#F5F5F5" }}>tech</span>
           </div>
           <div
@@ -70,7 +70,7 @@ export default async function Image() {
             fontFamily: "monospace",
           }}
         >
-          <span style={{ color: "#FF9A00" }}>$</span>
+          <span style={{ color: "#F2A600" }}>$</span>
           <span>Laravel</span>
           <span>·</span>
           <span>FastAPI</span>

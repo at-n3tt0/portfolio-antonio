@@ -55,7 +55,7 @@ export function BrandWordmark({
             letterSpacing: "-0.03em",
           }}
         >
-          atnetto<span style={{ color: "#FF9A00" }}>.tech</span>
+          atnetto<span style={{ color: "#F2A600" }}>.tech</span>
         </span>
         {withTagline && (
           <span
@@ -79,7 +79,7 @@ export function BrandWordmark({
  * CornerBrackets — decorative motif (kept for sparing use).
  */
 export function CornerBrackets({
-  color = "rgba(255,154,0,0.35)",
+  color = "rgba(242,166,0,0.35)",
   size = 28,
   thickness = 2,
   inset = 0,

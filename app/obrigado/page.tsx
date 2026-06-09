@@ -7,7 +7,7 @@ export default function Obrigado() {
       style={{ background: "#090908", color: "#F5F5F5" }}
     >
       <section className="max-w-xl text-center">
-        <p className="font-mono text-xs uppercase tracking-[0.3em]" style={{ color: "#FF9A00" }}>
+        <p className="font-mono text-xs uppercase tracking-[0.3em]" style={{ color: "#F2A600" }}>
           lead recebido
         </p>
         <h1 className="mt-4 text-4xl font-bold">Obrigado pelo contato</h1>
@@ -18,7 +18,7 @@ export default function Obrigado() {
         <Link
           href="/"
           className="mt-8 inline-flex px-6 py-3 font-semibold"
-          style={{ background: "#FF9A00", color: "#090908" }}
+          style={{ background: "#F2A600", color: "#090908" }}
         >
           Voltar ao site
         </Link>

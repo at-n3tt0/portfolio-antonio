@@ -38,7 +38,7 @@ function MetricBars() {
           style={{
             width: 3,
             height: "100%",
-            background: i % 3 === 0 ? "#FF9A00" : "rgba(255,154,0,0.35)",
+            background: i % 3 === 0 ? "#F2A600" : "rgba(242,166,0,0.35)",
             animationDelay: `${(i * 70) % 1600}ms`,
           }}
         />
@@ -59,7 +59,7 @@ export default function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(255,154,0,0.10) 0%, transparent 60%)",
+            "radial-gradient(ellipse 60% 50% at 50% 0%, rgba(242,166,0,0.10) 0%, transparent 60%)",
         }}
       />
       <div
@@ -68,7 +68,7 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto py-6 md:py-8 px-4 md:px-8">
-        <CornerBrackets color="rgba(255,154,0,0.35)" size={28} thickness={2} inset={0} />
+        <CornerBrackets color="rgba(242,166,0,0.35)" size={28} thickness={2} inset={0} />
         {/* Soft command line */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -77,7 +77,7 @@ export default function Hero() {
           className="mono text-[11px] md:text-xs mb-10 flex items-center gap-2 flex-wrap"
           style={{ color: "#475569" }}
         >
-          <span style={{ color: "#FF9A00" }}>$</span>
+          <span style={{ color: "#F2A600" }}>$</span>
           <span>atnetto.tech</span>
           <span style={{ color: "#334155" }}>·</span>
           <span>Marituba, PA</span>
@@ -100,8 +100,8 @@ export default function Hero() {
               }}
             >
               Nós cuidamos da{" "}
-              <span style={{ color: "#FF9A00" }}>tecnologia</span> que sua empresa{" "}
-              <span style={{ color: "#F5F5F5", textDecoration: "underline", textDecorationColor: "rgba(255,154,0,0.35)", textDecorationThickness: 2, textUnderlineOffset: 8 }}>
+              <span style={{ color: "#F2A600" }}>tecnologia</span> que sua empresa{" "}
+              <span style={{ color: "#F5F5F5", textDecoration: "underline", textDecorationColor: "rgba(242,166,0,0.35)", textDecorationThickness: 2, textUnderlineOffset: 8 }}>
                 depende
               </span>{" "}
               todo dia.
@@ -137,10 +137,10 @@ export default function Hero() {
                 href="#ticket"
                 className="group inline-flex items-center gap-2.5 text-base font-semibold px-7 py-3.5 transition-all"
                 style={{
-                  background: "linear-gradient(135deg, #FF9A00, #F3930D)",
+                  background: "linear-gradient(135deg, #F2A600, #F2A600)",
                   color: "#090908",
                   borderRadius: 9999,
-                  boxShadow: "0 8px 24px -8px rgba(255,154,0,0.5)",
+                  boxShadow: "0 8px 24px -8px rgba(242,166,0,0.5)",
                 }}
               >
                 <span>Falar com a gente</span>
@@ -151,16 +151,16 @@ export default function Hero() {
                 className="inline-flex items-center gap-2 text-base px-6 py-3.5 transition-all"
                 style={{
                   color: "#cbd5e1",
-                  border: "1px solid rgba(255,154,0,0.3)",
+                  border: "1px solid rgba(242,166,0,0.3)",
                   borderRadius: 9999,
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(255,154,0,0.06)";
-                  e.currentTarget.style.borderColor = "rgba(255,154,0,0.6)";
+                  e.currentTarget.style.background = "rgba(242,166,0,0.06)";
+                  e.currentTarget.style.borderColor = "rgba(242,166,0,0.6)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.borderColor = "rgba(255,154,0,0.3)";
+                  e.currentTarget.style.borderColor = "rgba(242,166,0,0.3)";
                 }}
               >
                 Como funciona
@@ -179,7 +179,7 @@ export default function Hero() {
               className="relative"
               style={{
                 background: "rgba(28,25,23,0.7)",
-                border: "1px solid rgba(255,154,0,0.18)",
+                border: "1px solid rgba(242,166,0,0.18)",
                 backdropFilter: "blur(6px)",
                 borderRadius: 6,
               }}
@@ -188,7 +188,7 @@ export default function Hero() {
               <div
                 className="flex items-center justify-between px-4 py-2.5 text-xs"
                 style={{
-                  borderBottom: "1px solid rgba(255,154,0,0.12)",
+                  borderBottom: "1px solid rgba(242,166,0,0.12)",
                   color: "#94a3b8",
                 }}
               >
@@ -202,7 +202,7 @@ export default function Hero() {
               </div>
 
               {/* 3 metrics */}
-              <div className="grid grid-cols-3 divide-x" style={{ borderColor: "rgba(255,154,0,0.08)" }}>
+              <div className="grid grid-cols-3 divide-x" style={{ borderColor: "rgba(242,166,0,0.08)" }}>
                 {[
                   { label: "Em produção", value: 6, suffix: "" },
                   { label: "Serviços", value: 47, suffix: "" },
@@ -211,7 +211,7 @@ export default function Hero() {
                   <div
                     key={m.label}
                     className="px-4 py-5"
-                    style={{ borderColor: "rgba(255,154,0,0.08)" }}
+                    style={{ borderColor: "rgba(242,166,0,0.08)" }}
                   >
                     <div
                       className="text-[10px] uppercase tracking-wider mb-2"
@@ -222,7 +222,7 @@ export default function Hero() {
                     <div
                       className="text-2xl md:text-3xl font-bold"
                       style={{
-                        color: i === 2 ? "#22c55e" : "#FF9A00",
+                        color: i === 2 ? "#22c55e" : "#F2A600",
                         fontFamily: "var(--font-space-grotesk), sans-serif",
                       }}
                     >
@@ -235,7 +235,7 @@ export default function Hero() {
               {/* Live activity bars */}
               <div
                 className="px-4 py-4"
-                style={{ borderTop: "1px solid rgba(255,154,0,0.08)" }}
+                style={{ borderTop: "1px solid rgba(242,166,0,0.08)" }}
               >
                 <div className="flex items-center justify-between mb-1" style={{ color: "#475569" }}>
                   <span className="mono text-[10px] uppercase tracking-wider">req/s · 60s</span>
@@ -247,7 +247,7 @@ export default function Hero() {
               <div
                 className="px-4 py-3 text-[11px] space-y-1"
                 style={{
-                  borderTop: "1px solid rgba(255,154,0,0.08)",
+                  borderTop: "1px solid rgba(242,166,0,0.08)",
                   color: "#94a3b8",
                 }}
               >

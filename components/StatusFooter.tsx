@@ -12,11 +12,11 @@ export default async function StatusFooter() {
   ];
 
   return (
-    <footer className="relative px-4 md:px-6 pt-16 pb-10" style={{ borderTop: "1px solid rgba(255,154,0,0.12)" }}>
+    <footer className="relative px-4 md:px-6 pt-16 pb-10" style={{ borderTop: "1px solid rgba(242,166,0,0.12)" }}>
       <div className="max-w-7xl mx-auto">
         <div className="flex items-end justify-between flex-wrap gap-4 mb-8">
           <div>
-            <div className="text-xs mb-2 flex items-center gap-2" style={{ color: "#FF9A00" }}>
+            <div className="text-xs mb-2 flex items-center gap-2" style={{ color: "#F2A600" }}>
               <span>/</span><span>Status</span>
             </div>
             <div className="text-xs" style={{ color: "#64748b" }}>
@@ -38,7 +38,7 @@ export default async function StatusFooter() {
         <div
           className="text-sm"
           style={{
-            border: "1px solid rgba(255,154,0,0.12)",
+            border: "1px solid rgba(242,166,0,0.12)",
             background: "rgba(28,25,23,0.5)",
             borderRadius: 6,
           }}
@@ -55,7 +55,7 @@ export default async function StatusFooter() {
                 {...wrapperProps}
                 className="flex items-center justify-between px-4 py-3 transition-colors"
                 style={{
-                  borderBottom: i === services.length - 1 ? "none" : "1px solid rgba(255,154,0,0.06)",
+                  borderBottom: i === services.length - 1 ? "none" : "1px solid rgba(242,166,0,0.06)",
                   color: "#cbd5e1",
                 }}
               >

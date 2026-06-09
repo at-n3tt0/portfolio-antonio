@@ -5,7 +5,7 @@ export default function Privacidade() {
       style={{ background: "#090908", color: "#F5F5F5" }}
     >
       <section className="mx-auto max-w-3xl space-y-6">
-        <p className="font-mono text-xs uppercase tracking-[0.3em]" style={{ color: "#FF9A00" }}>
+        <p className="font-mono text-xs uppercase tracking-[0.3em]" style={{ color: "#F2A600" }}>
           atnetto.tech
         </p>
         <h1 className="text-4xl font-bold">Politica de privacidade</h1>

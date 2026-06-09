@@ -60,12 +60,12 @@ export default function WhyUs() {
       className="relative py-28 px-4 md:px-6"
       style={{
         background:
-          "radial-gradient(ellipse 70% 50% at 70% 10%, rgba(255,154,0,0.04), transparent 60%), #090908",
+          "radial-gradient(ellipse 70% 50% at 70% 10%, rgba(242,166,0,0.04), transparent 60%), #090908",
       }}
     >
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#FF9A00" }}>
+          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#F2A600" }}>
             <span>/</span><span>Por que atnetto.tech</span>
           </div>
           <h2
@@ -95,14 +95,14 @@ export default function WhyUs() {
               className="p-6 md:p-8"
               style={{
                 background: "rgba(14,12,9,0.6)",
-                border: "1px solid rgba(255,154,0,0.12)",
+                border: "1px solid rgba(242,166,0,0.12)",
                 borderRadius: 16,
               }}
             >
               <div className="flex items-start gap-5">
                 <span
                   className="mono text-xs flex-shrink-0 mt-1"
-                  style={{ color: "#FF9A00", letterSpacing: "0.1em" }}
+                  style={{ color: "#F2A600", letterSpacing: "0.1em" }}
                 >
                   {r.num}
                 </span>
@@ -130,8 +130,8 @@ export default function WhyUs() {
         <div
           className="grid grid-cols-2 md:grid-cols-4 gap-px mb-12"
           style={{
-            background: "rgba(255,154,0,0.12)",
-            border: "1px solid rgba(255,154,0,0.12)",
+            background: "rgba(242,166,0,0.12)",
+            border: "1px solid rgba(242,166,0,0.12)",
             borderRadius: 12,
             overflow: "hidden",
           }}
@@ -145,7 +145,7 @@ export default function WhyUs() {
               <div
                 className="text-2xl md:text-3xl font-extrabold mb-1"
                 style={{
-                  color: "#FF9A00",
+                  color: "#F2A600",
                   fontFamily: "var(--font-inter), Inter, sans-serif",
                   letterSpacing: "-0.03em",
                 }}
@@ -171,8 +171,8 @@ export default function WhyUs() {
                 className="px-4 py-2 text-sm"
                 style={{
                   color: "#cbd5e1",
-                  background: "rgba(255,154,0,0.06)",
-                  border: "1px solid rgba(255,154,0,0.18)",
+                  background: "rgba(242,166,0,0.06)",
+                  border: "1px solid rgba(242,166,0,0.18)",
                   borderRadius: 9999,
                 }}
               >

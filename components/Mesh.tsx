@@ -48,9 +48,9 @@ const edges: [string, string][] = [
 ];
 
 const groupColors: Record<Node["group"], string> = {
-  client: "#FFB21A",
-  edge: "#FF9A00",
-  api: "#F3930D",
+  client: "#FFB300",
+  edge: "#F2A600",
+  api: "#F2A600",
   data: "#94a3b8",
   infra: "#64748b",
   observe: "#22c55e",
@@ -65,7 +65,7 @@ export default function Mesh() {
     <section id="mesh" className="relative py-28 px-4 md:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-10">
-          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#FF9A00" }}>
+          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#F2A600" }}>
             <span>/</span><span>Arquitetura</span>
           </div>
           <h2
@@ -85,9 +85,9 @@ export default function Mesh() {
         <div
           className="relative overflow-hidden"
           style={{
-            border: "1px solid rgba(255,154,0,0.15)",
+            border: "1px solid rgba(242,166,0,0.15)",
             background:
-              "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(255,154,0,0.05), transparent 70%), rgba(28,25,23,0.4)",
+              "radial-gradient(ellipse 60% 60% at 50% 50%, rgba(242,166,0,0.05), transparent 70%), rgba(28,25,23,0.4)",
             borderRadius: 6,
           }}
         >
@@ -95,12 +95,12 @@ export default function Mesh() {
             {/* faint grid */}
             <defs>
               <pattern id="meshGrid" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
-                <circle cx="0.5" cy="0.5" r="0.5" fill="rgba(255,154,0,0.08)" />
+                <circle cx="0.5" cy="0.5" r="0.5" fill="rgba(242,166,0,0.08)" />
               </pattern>
               <linearGradient id="edge" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="rgba(255,154,0,0.0)" />
-                <stop offset="50%" stopColor="rgba(255,154,0,0.6)" />
-                <stop offset="100%" stopColor="rgba(255,154,0,0.0)" />
+                <stop offset="0%" stopColor="rgba(242,166,0,0.0)" />
+                <stop offset="50%" stopColor="rgba(242,166,0,0.6)" />
+                <stop offset="100%" stopColor="rgba(242,166,0,0.0)" />
               </linearGradient>
             </defs>
             <rect width={W} height={H} fill="url(#meshGrid)" />
@@ -116,7 +116,7 @@ export default function Mesh() {
                     y1={a.y}
                     x2={b.x}
                     y2={b.y}
-                    stroke="rgba(255,154,0,0.18)"
+                    stroke="rgba(242,166,0,0.18)"
                     strokeWidth="1"
                   />
                   <line
@@ -124,7 +124,7 @@ export default function Mesh() {
                     y1={a.y}
                     x2={b.x}
                     y2={b.y}
-                    stroke="rgba(255,154,0,0.55)"
+                    stroke="rgba(242,166,0,0.55)"
                     strokeWidth="1"
                     className="mesh-flow"
                     style={{ animationDelay: `${(i * 0.13) % 3}s` }}
@@ -159,7 +159,7 @@ export default function Mesh() {
           <div
             className="flex flex-wrap gap-x-6 gap-y-2 px-4 py-3 mono text-[10px] uppercase tracking-widest"
             style={{
-              borderTop: "1px solid rgba(255,154,0,0.1)",
+              borderTop: "1px solid rgba(242,166,0,0.1)",
               color: "#475569",
               background: "rgba(14,12,9,0.5)",
             }}

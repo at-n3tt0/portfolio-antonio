@@ -35,7 +35,7 @@ export default function Ticket() {
     <section id="ticket" className="relative py-28 px-4 md:px-6">
       <div className="max-w-5xl mx-auto">
         <div className="mb-10">
-          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#FF9A00" }}>
+          <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#F2A600" }}>
             <span>/</span><span>Falar com a gente</span>
           </div>
           <h2
@@ -59,7 +59,7 @@ export default function Ticket() {
           transition={{ duration: 0.5 }}
           className="relative"
           style={{
-            border: "1px solid rgba(255,154,0,0.2)",
+            border: "1px solid rgba(242,166,0,0.2)",
             background: "rgba(28,25,23,0.5)",
             borderRadius: 6,
           }}
@@ -68,13 +68,13 @@ export default function Ticket() {
           <div
             className="flex items-center justify-between px-4 py-2.5 text-xs"
             style={{
-              borderBottom: "1px solid rgba(255,154,0,0.12)",
+              borderBottom: "1px solid rgba(242,166,0,0.12)",
               color: "#94a3b8",
               background: "rgba(14,12,9,0.6)",
             }}
           >
             <span>
-              Novo chamado <span className="mono ml-1" style={{ color: "#FF9A00" }}>#{ticketId}</span>
+              Novo chamado <span className="mono ml-1" style={{ color: "#F2A600" }}>#{ticketId}</span>
             </span>
             <span style={{ color: "#64748b" }} className="text-[10px]">rascunho</span>
           </div>
@@ -96,9 +96,9 @@ export default function Ticket() {
                         onClick={() => setPriority(p)}
                         className="px-3 py-1.5 transition-colors text-xs"
                         style={{
-                          background: priority === p ? "rgba(255,154,0,0.12)" : "transparent",
-                          border: `1px solid ${priority === p ? "rgba(255,154,0,0.5)" : "rgba(255,154,0,0.18)"}`,
-                          color: priority === p ? "#FF9A00" : "#94a3b8",
+                          background: priority === p ? "rgba(242,166,0,0.12)" : "transparent",
+                          border: `1px solid ${priority === p ? "rgba(242,166,0,0.5)" : "rgba(242,166,0,0.18)"}`,
+                          color: priority === p ? "#F2A600" : "#94a3b8",
                           borderRadius: 9999,
                         }}
                       >
@@ -126,9 +126,9 @@ export default function Ticket() {
                         onClick={() => setType(tp)}
                         className="px-3 py-1.5 transition-colors text-xs"
                         style={{
-                          background: type === tp ? "rgba(255,154,0,0.12)" : "transparent",
-                          border: `1px solid ${type === tp ? "rgba(255,154,0,0.5)" : "rgba(255,154,0,0.18)"}`,
-                          color: type === tp ? "#FF9A00" : "#94a3b8",
+                          background: type === tp ? "rgba(242,166,0,0.12)" : "transparent",
+                          border: `1px solid ${type === tp ? "rgba(242,166,0,0.5)" : "rgba(242,166,0,0.18)"}`,
+                          color: type === tp ? "#F2A600" : "#94a3b8",
                           borderRadius: 9999,
                         }}
                       >
@@ -204,10 +204,10 @@ export default function Ticket() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2.5 text-base font-semibold px-7 py-3.5 transition-all"
                 style={{
-                  background: "linear-gradient(135deg, #FF9A00, #F3930D)",
+                  background: "linear-gradient(135deg, #F2A600, #F2A600)",
                   color: "#090908",
                   borderRadius: 9999,
-                  boxShadow: "0 8px 24px -8px rgba(255,154,0,0.5)",
+                  boxShadow: "0 8px 24px -8px rgba(242,166,0,0.5)",
                 }}
               >
                 Enviar <span>→</span>

@@ -10,7 +10,7 @@ export default async function StatusBar() {
       style={{
         background: "rgba(14,12,9,0.92)",
         backdropFilter: "blur(8px)",
-        borderBottom: "1px solid rgba(255,154,0,0.12)",
+        borderBottom: "1px solid rgba(242,166,0,0.12)",
         color: "#64748b",
       }}
     >
@@ -31,7 +31,7 @@ export default async function StatusBar() {
           <span className="hidden lg:inline" style={{ color: "#334155" }}>·</span>
           <span>
             <span style={{ color: "#475569" }}>uptime</span>{" "}
-            <span className="mono" style={{ color: "#FF9A00" }}>99.97%</span>
+            <span className="mono" style={{ color: "#F2A600" }}>99.97%</span>
           </span>
         </div>
       </div>
