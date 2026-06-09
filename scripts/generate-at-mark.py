@@ -16,7 +16,7 @@ hmtx = font["hmtx"]
 
 paths = []
 x_cursor = 0
-tracking = -120  # tight kerning to mimic brand-kit letter-spacing=-55 at large size
+tracking = 0  # natural advance widths; brand-kit -55 letter-spacing was too tight here
 
 for ch in "at":
     gname = font.getBestCmap()[ord(ch)]
@@ -43,7 +43,9 @@ def build_svg(with_bg: bool) -> str:
 
     inner = ""
     for x_off, d in paths:
-        inner += f'<path transform="translate({x_off * scale:.2f} 0)" d="{d}"/>'
+        # x_off is in font units; the outer <g> already applies scale,
+        # so do NOT pre-scale here (double-scale bug).
+        inner += f'<path transform="translate({x_off:.2f} 0)" d="{d}"/>'
 
     bg = (
         '<rect x="64" y="64" width="896" height="896" rx="180" '
