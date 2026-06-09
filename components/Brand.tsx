@@ -3,15 +3,8 @@ type Size = "sm" | "md" | "lg" | "xl";
 const sizeMap: Record<Size, number> = { sm: 32, md: 44, lg: 72, xl: 128 };
 
 /**
- * Official atnetto "@" symbol — flat-design vectorized at-sign.
- * Path source: brand kit v2 (atnetto_logo_at_symbol_package).
- */
-const AT_PATH =
-  "M 46 6 L 37 7 L 35 20 L 26 17 L 13 17 L 10 19 L 11 28 L 27 29 L 29 31 L 26 33 L 15 33 L 7 39 L 5 43 L 5 52 L 8 57 L 13 61 L 33 62 L 34 58 L 32 51 L 18 51 L 16 49 L 16 46 L 18 44 L 32 44 L 34 40 L 35 41 L 35 55 L 39 60 L 43 62 L 58 62 L 59 61 L 58 51 L 49 51 L 46 49 L 47 31 L 51 28 L 59 27 L 59 19 L 56 17 L 49 17 L 47 15 Z";
-
-/**
  * BrandMark — the official "@" symbol in atnetto orange.
- * Pass `glow` for the soft-shadow version (use on dark surfaces).
+ * Rendered as an SVG text glyph so it stays legible at any size.
  */
 export function BrandMark({
   size = "sm",
@@ -28,7 +21,7 @@ export function BrandMark({
     <svg
       width={s}
       height={s}
-      viewBox="0 0 65 68"
+      viewBox="0 0 64 64"
       xmlns="http://www.w3.org/2000/svg"
       aria-label="atnetto.tech"
     >
@@ -49,9 +42,19 @@ export function BrandMark({
           </filter>
         </defs>
       )}
-      <g fill={color} filter={glow ? `url(#${id}-shadow)` : undefined}>
-        <path d={AT_PATH} />
-      </g>
+      <text
+        x="32"
+        y="32"
+        textAnchor="middle"
+        dominantBaseline="central"
+        fontFamily="var(--font-inter), Inter, system-ui, sans-serif"
+        fontWeight={800}
+        fontSize={52}
+        fill={color}
+        filter={glow ? `url(#${id}-shadow)` : undefined}
+      >
+        @
+      </text>
     </svg>
   );
 }
