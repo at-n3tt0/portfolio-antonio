@@ -1,14 +1,15 @@
+import Image from "next/image";
+
 type Size = "sm" | "md" | "lg" | "xl";
 
 const sizeMap: Record<Size, number> = { sm: 32, md: 44, lg: 72, xl: 128 };
 
 /**
- * BrandMark — the official "@" symbol in atnetto orange.
- * Rendered as an SVG text glyph so it stays legible at any size.
+ * BrandMark — official atnetto "at" mark from the brand kit.
+ * `glow` picks the dark-background variant (square tile with glow).
  */
 export function BrandMark({
   size = "sm",
-  color = "#FF9A00",
   glow = false,
 }: {
   size?: Size;
@@ -16,46 +17,18 @@ export function BrandMark({
   glow?: boolean;
 }) {
   const s = sizeMap[size];
-  const id = `bm-${size}-${glow ? "g" : "f"}`;
+  const src = glow
+    ? "/brand/atnetto-logo-icon-dark-bg.svg"
+    : "/brand/atnetto-logo-icon.svg";
   return (
-    <svg
+    <Image
+      src={src}
       width={s}
       height={s}
-      viewBox="0 0 64 64"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-label="atnetto.tech"
-    >
-      {glow && (
-        <defs>
-          <filter id={`${id}-shadow`} x="-30%" y="-30%" width="160%" height="160%">
-            <feGaussianBlur stdDeviation="1.2" result="b" />
-            <feColorMatrix
-              in="b"
-              type="matrix"
-              values="1 0 0 0 1  0 0.55 0 0 0.55  0 0 0 0 0  0 0 0 0.7 0"
-              result="g"
-            />
-            <feMerge>
-              <feMergeNode in="g" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-      )}
-      <text
-        x="32"
-        y="32"
-        textAnchor="middle"
-        dominantBaseline="central"
-        fontFamily="var(--font-inter), Inter, system-ui, sans-serif"
-        fontWeight={800}
-        fontSize={52}
-        fill={color}
-        filter={glow ? `url(#${id}-shadow)` : undefined}
-      >
-        @
-      </text>
-    </svg>
+      alt="atnetto.tech"
+      priority
+      style={{ width: s, height: s }}
+    />
   );
 }
 
