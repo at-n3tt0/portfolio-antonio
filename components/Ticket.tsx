@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { revealInitial, revealTransition, reducedTransition } from "@/lib/motion";
 
 const TYPES = ["site", "system", "app", "automation", "integration"] as const;
 const PRIORITIES = ["low", "normal", "high"] as const;
 
 export default function Ticket() {
+  const reduced = useReducedMotion();
   const [type, setType] = useState<(typeof TYPES)[number]>("system");
   const [priority, setPriority] = useState<(typeof PRIORITIES)[number]>("normal");
   const [subject, setSubject] = useState("");
@@ -25,7 +27,14 @@ export default function Ticket() {
   const whatsappHref = `https://wa.me/5591980242234?text=${encodeURIComponent(message)}`;
 
   return (
-    <section id="ticket" className="relative py-28 px-4 md:px-6">
+    <motion.section
+      id="ticket"
+      initial={revealInitial(!!reduced)}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-120px" }}
+      transition={reduced ? reducedTransition : revealTransition()}
+      className="relative py-28 px-4 md:px-6"
+    >
       <div className="max-w-5xl mx-auto">
         <div className="mb-10">
           <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#F2A600" }}>
@@ -49,7 +58,7 @@ export default function Ticket() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
+          transition={reduced ? reducedTransition : revealTransition()}
           className="relative"
           style={{
             border: "1px solid rgba(242,166,0,0.2)",
@@ -194,15 +203,14 @@ export default function Ticket() {
                 href={whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 text-base font-semibold px-7 py-3.5 transition-all"
+                className="at-button-primary group inline-flex items-center gap-2.5 text-base font-semibold px-7 py-3.5"
                 style={{
                   background: "linear-gradient(135deg, #F2A600, #F2A600)",
                   color: "#090908",
                   borderRadius: 9999,
-                  boxShadow: "0 8px 24px -8px rgba(242,166,0,0.5)",
                 }}
               >
-                Enviar pelo WhatsApp <span>→</span>
+                Enviar pelo WhatsApp <span className="transition-transform group-hover:translate-x-0.5">→</span>
               </a>
             </div>
           </div>
@@ -249,6 +257,6 @@ export default function Ticket() {
           </a>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

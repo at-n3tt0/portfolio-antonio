@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { BrandMark } from "@/components/Brand";
 
@@ -14,6 +14,7 @@ const links = [
 ];
 
 export default function Navbar() {
+  const reduced = useReducedMotion();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [active, setActive] = useState("hero");
@@ -38,14 +39,17 @@ export default function Navbar() {
   const click = (href: string) => {
     setMenuOpen(false);
     const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el instanceof HTMLElement) {
+      const y = el.getBoundingClientRect().top + window.scrollY - 76;
+      window.scrollTo({ top: y, behavior: reduced ? "auto" : "smooth" });
+    }
   };
 
   return (
     <motion.header
       initial={{ y: -40, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
+      transition={reduced ? { duration: 0 } : { duration: 0.5 }}
       className="sticky top-0 z-40 transition-all"
       style={{
         background: scrolled ? "rgba(14,12,9,0.88)" : "transparent",
@@ -80,7 +84,7 @@ export default function Navbar() {
               <li key={l.id}>
                 <button
                   onClick={() => click(l.href)}
-                  className="px-3 py-1.5 transition-colors"
+                  className="relative px-3 py-1.5 transition-colors"
                   style={{ color: isActive ? "#F2A600" : "#64748b" }}
                   onMouseEnter={(e) => {
                     if (!isActive) e.currentTarget.style.color = "#cbd5e1";
@@ -91,6 +95,14 @@ export default function Navbar() {
                 >
                   {isActive && <span style={{ color: "#F2A600" }} className="mr-1">/</span>}
                   {l.label}
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active"
+                      className="absolute left-3 right-3 -bottom-1 h-px"
+                      style={{ background: "rgba(242,166,0,0.75)" }}
+                      transition={reduced ? { duration: 0 } : { duration: 0.22 }}
+                    />
+                  )}
                 </button>
               </li>
             );
@@ -128,6 +140,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
+            transition={reduced ? { duration: 0 } : { duration: 0.22 }}
             className="md:hidden border-t"
             style={{
               borderColor: "rgba(242,166,0,0.1)",

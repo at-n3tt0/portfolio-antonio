@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { revealTransition, reducedTransition } from "@/lib/motion";
 
 const pains = [
   "Controle de clientes em planilhas diferentes",
@@ -16,13 +17,17 @@ const trustItems = [
 ];
 
 export default function Hero() {
+  const reduced = useReducedMotion();
+
   return (
     <section
       id="hero"
       className="relative min-h-[calc(100vh-4rem)] pt-8 md:pt-12 pb-20 px-4 md:px-6 overflow-hidden scanlines"
     >
       {/* Background layers — subtle, no large highlight blocks */}
-      <div className="noc-grid absolute inset-0 pointer-events-none opacity-60" />
+      <div className="hero-depth absolute inset-0 pointer-events-none" />
+      <div className="hero-grid absolute inset-0 pointer-events-none opacity-80" />
+      <div className="noc-grid absolute inset-0 pointer-events-none opacity-45" />
       <div
         className="absolute inset-x-0 bottom-0 h-40 pointer-events-none"
         style={{ background: "linear-gradient(to bottom, transparent, #090908)" }}
@@ -33,7 +38,7 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={reduced ? reducedTransition : revealTransition()}
           className="mono text-[11px] md:text-xs mb-10 flex items-center gap-2 flex-wrap"
           style={{ color: "#475569" }}
         >
@@ -52,7 +57,7 @@ export default function Hero() {
             <motion.h1
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+              transition={reduced ? reducedTransition : revealTransition(0.12)}
               className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight"
               style={{
                 fontFamily: "var(--font-space-grotesk), sans-serif",
@@ -78,7 +83,7 @@ export default function Hero() {
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.4 }}
+              transition={reduced ? reducedTransition : revealTransition(0.22)}
               className="mt-5 md:mt-6 text-lg md:text-xl max-w-xl leading-relaxed"
               style={{ color: "#94a3b8" }}
             >
@@ -90,37 +95,28 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.6 }}
+              transition={reduced ? reducedTransition : revealTransition(0.32)}
               className="mt-10 flex flex-wrap items-center gap-4"
             >
               <a
                 href="#ticket"
-                className="group inline-flex items-center gap-2.5 text-base font-semibold px-7 py-3.5 transition-all"
+                className="at-button-primary group inline-flex items-center gap-2.5 text-base font-semibold px-7 py-3.5"
                 style={{
                   background: "linear-gradient(135deg, #F2A600, #F2A600)",
                   color: "#090908",
                   borderRadius: 9999,
-                  boxShadow: "0 8px 24px -8px rgba(242,166,0,0.5)",
                 }}
               >
                 <span>Falar com a gente</span>
-                <span>→</span>
+                <span className="transition-transform group-hover:translate-x-0.5">→</span>
               </a>
               <a
                 href="#modules"
-                className="inline-flex items-center gap-2 text-base px-6 py-3.5 transition-all"
+                className="at-button-secondary inline-flex items-center gap-2 text-base px-6 py-3.5"
                 style={{
                   color: "#cbd5e1",
                   border: "1px solid rgba(242,166,0,0.3)",
                   borderRadius: 9999,
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = "rgba(242,166,0,0.06)";
-                  e.currentTarget.style.borderColor = "rgba(242,166,0,0.6)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.borderColor = "rgba(242,166,0,0.3)";
                 }}
               >
                 Ver soluções
@@ -131,7 +127,7 @@ export default function Hero() {
             <motion.ul
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.7, delay: 0.75 }}
+              transition={reduced ? reducedTransition : revealTransition(0.42)}
               className="mt-6 flex flex-wrap items-center gap-2"
             >
               {trustItems.map((t) => (
@@ -158,7 +154,8 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={reduced ? reducedTransition : revealTransition(0.28)}
+            whileHover={reduced ? undefined : { y: -4 }}
             className="w-full"
           >
             <div
@@ -168,6 +165,7 @@ export default function Hero() {
                 border: "1px solid rgba(242,166,0,0.18)",
                 backdropFilter: "blur(6px)",
                 borderRadius: 6,
+                boxShadow: "0 24px 70px -40px rgba(242,166,0,0.38)",
               }}
             >
               <div

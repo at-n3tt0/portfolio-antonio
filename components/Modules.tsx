@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { hoverLift, revealInitial, revealTransition, reducedTransition } from "@/lib/motion";
 
 type Module = {
   id: string;
@@ -58,14 +59,20 @@ const complements: Module[] = [
 ];
 
 function Card({ m, i, dense = false }: { m: Module; i: number; dense?: boolean }) {
+  const reduced = useReducedMotion();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={revealInitial(!!reduced)}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay: (i % 3) * 0.08 }}
-      className={`group relative transition-all ${dense ? "p-5" : "p-6"}`}
-      style={{ background: "#090908" }}
+      transition={reduced ? reducedTransition : revealTransition((i % 3) * 0.06)}
+      whileHover={hoverLift(!!reduced)}
+      className={`at-card-interactive group relative ${dense ? "p-5" : "p-6"}`}
+      style={{
+        background: "linear-gradient(180deg, rgba(14,12,9,0.96), #090908)",
+        border: "1px solid rgba(242,166,0,0.10)",
+      }}
     >
       <div className="flex items-center justify-between mb-4">
         <div className="mono text-[10px] uppercase tracking-wider" style={{ color: "#94a3b8" }}>
@@ -105,9 +112,15 @@ function Card({ m, i, dense = false }: { m: Module; i: number; dense?: boolean }
 }
 
 export default function Modules() {
+  const reduced = useReducedMotion();
+
   return (
-    <section
+    <motion.section
       id="modules"
+      initial={revealInitial(!!reduced)}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-120px" }}
+      transition={reduced ? reducedTransition : revealTransition()}
       className="relative py-28 px-4 md:px-6 scanlines"
       style={{
         background:
@@ -173,6 +186,6 @@ export default function Modules() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

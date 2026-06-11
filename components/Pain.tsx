@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   Folders,
   MessageCircleOff,
@@ -10,6 +10,7 @@ import {
   EyeOff,
 } from "lucide-react";
 import { colors } from "@/lib/colors";
+import { hoverLift, revealInitial, revealTransition, reducedTransition } from "@/lib/motion";
 
 type Pain = {
   icon: React.ComponentType<{ size?: number; strokeWidth?: number; color?: string }>;
@@ -51,9 +52,15 @@ const pains: Pain[] = [
 ];
 
 export default function Pain() {
+  const reduced = useReducedMotion();
+
   return (
-    <section
+    <motion.section
       id="pain"
+      initial={revealInitial(!!reduced)}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-120px" }}
+      transition={reduced ? reducedTransition : revealTransition()}
       className="relative py-24 md:py-32 px-4 md:px-6"
       style={{
         background: colors.light.bg,
@@ -94,11 +101,12 @@ export default function Pain() {
             return (
               <motion.div
                 key={p.title}
-                initial={{ opacity: 0, y: 16 }}
+                initial={revealInitial(!!reduced)}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.45, delay: (i % 3) * 0.07 }}
-                className="p-6"
+                transition={reduced ? reducedTransition : revealTransition((i % 3) * 0.06)}
+                whileHover={hoverLift(!!reduced, true)}
+                className="at-card-interactive p-6"
                 style={{
                   background: colors.light.surface,
                   border: `1px solid ${colors.light.border}`,
@@ -140,6 +148,6 @@ export default function Pain() {
           })}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

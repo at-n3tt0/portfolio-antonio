@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { colors } from "@/lib/colors";
+import { hoverLift, revealInitial, revealTransition, reducedTransition } from "@/lib/motion";
 
 type ProjectType = {
   id: string;
@@ -74,9 +75,15 @@ function Row({ label, text }: { label: string; text: string }) {
 }
 
 export default function ProjectTypes() {
+  const reduced = useReducedMotion();
+
   return (
-    <section
+    <motion.section
       id="project-types"
+      initial={revealInitial(!!reduced)}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-120px" }}
+      transition={reduced ? reducedTransition : revealTransition()}
       className="relative py-24 md:py-32 px-4 md:px-6"
       style={{
         background: colors.light.bg,
@@ -114,11 +121,12 @@ export default function ProjectTypes() {
           {projects.map((p, i) => (
             <motion.article
               key={p.id}
-              initial={{ opacity: 0, y: 18 }}
+              initial={revealInitial(!!reduced)}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: (i % 2) * 0.08 }}
-              className="p-6 md:p-7"
+              transition={reduced ? reducedTransition : revealTransition((i % 2) * 0.06)}
+              whileHover={hoverLift(!!reduced, true)}
+              className="at-card-interactive p-6 md:p-7"
               style={{
                 background: colors.light.surface,
                 border: `1px solid ${colors.light.border}`,
@@ -153,6 +161,6 @@ export default function ProjectTypes() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

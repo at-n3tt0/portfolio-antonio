@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { hoverLift, revealInitial, revealTransition, reducedTransition } from "@/lib/motion";
 
 type Step = {
   num: string;
@@ -37,8 +38,17 @@ const steps: Step[] = [
 ];
 
 export default function Process() {
+  const reduced = useReducedMotion();
+
   return (
-    <section id="process" className="relative py-28 px-4 md:px-6">
+    <motion.section
+      id="process"
+      initial={revealInitial(!!reduced)}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-120px" }}
+      transition={reduced ? reducedTransition : revealTransition()}
+      className="relative py-28 px-4 md:px-6"
+    >
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#F2A600" }}>
@@ -77,13 +87,14 @@ export default function Process() {
           {steps.map((s, i) => (
             <motion.div
               key={s.num}
-              initial={{ opacity: 0, y: 18 }}
+              initial={revealInitial(!!reduced)}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="relative p-5 md:p-6"
+              transition={reduced ? reducedTransition : revealTransition(i * 0.055)}
+              whileHover={hoverLift(!!reduced)}
+              className="at-card-interactive relative p-5 md:p-6"
               style={{
-                background: "rgba(14,12,9,0.5)",
+                background: "linear-gradient(180deg, rgba(21,17,12,0.76), rgba(14,12,9,0.58))",
                 border: "1px solid rgba(242,166,0,0.12)",
                 borderRadius: 14,
               }}
@@ -133,6 +144,6 @@ export default function Process() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }

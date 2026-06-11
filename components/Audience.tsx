@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { colors } from "@/lib/colors";
+import { revealInitial, revealTransition, reducedTransition } from "@/lib/motion";
 
 const fits = [
   "Você controla **clientes, pedidos ou estoque em planilhas** e está chegando no limite.",
@@ -27,9 +28,15 @@ function highlight(text: string) {
 }
 
 export default function Audience() {
+  const reduced = useReducedMotion();
+
   return (
-    <section
+    <motion.section
       id="audience"
+      initial={revealInitial(!!reduced)}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-120px" }}
+      transition={reduced ? reducedTransition : revealTransition()}
       className="relative py-24 md:py-32 px-4 md:px-6"
       style={{
         background: colors.light.bg,
@@ -64,7 +71,7 @@ export default function Audience() {
               initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.4, delay: (i % 2) * 0.08 }}
+              transition={reduced ? reducedTransition : revealTransition((i % 2) * 0.06)}
               className="flex items-start gap-3"
             >
               <span
@@ -98,8 +105,9 @@ export default function Audience() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
-          className="p-5 md:p-6 max-w-3xl"
+          transition={reduced ? reducedTransition : revealTransition()}
+          whileHover={reduced ? undefined : { y: -3 }}
+          className="at-card-interactive p-5 md:p-6 max-w-3xl"
           style={{
             background: "rgba(0,0,0,0.03)",
             border: `1px solid ${colors.light.border}`,
@@ -119,6 +127,6 @@ export default function Audience() {
           </p>
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

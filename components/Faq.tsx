@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { colors } from "@/lib/colors";
+import { revealInitial, revealTransition, reducedTransition } from "@/lib/motion";
 
 type QA = { q: string; a: string };
 
@@ -49,9 +50,15 @@ const faqs: QA[] = [
 ];
 
 export default function Faq() {
+  const reduced = useReducedMotion();
+
   return (
-    <section
+    <motion.section
       id="faq"
+      initial={revealInitial(!!reduced)}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-120px" }}
+      transition={reduced ? reducedTransition : revealTransition()}
       className="relative py-24 md:py-32 px-4 md:px-6"
       style={{
         background: colors.light.bg,
@@ -89,7 +96,7 @@ export default function Faq() {
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.5 }}
+          transition={reduced ? reducedTransition : revealTransition()}
           className="overflow-hidden"
           style={{
             background: colors.light.surface,
@@ -108,7 +115,7 @@ export default function Faq() {
               }}
             >
               <summary
-                className="flex items-center justify-between gap-4 cursor-pointer list-none px-5 md:px-6 py-4 md:py-5 transition-colors hover:bg-black/[0.02]"
+                className="flex items-center justify-between gap-4 cursor-pointer list-none px-5 md:px-6 py-4 md:py-5 transition-colors hover:bg-black/[0.025]"
               >
                 <span
                   className="text-base md:text-lg font-semibold leading-snug"
@@ -122,7 +129,7 @@ export default function Faq() {
                 </span>
                 <span
                   aria-hidden
-                  className="flex-shrink-0 inline-flex items-center justify-center transition-transform group-open:rotate-45"
+                  className="flex-shrink-0 inline-flex items-center justify-center transition-transform duration-200 group-open:rotate-45"
                   style={{
                     width: 28,
                     height: 28,
@@ -138,16 +145,18 @@ export default function Faq() {
                   +
                 </span>
               </summary>
-              <div
-                className="px-5 md:px-6 pb-5 md:pb-6 -mt-1 text-sm md:text-base leading-relaxed max-w-3xl"
-                style={{ color: colors.light.textMuted }}
-              >
-                {item.a}
+              <div className="faq-answer">
+                <div
+                  className="px-5 md:px-6 pb-5 md:pb-6 -mt-1 text-sm md:text-base leading-relaxed max-w-3xl"
+                  style={{ color: colors.light.textMuted }}
+                >
+                  {item.a}
+                </div>
               </div>
             </details>
           ))}
         </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }

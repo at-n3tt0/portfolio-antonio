@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { hoverLift, revealInitial, revealTransition, reducedTransition } from "@/lib/motion";
 
 type Reason = {
   num: string;
@@ -43,9 +44,15 @@ const commitments = [
 ];
 
 export default function WhyUs() {
+  const reduced = useReducedMotion();
+
   return (
-    <section
+    <motion.section
       id="why"
+      initial={revealInitial(!!reduced)}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-120px" }}
+      transition={reduced ? reducedTransition : revealTransition()}
       className="relative py-28 px-4 md:px-6"
       style={{
         background:
@@ -77,13 +84,14 @@ export default function WhyUs() {
           {reasons.map((r, i) => (
             <motion.div
               key={r.num}
-              initial={{ opacity: 0, y: 16 }}
+              initial={revealInitial(!!reduced)}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: (i % 2) * 0.1 }}
-              className="p-6 md:p-8"
+              transition={reduced ? reducedTransition : revealTransition((i % 2) * 0.07)}
+              whileHover={hoverLift(!!reduced)}
+              className="at-card-interactive p-6 md:p-8"
               style={{
-                background: "rgba(14,12,9,0.6)",
+                background: "linear-gradient(180deg, rgba(21,17,12,0.78), rgba(14,12,9,0.62))",
                 border: "1px solid rgba(242,166,0,0.12)",
                 borderRadius: 16,
               }}
@@ -151,6 +159,6 @@ export default function WhyUs() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
