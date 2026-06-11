@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Pain from "@/components/Pain";
 import Modules from "@/components/Modules";
+import Audience from "@/components/Audience";
 import Process from "@/components/Process";
 import WhyUs from "@/components/WhyUs";
 import Ticket from "@/components/Ticket";
@@ -11,9 +13,9 @@ export default function Home() {
     <main className="relative min-h-screen" style={{ background: "#090908", color: "#F5F5F5" }}>
       <Navbar />
       <Hero />
-      <div className="divider max-w-7xl mx-auto" />
+      <Pain />
       <Modules />
-      <div className="divider max-w-7xl mx-auto" />
+      <Audience />
       <Process />
       <div className="divider max-w-7xl mx-auto" />
       <WhyUs />
