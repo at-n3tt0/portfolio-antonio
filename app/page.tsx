@@ -4,6 +4,7 @@ import Pain from "@/components/Pain";
 import Modules from "@/components/Modules";
 import Audience from "@/components/Audience";
 import Process from "@/components/Process";
+import ProjectTypes from "@/components/ProjectTypes";
 import WhyUs from "@/components/WhyUs";
 import Ticket from "@/components/Ticket";
 import StatusFooter from "@/components/StatusFooter";
@@ -17,7 +18,7 @@ export default function Home() {
       <Modules />
       <Audience />
       <Process />
-      <div className="divider max-w-7xl mx-auto" />
+      <ProjectTypes />
       <WhyUs />
       <div className="divider max-w-7xl mx-auto" />
       <Ticket />
