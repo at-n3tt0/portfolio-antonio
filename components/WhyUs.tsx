@@ -11,15 +11,15 @@ type Reason = {
 const reasons: Reason[] = [
   {
     num: "01",
-    title: "Atendimento direto",
+    title: "Atendimento direto do início ao fim",
     desc:
-      "Sem repassar seu problema de um lado para outro. Você fala com quem entende e executa.",
+      "Sua conversa não se perde entre várias pessoas. O diagnóstico, a proposta e a execução ficam alinhados do começo ao fim.",
   },
   {
     num: "02",
     title: "Solução sob medida",
     desc:
-      "Nada de sistema genérico empurrado. A solução nasce do seu processo.",
+      "A solução é desenhada a partir da sua rotina, do seu orçamento e do tamanho real da sua operação.",
   },
   {
     num: "03",
@@ -68,7 +68,7 @@ export default function WhyUs() {
             Por que escolher a atnetto.tech?
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed" style={{ color: "#8B8F98" }}>
-            Você fala direto com quem entende do problema, planeja a solução e coloca a mão no código.
+            Você fala direto com quem entende o problema, planeja a solução e acompanha a entrega.
           </p>
         </div>
 
