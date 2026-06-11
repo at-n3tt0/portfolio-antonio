@@ -2,7 +2,6 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Modules from "@/components/Modules";
 import Process from "@/components/Process";
-import Mesh from "@/components/Mesh";
 import WhyUs from "@/components/WhyUs";
 import Ticket from "@/components/Ticket";
 import StatusFooter from "@/components/StatusFooter";
@@ -16,8 +15,6 @@ export default function Home() {
       <Modules />
       <div className="divider max-w-7xl mx-auto" />
       <Process />
-      <div className="divider max-w-7xl mx-auto" />
-      <Mesh />
       <div className="divider max-w-7xl mx-auto" />
       <WhyUs />
       <div className="divider max-w-7xl mx-auto" />

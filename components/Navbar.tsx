@@ -8,7 +8,6 @@ import { BrandMark } from "@/components/Brand";
 const links = [
   { label: "Soluções", href: "#modules", id: "modules" },
   { label: "Processo", href: "#process", id: "process" },
-  { label: "Arquitetura", href: "#mesh", id: "mesh" },
   { label: "Por que?", href: "#why", id: "why" },
   { label: "Contato", href: "#ticket", id: "ticket" },
 ];

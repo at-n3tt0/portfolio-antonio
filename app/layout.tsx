@@ -32,28 +32,27 @@ const jetbrains = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://atnetto.tech"),
-  title: "atnetto.tech — Sala de operações para tecnologia empresarial",
+  title: "atnetto.tech — Sistemas, sites e automações sob demanda",
   description:
-    "Construímos, operamos e mantemos os sistemas que sua empresa depende todo dia. Do servidor ao código.",
+    "Desenvolvimento sob medida de sistemas, sites, aplicativos e automações para pequenas empresas em Marituba, PA — com atendimento remoto.",
   keywords: [
     "atnetto.tech",
-    "operação de tecnologia",
-    "sistemas web sob medida",
-    "monitoramento",
-    "Zabbix",
-    "Grafana",
-    "automação",
-    "APIs",
-    "Laravel",
-    "FastAPI",
+    "desenvolvimento sob demanda",
+    "sistemas sob medida",
+    "sites profissionais",
+    "aplicativos",
+    "sistemas para celular",
+    "automações",
+    "integrações",
+    "landing page",
     "Marituba",
     "Pará",
   ],
   authors: [{ name: "Antonio Neto", url: "https://github.com/at-n3tt0" }],
   openGraph: {
-    title: "atnetto.tech — Sala de operações para tecnologia empresarial",
+    title: "atnetto.tech — Sistemas, sites e automações sob demanda",
     description:
-      "Construímos, operamos e mantemos os sistemas que sua empresa depende todo dia.",
+      "Desenvolvimento sob medida de sistemas, sites, aplicativos e automações para sua empresa sair da planilha.",
     url: "https://atnetto.tech",
     siteName: "atnetto.tech",
     locale: "pt_BR",
@@ -61,9 +60,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "atnetto.tech",
+    title: "atnetto.tech — desenvolvimento sob demanda",
     description:
-      "Construímos, operamos e mantemos os sistemas que sua empresa depende todo dia.",
+      "Sistemas, sites, aplicativos e automações sob medida para sua empresa sair da planilha.",
   },
   robots: { index: true, follow: true },
   alternates: { canonical: "https://atnetto.tech" },

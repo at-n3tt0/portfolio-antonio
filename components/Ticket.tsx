@@ -3,11 +3,11 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const TYPES = ["new_system", "support", "automation", "infra"] as const;
+const TYPES = ["site", "system", "app", "automation", "integration"] as const;
 const PRIORITIES = ["low", "normal", "high"] as const;
 
 export default function Ticket() {
-  const [type, setType] = useState<(typeof TYPES)[number]>("new_system");
+  const [type, setType] = useState<(typeof TYPES)[number]>("system");
   const [priority, setPriority] = useState<(typeof PRIORITIES)[number]>("normal");
   const [subject, setSubject] = useState("");
   const [desc, setDesc] = useState("");
@@ -38,10 +38,10 @@ export default function Ticket() {
               color: "#F5F5F5",
             }}
           >
-            Manda sua necessidade.
+            Vamos conversar sobre sua ideia?
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed" style={{ color: "#94a3b8" }}>
-            Sem formulário corporativo. Conta o que está acontecendo — a gente responde direto pelo WhatsApp.
+            Explique o que você precisa: site, sistema, aplicativo, automação ou integração. A resposta vai direto pelo WhatsApp.
           </p>
         </div>
 
@@ -106,10 +106,11 @@ export default function Ticket() {
                 <div className="flex gap-2 flex-wrap">
                   {TYPES.map((tp) => {
                     const labelMap: Record<string, string> = {
-                      new_system: "novo sistema",
-                      support: "suporte",
+                      site: "site",
+                      system: "sistema",
+                      app: "aplicativo",
                       automation: "automação",
-                      infra: "infra",
+                      integration: "integração",
                     };
                     return (
                       <button
@@ -178,7 +179,7 @@ export default function Ticket() {
               <textarea
                 value={desc}
                 onChange={(e) => setDesc(e.target.value)}
-                placeholder="problema, sistema necessário, automação que quer, infra a montar..."
+                placeholder="conte o problema, rotina manual, sistema, aplicativo ou automação que você precisa..."
                 rows={5}
                 className="w-full px-3 py-2 resize-none"
               />
@@ -201,11 +202,52 @@ export default function Ticket() {
                   boxShadow: "0 8px 24px -8px rgba(242,166,0,0.5)",
                 }}
               >
-                Enviar <span>→</span>
+                Enviar pelo WhatsApp <span>→</span>
               </a>
             </div>
           </div>
         </motion.div>
+
+        {/* Canais diretos — alternativa ao formulário */}
+        <div className="mt-10 flex items-center justify-center flex-wrap gap-x-6 gap-y-3 text-sm">
+          <span style={{ color: "#64748b" }}>Prefere ir direto?</span>
+          <a
+            href="https://wa.me/5591980242234"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 transition-colors"
+            style={{ color: "#cbd5e1" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#F2A600")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#cbd5e1")}
+          >
+            <span>WhatsApp</span>
+            <span style={{ color: "#F2A600" }}>↗</span>
+          </a>
+          <a
+            href="https://instagram.com/at_netto.tech"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 transition-colors"
+            style={{ color: "#cbd5e1" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#F2A600")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#cbd5e1")}
+          >
+            <span>Instagram</span>
+            <span style={{ color: "#F2A600" }}>↗</span>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/at-netto"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 transition-colors"
+            style={{ color: "#cbd5e1" }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#F2A600")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#cbd5e1")}
+          >
+            <span>LinkedIn</span>
+            <span style={{ color: "#F2A600" }}>↗</span>
+          </a>
+        </div>
       </div>
     </section>
   );

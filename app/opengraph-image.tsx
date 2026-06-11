@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "atnetto.tech — Sites, sistemas, APIs e automações para empresas";
+export const alt = "atnetto.tech — desenvolvimento sob demanda";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -30,10 +30,10 @@ export default async function Image() {
             textTransform: "uppercase",
           }}
         >
-          ATNETTO.TECH — MARITUBA, PA
+          DESENVOLVIMENTO SOB DEMANDA
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
           <div
             style={{
               display: "flex",
@@ -50,36 +50,26 @@ export default async function Image() {
           <div
             style={{
               display: "flex",
-              fontSize: 36,
+              fontSize: 38,
               color: "#cbd5e1",
               fontWeight: 600,
-              maxWidth: 1000,
-              lineHeight: 1.2,
+              maxWidth: 1040,
+              lineHeight: 1.25,
             }}
           >
-            Sites, sistemas, APIs e automações para empresas.
+            Sistemas, sites, aplicativos e automações para sua empresa sair da planilha.
           </div>
         </div>
 
         <div
           style={{
             display: "flex",
-            gap: 16,
-            fontSize: 22,
+            fontSize: 24,
             color: "#94a3b8",
-            fontFamily: "monospace",
+            letterSpacing: 1,
           }}
         >
-          <span style={{ color: "#F2A600" }}>$</span>
-          <span>Laravel</span>
-          <span>·</span>
-          <span>FastAPI</span>
-          <span>·</span>
-          <span>React</span>
-          <span>·</span>
-          <span>PostgreSQL</span>
-          <span>·</span>
-          <span>Docker</span>
+          Marituba, PA · atendimento remoto
         </div>
       </div>
     ),

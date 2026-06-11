@@ -11,39 +11,28 @@ type Reason = {
 const reasons: Reason[] = [
   {
     num: "01",
-    title: "Critério técnico",
+    title: "Atendimento direto",
     desc:
-      "Construímos com padrão de produção desde o protótipo: código auditável, deploy reproduzível, decisões de stack justificadas pelo caso.",
+      "Sem repassar seu problema de um lado para outro. Você fala com quem entende e executa.",
   },
   {
     num: "02",
-    title: "Clareza no escopo",
+    title: "Solução sob medida",
     desc:
-      "Antes de codar, alinhamos problema, prazo e orçamento. Sem proposta inflada nem entrega surpresa.",
+      "Nada de sistema genérico empurrado. A solução nasce do seu processo.",
   },
   {
     num: "03",
-    title: "Suporte sob demanda",
+    title: "Clareza no escopo",
     desc:
-      "Após a entrega, o acompanhamento — manutenção evolutiva, ajustes e monitoramento — é contratado conforme a necessidade do cliente.",
+      "Antes de começar, alinhamos prioridade, prazo, custo e o que será entregue.",
   },
   {
     num: "04",
-    title: "Soluções ajustadas ao cenário",
+    title: "Desenvolvimento responsável",
     desc:
-      "Servidor, banco, backend, frontend, integração, automação. Uma conversa, uma responsabilidade — dimensionado ao tamanho da operação.",
+      "Soluções organizadas, documentadas quando necessário e pensadas para continuar evoluindo depois da entrega.",
   },
-];
-
-const sectors = [
-  "Gestão pública",
-  "Comércio & serviços",
-  "Indústria leve",
-  "Saúde",
-  "Educação",
-  "Logística",
-  "Imobiliário",
-  "Software interno",
 ];
 
 const commitments = [
@@ -76,10 +65,10 @@ export default function WhyUs() {
               letterSpacing: "-0.02em",
             }}
           >
-            Quatro razões pra fechar com a gente.
+            Por que escolher a atnetto.tech?
           </h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed" style={{ color: "#8B8F98" }}>
-            Não é a única opção. Mas entrega tecnologia bem planejada, suporte direto e soluções ajustadas à sua operação.
+            Você fala direto com quem entende do problema, planeja a solução e coloca a mão no código.
           </p>
         </div>
 
@@ -131,7 +120,7 @@ export default function WhyUs() {
           Compromissos de trabalho
         </div>
         <div
-          className="grid grid-cols-1 md:grid-cols-2 gap-px mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-px"
           style={{
             background: "rgba(242,166,0,0.12)",
             border: "1px solid rgba(242,166,0,0.12)",
@@ -160,29 +149,6 @@ export default function WhyUs() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Sectors */}
-        <div>
-          <div className="text-sm mb-4" style={{ color: "#8B8F98" }}>
-            Setores com afinidade
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {sectors.map((s) => (
-              <span
-                key={s}
-                className="px-4 py-2 text-sm"
-                style={{
-                  color: "#cbd5e1",
-                  background: "rgba(242,166,0,0.06)",
-                  border: "1px solid rgba(242,166,0,0.18)",
-                  borderRadius: 9999,
-                }}
-              >
-                {s}
-              </span>
-            ))}
-          </div>
         </div>
       </div>
     </section>

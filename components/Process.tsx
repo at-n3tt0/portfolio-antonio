@@ -6,42 +6,33 @@ type Step = {
   num: string;
   title: string;
   desc: string;
-  bullets: string[];
 };
 
 const steps: Step[] = [
   {
     num: "01",
     title: "Diagnóstico",
-    desc:
-      "A gente entende o problema antes de propor solução. Conversa direta sobre operação, gargalo, urgência e orçamento.",
-    bullets: [
-      "Mapeamento da operação atual",
-      "Identificação de gargalos críticos",
-      "Estimativa de prazo e investimento",
-    ],
+    desc: "Entendemos o problema, a rotina atual, a prioridade e o resultado esperado.",
   },
   {
     num: "02",
-    title: "Construção",
-    desc:
-      "Desenvolvimento sob medida com a stack certa pro problema. Entrega por etapas, com você acompanhando o que está pronto.",
-    bullets: [
-      "Stack escolhida pelo caso, não por moda",
-      "Entregas incrementais validáveis",
-      "Documentação e código auditável",
-    ],
+    title: "Proposta",
+    desc: "Definimos escopo, prazo, investimento e o que será entregue antes de começar.",
   },
   {
     num: "03",
-    title: "Acompanhamento",
-    desc:
-      "Depois da entrega, o suporte pode continuar conforme combinado: ajustes, melhorias, monitoramento e apoio técnico quando o projeto exigir.",
-    bullets: [
-      "Monitoramento quando contratado",
-      "Manutenção evolutiva sob demanda",
-      "Apoio técnico conforme combinado",
-    ],
+    title: "Desenvolvimento",
+    desc: "Construímos em etapas, com validações durante o caminho.",
+  },
+  {
+    num: "04",
+    title: "Entrega",
+    desc: "Publicamos, orientamos o uso e deixamos a entrega organizada.",
+  },
+  {
+    num: "05",
+    title: "Evolução",
+    desc: "Depois da entrega, podemos seguir com ajustes, melhorias e suporte conforme combinado.",
   },
 ];
 
@@ -51,7 +42,8 @@ export default function Process() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <div className="text-xs mb-3 flex items-center gap-2" style={{ color: "#F2A600" }}>
-            <span>/</span><span>Como funciona</span>
+            <span>/</span>
+            <span>Como funciona</span>
           </div>
           <h2
             className="text-3xl md:text-5xl font-bold leading-tight max-w-3xl"
@@ -61,39 +53,43 @@ export default function Process() {
               letterSpacing: "-0.02em",
             }}
           >
-            Do problema ao sistema rodando — em 3 fases.
+            Como tiramos sua ideia do papel
           </h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed" style={{ color: "#8B8F98" }}>
-            Sem proposta inflada. Sem reunião de 1 hora antes de começar. Diagnóstico curto, construção em etapas e acompanhamento depois da entrega — quando o projeto exigir.
+          <p
+            className="mt-4 max-w-2xl text-base leading-relaxed"
+            style={{ color: "#8B8F98" }}
+          >
+            Diagnóstico curto, proposta clara, construção em etapas e acompanhamento depois da
+            entrega — conforme o que for combinado.
           </p>
         </div>
 
-        <div className="relative grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6">
+        <div className="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-3">
           {/* connecting line for desktop */}
           <div
-            className="hidden lg:block absolute top-12 left-[16%] right-[16%] h-px pointer-events-none"
+            className="hidden lg:block absolute top-9 left-[8%] right-[8%] h-px pointer-events-none"
             style={{
               background:
-                "linear-gradient(to right, transparent, rgba(242,166,0,0.25), rgba(242,166,0,0.25), transparent)",
+                "linear-gradient(to right, transparent, rgba(242,166,0,0.25) 12%, rgba(242,166,0,0.25) 88%, transparent)",
             }}
           />
 
           {steps.map((s, i) => (
             <motion.div
               key={s.num}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.5, delay: i * 0.12 }}
-              className="relative p-6 md:p-8"
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              className="relative p-5 md:p-6"
               style={{
                 background: "rgba(14,12,9,0.5)",
                 border: "1px solid rgba(242,166,0,0.12)",
-                borderRadius: 16,
+                borderRadius: 14,
               }}
             >
               {/* number disc */}
-              <div className="relative inline-flex items-center justify-center mb-5">
+              <div className="relative inline-flex items-center justify-center mb-4">
                 <span
                   className="absolute inset-0 rounded-full"
                   style={{
@@ -102,15 +98,15 @@ export default function Process() {
                   }}
                 />
                 <span
-                  className="relative inline-flex items-center justify-center w-12 h-12 rounded-full"
+                  className="relative inline-flex items-center justify-center w-10 h-10 rounded-full"
                   style={{
                     background: "linear-gradient(135deg, #FFB300, #F2A600)",
                     color: "#090908",
                     fontFamily: "var(--font-inter), Inter, sans-serif",
                     fontWeight: 900,
-                    fontSize: 18,
+                    fontSize: 15,
                     letterSpacing: "-0.04em",
-                    boxShadow: "0 10px 30px -8px rgba(242,166,0,0.45)",
+                    boxShadow: "0 8px 24px -8px rgba(242,166,0,0.45)",
                   }}
                 >
                   {s.num}
@@ -118,7 +114,7 @@ export default function Process() {
               </div>
 
               <h3
-                className="text-xl md:text-2xl font-extrabold mb-3"
+                className="text-lg md:text-xl font-extrabold mb-2"
                 style={{
                   color: "#F5F5F5",
                   fontFamily: "var(--font-inter), Inter, sans-serif",
@@ -127,18 +123,12 @@ export default function Process() {
               >
                 {s.title}
               </h3>
-              <p className="text-sm md:text-base leading-relaxed mb-5" style={{ color: "#a8a29e" }}>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "#a8a29e" }}
+              >
                 {s.desc}
               </p>
-
-              <ul className="space-y-2">
-                {s.bullets.map((b) => (
-                  <li key={b} className="flex items-start gap-2.5 text-sm" style={{ color: "#cbd5e1" }}>
-                    <span style={{ color: "#F2A600", marginTop: 2 }}>›</span>
-                    <span>{b}</span>
-                  </li>
-                ))}
-              </ul>
             </motion.div>
           ))}
         </div>

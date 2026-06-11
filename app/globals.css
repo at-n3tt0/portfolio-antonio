@@ -19,6 +19,16 @@
   --at-status-warn: #F2A600;
   --at-status-down: #ef4444;
 
+  /* Light bands — used by alternating sections */
+  --at-light-bg: #F3F1EC;
+  --at-light-bg-2: #EDEAE2;
+  --at-light-surface: #FFFFFF;
+  --at-light-border: rgba(0,0,0,0.06);
+  --at-light-border-strong: rgba(0,0,0,0.10);
+  --at-light-text: #1A1815;
+  --at-light-text-muted: #5C5852;
+  --at-light-text-dim: #8A857D;
+
   /* aliases for backwards-compat */
   --bg: var(--at-bg);
   --bg-elevated: var(--at-panel);
@@ -122,6 +132,25 @@ input:focus, textarea:focus, select:focus {
 .reveal-up.in { opacity: 1; transform: translateY(0); }
 
 .divider { height: 1px; background: linear-gradient(to right, transparent, rgba(242,166,0,0.12), transparent); }
+
+/* Light band — institutional sections on off-white */
+.band-light {
+  background: var(--at-light-bg);
+  color: var(--at-light-text);
+}
+.band-light-alt {
+  background: var(--at-light-bg-2);
+  color: var(--at-light-text);
+}
+.band-light .card,
+.band-light-alt .card {
+  background: var(--at-light-surface);
+  border: 1px solid var(--at-light-border);
+  box-shadow:
+    0 1px 2px rgba(0,0,0,0.04),
+    0 8px 24px -12px rgba(0,0,0,0.08);
+  border-radius: 12px;
+}
 
 .mono {
   font-family: var(--font-jetbrains), 'JetBrains Mono', var(--font-geist-mono), monospace;
